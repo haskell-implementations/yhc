@@ -1,0 +1,19 @@
+interface HTMLSelectElement : HTMLElement {
+  readonly attribute  DOMString            type;
+           attribute  long                 selectedIndex;
+           attribute  DOMString            value;
+  readonly attribute  long                 length;
+  readonly attribute  HTMLFormElement      form;
+  readonly attribute  HTMLCollection       options;
+           attribute  boolean              disabled;
+           attribute  boolean              multiple;
+           attribute  DOMString            name;
+           attribute  long                 size;
+           attribute  long                 tabIndex;
+  void                      add(in HTMLElement element, 
+                                in HTMLElement before);
+  void                      remove(in long index);
+  void                      blur();
+  void                      focus();
+};
+

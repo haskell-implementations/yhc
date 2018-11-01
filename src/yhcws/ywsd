@@ -1,0 +1,16 @@
+#! /bin/sh
+
+# A dumb background job scheduler: if the last invocation
+# of runyhc resulted in compilation, run the next round
+# immediately, otherwise in 1 second.
+
+export PATH=/YHCWS/bin:$PATH
+cd $HOME
+while true ; do
+  /YHCWS/bin/isp2pb http://localhost:5984
+  /YHCWS/bin/runyhc http://localhost:5984
+  if [ $? = 99 ] ; then
+    sleep 1
+  fi
+done
+

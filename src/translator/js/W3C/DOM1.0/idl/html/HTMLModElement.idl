@@ -1,0 +1,5 @@
+interface HTMLModElement : HTMLElement {
+           attribute  DOMString            cite;
+           attribute  DOMString            dateTime;
+};
+

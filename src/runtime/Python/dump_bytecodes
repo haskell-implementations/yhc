@@ -1,0 +1,39 @@
+#!/usr/bin/python
+
+import sys
+import yhc
+
+def printBC(module):
+    print "Module Name:", module.name
+    print "Header:"
+    print "Major Version:", module.header[0]
+    print "Minor Version:", module.header[1]
+    print "String Table:"
+    print "---"
+    for s in module.strtbl:
+        print s
+    print "---"
+    print
+    print "Object Table:"
+    print "---"
+    for o in module.objtbl:
+        print o[0]
+        if isinstance(o[1], yhc.FunObj):
+            print "Function:"
+            print "Arity:", o[1].arity
+            print "---"
+            for c in o[1].consts:
+                print c
+            print "***"
+            for bc in o[1].code:
+                print bc.func_name
+            print "***"
+    print "---"
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print "dump_bytecodes takes a file as the argument"
+
+    bc = yhc.parseBC(open(sys.argv[1], "rb"))
+
+    printBC(bc)

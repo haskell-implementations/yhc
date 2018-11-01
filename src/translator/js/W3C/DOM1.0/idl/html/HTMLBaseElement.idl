@@ -1,0 +1,5 @@
+interface HTMLBaseElement : HTMLElement {
+           attribute  DOMString            href;
+           attribute  DOMString            target;
+};
+

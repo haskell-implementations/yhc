@@ -1,0 +1,6 @@
+interface DocumentType : Node {
+  readonly attribute  DOMString            name;
+  readonly attribute  NamedNodeMap         entities;
+  readonly attribute  NamedNodeMap         notations;
+};
+

@@ -1,0 +1,128 @@
+#include "org-w3c-dom.idl"
+
+module org_w3c_dom_html {
+
+   interface HTMLCollection;
+   interface HTMLDocument;
+   interface HTMLElement;
+   interface HTMLHtmlElement;
+   interface HTMLHeadElement;
+   interface HTMLLinkElement;
+   interface HTMLTitleElement;
+   interface HTMLMetaElement;
+   interface HTMLBaseElement;
+   interface HTMLIsIndexElement;
+   interface HTMLStyleElement;
+   interface HTMLBodyElement;
+   interface HTMLFormElement;
+   interface HTMLSelectElement;
+   interface HTMLOptGroupElement;
+   interface HTMLOptionElement;
+   interface HTMLInputElement;
+   interface HTMLTextAreaElement;
+   interface HTMLButtonElement;
+   interface HTMLLabelElement;
+   interface HTMLFieldSetElement;
+   interface HTMLLegendElement;
+   interface HTMLUListElement;
+   interface HTMLOListElement;
+   interface HTMLDListElement;
+   interface HTMLDirectoryElement;
+   interface HTMLMenuElement;
+   interface HTMLLIElement;
+   interface HTMLBlockquoteElement;
+   interface HTMLDivElement;
+   interface HTMLParagraphElement;
+   interface HTMLHeadingElement;
+   interface HTMLQuoteElement;
+   interface HTMLPreElement;
+   interface HTMLBRElement;
+   interface HTMLBaseFontElement;
+   interface HTMLFontElement;
+   interface HTMLHRElement;
+   interface HTMLModElement;
+   interface HTMLAnchorElement;
+   interface HTMLImageElement;
+   interface HTMLObjectElement;
+   interface HTMLParamElement;
+   interface HTMLAppletElement;
+   interface HTMLMapElement;
+   interface HTMLAreaElement;
+   interface HTMLScriptElement;
+   interface HTMLTableElement;
+   interface HTMLTableCaptionElement;
+   interface HTMLTableColElement;
+   interface HTMLTableSectionElement;
+   interface HTMLTableRowElement;
+   interface HTMLTableCellElement;
+   interface HTMLFrameSetElement;
+   interface HTMLFrameElement;
+   interface HTMLIFrameElement;
+
+
+
+
+typedef org_w3c_dom::DOMString  DOMString;
+typedef org_w3c_dom::Node       Node;
+typedef org_w3c_dom::NodeList   NodeList;
+typedef org_w3c_dom::Document   Document;
+typedef org_w3c_dom::Element    Element;
+#include "html/HTMLCollection.idl"
+#include "html/HTMLDocument.idl"
+#include "html/HTMLElement.idl"
+#include "html/HTMLHtmlElement.idl"
+#include "html/HTMLHeadElement.idl"
+#include "html/HTMLLinkElement.idl"
+#include "html/HTMLTitleElement.idl"
+#include "html/HTMLMetaElement.idl"
+#include "html/HTMLBaseElement.idl"
+#include "html/HTMLIsIndexElement.idl"
+#include "html/HTMLStyleElement.idl"
+#include "html/HTMLBodyElement.idl"
+#include "html/HTMLFormElement.idl"
+#include "html/HTMLSelectElement.idl"
+#include "html/HTMLOptGroupElement.idl"
+#include "html/HTMLOptionElement.idl"
+#include "html/HTMLInputElement.idl"
+#include "html/HTMLTextAreaElement.idl"
+#include "html/HTMLButtonElement.idl"
+#include "html/HTMLLabelElement.idl"
+#include "html/HTMLFieldSetElement.idl"
+#include "html/HTMLLegendElement.idl"
+#include "html/HTMLUListElement.idl"
+#include "html/HTMLOListElement.idl"
+#include "html/HTMLDListElement.idl"
+#include "html/HTMLDirectoryElement.idl"
+#include "html/HTMLMenuElement.idl"
+#include "html/HTMLLIElement.idl"
+#include "html/HTMLBlockquoteElement.idl"
+#include "html/HTMLDivElement.idl"
+#include "html/HTMLParagraphElement.idl"
+#include "html/HTMLHeadingElement.idl"
+#include "html/HTMLQuoteElement.idl"
+#include "html/HTMLPreElement.idl"
+#include "html/HTMLBRElement.idl"
+#include "html/HTMLBaseFontElement.idl"
+#include "html/HTMLFontElement.idl"
+#include "html/HTMLHRElement.idl"
+#include "html/HTMLModElement.idl"
+#include "html/HTMLAnchorElement.idl"
+#include "html/HTMLImageElement.idl"
+#include "html/HTMLObjectElement.idl"
+#include "html/HTMLParamElement.idl"
+#include "html/HTMLAppletElement.idl"
+#include "html/HTMLMapElement.idl"
+#include "html/HTMLAreaElement.idl"
+#include "html/HTMLScriptElement.idl"
+#include "html/HTMLTableElement.idl"
+#include "html/HTMLTableCaptionElement.idl"
+#include "html/HTMLTableColElement.idl"
+#include "html/HTMLTableSectionElement.idl"
+#include "html/HTMLTableRowElement.idl"
+#include "html/HTMLTableCellElement.idl"
+#include "html/HTMLFrameSetElement.idl"
+#include "html/HTMLFrameElement.idl"
+#include "html/HTMLIFrameElement.idl"
+};
+
+

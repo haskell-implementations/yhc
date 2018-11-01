@@ -1,0 +1,4 @@
+interface HTMLHeadingElement : HTMLElement {
+           attribute  DOMString            align;
+};
+

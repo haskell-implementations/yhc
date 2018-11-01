@@ -1,0 +1,4 @@
+interface HTMLDirectoryElement : HTMLElement {
+           attribute  boolean              compact;
+};
+

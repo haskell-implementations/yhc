@@ -1,0 +1,8 @@
+Import("env")
+
+yhcobjs = SConscript("yhc-base-1.0/SConscript")
+haskell98objs = SConscript("haskell98-1.0/SConscript")
+
+objs = yhcobjs + haskell98objs
+
+Return("objs")

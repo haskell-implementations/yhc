@@ -1,0 +1,8 @@
+interface HTMLElement : Element {
+           attribute  DOMString            id;
+           attribute  DOMString            title;
+           attribute  DOMString            lang;
+           attribute  DOMString            dir;
+           attribute  DOMString            className;
+};
+

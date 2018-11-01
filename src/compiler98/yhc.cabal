@@ -1,0 +1,12 @@
+Name:           yhc
+Version:        1.0
+License:        GPL
+Author:         Tom Shackell, Neil Mitchell, $(NHC_AUTHORS)
+Homepage:       http://haskell.org/haskellwiki/Yhc
+Category:       Compiler
+Build-Depends:  base, uniplate, filepath, haskell98, mtl, cpphs
+Synopsis:       A compiler
+
+Executable:     yhc
+Main-Is:		Main.hs
+Hs-Source-Dirs: ., ../libraries/core

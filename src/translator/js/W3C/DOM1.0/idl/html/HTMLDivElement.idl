@@ -1,0 +1,4 @@
+interface HTMLDivElement : HTMLElement {
+           attribute  DOMString            align;
+};
+

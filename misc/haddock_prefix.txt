@@ -1,0 +1,7 @@
+Yhc, (C) The Yhc Team 1991-2007
+
+Portions (C) The Nhc98 Team 1991-1994
+
+Website at <http://haskell.org/haskellwiki/Yhc>
+
+Documentation patches most welcome!

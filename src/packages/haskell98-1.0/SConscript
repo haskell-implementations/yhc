@@ -1,0 +1,64 @@
+import os
+import glob
+import sys
+
+if sys.platform=="win32":
+    yhcbin = "inst\\bin\\yhc.exe"
+else:
+    yhcbin = "inst/bin/yhc"
+
+Import("env")
+
+root = "src/packages/haskell98-1.0/"
+special = {
+    "Array":  ["Ix.hi", "#inst/lib/yhc/packages/yhc-base/1.0/Data/Array.hi"],
+    "Ix": ["#inst/lib/yhc/packages/yhc-base/1.0/Data/Ix.hi", "#inst/lib/yhc/packages/yhc-base/1.0/Data/Ratio.hi", "#inst/lib/yhc/packages/yhc-base/1.0/YHC/Internal.hi", "#inst/lib/yhc/packages/yhc-base/1.0/Prelude.hi"],
+    "IO": ["#inst/lib/yhc/packages/yhc-base/1.0/System/IO.hi"],
+    "CPUTime": ["#inst/lib/yhc/packages/yhc-base/1.0/System/CPUTime.hi"],
+    "Char": ["#inst/lib/yhc/packages/yhc-base/1.0/Data/Char.hi"],
+    "Complex": ["#inst/lib/yhc/packages/yhc-base/1.0/Data/Complex.hi"],
+    "Monad": ["#inst/lib/yhc/packages/yhc-base/1.0/Control/Monad.hi"],
+    "Directory": ["#inst/lib/yhc/packages/yhc-base/1.0/System/Directory.hi"],
+    "List": ["#inst/lib/yhc/packages/yhc-base/1.0/Data/List.hi"],
+    "Locale": ["#inst/lib/yhc/packages/yhc-base/1.0/System/Locale.hi"],
+    "Maybe": ["#inst/lib/yhc/packages/yhc-base/1.0/Data/Maybe.hi"],
+    "Random": ["#inst/lib/yhc/packages/yhc-base/1.0/System/Random.hi"],
+    "System": ["#inst/lib/yhc/packages/yhc-base/1.0/System/Exit.hi","#inst/lib/yhc/packages/yhc-base/1.0/System/Environment.hi"],
+    "Time": ["#inst/lib/yhc/packages/yhc-base/1.0/System/Time.hi"],
+}
+
+def YHC_build(target, source, env):
+    opts = [env["ENV"]["YHC_CORE"]]
+    v = env.Execute(env.Action("%s %s -c %s" % (yhcbin, " ".join(opts), str(source[0]))))
+    return v
+
+YHC = Builder(name='YHC', action=YHC_build, src_suffix='.hs', suffix=".hbc", single_source=True)
+env.Append(BUILDERS = {"YHC":YHC})
+
+files = glob.glob("*.hs")
+files.remove("CPUTime.hs")
+files.remove("Directory.hs")
+files.remove("Locale.hs")
+files.remove("Random.hs")
+files.remove("Time.hs")
+
+objs  = [env.YHC(f) for f in files]
+
+r = []
+for o in objs:
+    o = o[0]
+    env.Depends(o, "#"+yhcbin)
+    source = os.path.splitext(str(o))[0]
+    if special.has_key(source.replace(os.sep, "/")):
+        [env.Depends(o, f) for f in special[source.replace(os.sep, "/")]]
+
+    r.append(env.Command("#inst/lib/yhc/packages/haskell98/1.0/"+source+".hbc", o, Copy("$TARGET", "$SOURCE")))
+    r.append(env.Command("#inst/lib/yhc/packages/haskell98/1.0/"+source+".hi", source+".hi", Copy("$TARGET", "$SOURCE")))
+    env.SideEffect(env.File(source + ".hi"), env.File(source + ".hbc"))
+    if env["ENV"]["YHC_CORE"]:
+        if not os.path.exists(source + ".ycr") and os.path.exists(source + ".hbc"): # Force a rebuild of the hbc file if ycr doesn't exist.
+            os.unlink(source + ".hbc")
+        env.SideEffect(env.File(source+".ycr"), env.File(source + ".hbc"))
+        r.append(env.Command("#inst/lib/yhc/packages/haskell98/1.0/"+source+".ycr", source+".ycr", Copy("$TARGET", "$SOURCE")))
+
+Return("r")

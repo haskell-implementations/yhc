@@ -1,0 +1,9 @@
+interface HTMLTableColElement : HTMLElement {
+           attribute  DOMString            align;
+           attribute  DOMString            ch;
+           attribute  DOMString            chOff;
+           attribute  long                 span;
+           attribute  DOMString            vAlign;
+           attribute  DOMString            width;
+};
+

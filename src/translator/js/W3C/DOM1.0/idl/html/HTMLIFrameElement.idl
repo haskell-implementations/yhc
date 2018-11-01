@@ -1,0 +1,13 @@
+interface HTMLIFrameElement : HTMLElement {
+           attribute  DOMString            align;
+           attribute  DOMString            frameBorder;
+           attribute  DOMString            height;
+           attribute  DOMString            longDesc;
+           attribute  DOMString            marginHeight;
+           attribute  DOMString            marginWidth;
+           attribute  DOMString            name;
+           attribute  DOMString            scrolling;
+           attribute  DOMString            src;
+           attribute  DOMString            width;
+};
+

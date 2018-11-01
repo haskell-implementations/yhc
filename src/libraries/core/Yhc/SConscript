@@ -1,0 +1,9 @@
+Import("hsenv")
+
+coreobjs = SConscript("Core/SConscript")
+
+objs = coreobjs + [hsenv.HaskellObject("./Core.hs")]
+
+hsenv.Command("#inst/api/core/Core.hs", "Core.hs", Copy("$TARGET", "$SOURCE"))
+
+Return("objs")

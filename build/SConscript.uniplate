@@ -1,0 +1,10 @@
+import os
+
+Import("hsenv")
+
+uniplatefiles = [hsenv.HaskellObject("Data" + os.sep + "Generics" + os.sep + "Uniplate.hs")
+				,hsenv.HaskellObject("Data" + os.sep + "Generics" + os.sep + "UniplateOn.hs")
+				,hsenv.HaskellObject("Data" + os.sep + "Generics" + os.sep + "PlateInternal.hs")
+				]
+
+Return("uniplatefiles")

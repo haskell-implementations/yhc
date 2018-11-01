@@ -1,0 +1,13 @@
+interface HTMLFormElement : HTMLElement {
+  readonly attribute  HTMLCollection       elements;
+  readonly attribute  long                 length;
+           attribute  DOMString            name;
+           attribute  DOMString            acceptCharset;
+           attribute  DOMString            action;
+           attribute  DOMString            enctype;
+           attribute  DOMString            method;
+           attribute  DOMString            target;
+  void                      submit();
+  void                      reset();
+};
+

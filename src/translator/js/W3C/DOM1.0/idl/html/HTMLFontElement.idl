@@ -1,0 +1,6 @@
+interface HTMLFontElement : HTMLElement {
+           attribute  DOMString            color;
+           attribute  DOMString            face;
+           attribute  DOMString            size;
+};
+

@@ -1,0 +1,4 @@
+interface HTMLParagraphElement : HTMLElement {
+           attribute  DOMString            align;
+};
+

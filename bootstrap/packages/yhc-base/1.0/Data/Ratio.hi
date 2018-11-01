@@ -1,0 +1,134 @@
+interface Data.Ratio where {
+infixl  7 %;
+infixl  7 :%;
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.RealFrac (Ratio a);
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.Real (Ratio a);
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Read a,Prelude.Integral a) => Prelude.Read (Ratio a);
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.Enum (Ratio a);
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.Eq (Ratio a);
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.Num (Ratio a);
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.Ord (Ratio a);
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.Fractional (Ratio a);
+
+{-# NEED #-}
+instance Prelude @ Ix.Ix ();
+
+{-# NEED #-}
+instance Ix @ Ix.Ix Prelude.Char;
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b) => Ix.Ix (a,b);
+
+{-# NEED #-}
+instance Prelude @ Ix.Ix Prelude.Ordering;
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c) => Ix.Ix (a,b,c);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h,Ix.Ix i,Ix.Ix j,Ix.Ix k,Ix.Ix l,Ix.Ix m,Ix.Ix n,Ix.Ix o) => Ix.Ix (a,b,c,d,e,f,g,h,i,j,k,l,m,n,o);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h,Ix.Ix i,Ix.Ix j,Ix.Ix k,Ix.Ix l,Ix.Ix m,Ix.Ix n) => Ix.Ix (a,b,c,d,e,f,g,h,i,j,k,l,m,n);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h,Ix.Ix i,Ix.Ix j,Ix.Ix k,Ix.Ix l,Ix.Ix m) => Ix.Ix (a,b,c,d,e,f,g,h,i,j,k,l,m);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h,Ix.Ix i,Ix.Ix j,Ix.Ix k,Ix.Ix l) => Ix.Ix (a,b,c,d,e,f,g,h,i,j,k,l);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h,Ix.Ix i,Ix.Ix j,Ix.Ix k) => Ix.Ix (a,b,c,d,e,f,g,h,i,j,k);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h,Ix.Ix i,Ix.Ix j) => Ix.Ix (a,b,c,d,e,f,g,h,i,j);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h,Ix.Ix i) => Ix.Ix (a,b,c,d,e,f,g,h,i);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h) => Ix.Ix (a,b,c,d,e,f,g,h);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g) => Ix.Ix (a,b,c,d,e,f,g);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f) => Ix.Ix (a,b,c,d,e,f);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e) => Ix.Ix (a,b,c,d,e);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d) => Ix.Ix (a,b,c,d);
+
+{-# NEED #-}
+instance Ix @ Ix.Ix Prelude.Int;
+
+{-# NEED #-}
+instance Ix @ Ix.Ix Prelude.Integer;
+
+{-# NEED #-}
+instance Ix @ Ix.Ix Prelude.Bool;
+
+{-# NEED #-}
+instance Prelude @ Prelude.Functor YHC.Internal.IO;
+
+{-# NEED #-}
+instance Prelude @ Prelude.Monad YHC.Internal.IO;
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.Show (Ratio a);
+
+{-# NEED #-}
+instance Prelude @ (Prelude.Show a) => Prelude.Show (YHC.Internal.IO a);
+interface Ix
+{-# NEED Ix #-}
+class Ix a;
+interface YHC.Internal
+{-# NEED IO #-}
+newtype {-#  #-} IO a;
+interface YHC.ErrNo
+{-# NEED ErrNo #-}
+data ErrNo;
+interface System.IO
+{-# NEED Handle #-}
+newtype {-#  #-} Handle;
+interface YHC.Internal
+{-# NEED World #-}
+data World;
+interface ! Data.Ratio
+{-# NEED (%) #-}
+(%){-# 2 #-}::(Prelude.Integral a) => (a -> (a -> (Ratio a)));
+
+{-# NEED numerator #-}
+numerator{-# 1 #-}::(Prelude.Integral a) => ((Ratio a) -> a);
+
+{-# NEED denominator #-}
+denominator{-# 1 #-}::(Prelude.Integral a) => ((Ratio a) -> a);
+
+{-# NEED approxRational #-}
+approxRational{-# 2 #-}::(Prelude.RealFrac a) => (a -> (a -> Rational));
+
+{-# NEED Rational #-}
+type {-# 1 #-} Rational = (Ratio Prelude.Integer);
+
+{-# NEED {Ratio (:%)} #-}
+data (Prelude.Integral a) => Ratio a
+  = (:%) !a !a;
+}

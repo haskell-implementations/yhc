@@ -1,0 +1,16 @@
+import os
+
+Import("env")
+Import("hsenv")
+
+yhefiles = []
+for root, dir, files in list(os.walk(".")):
+    for f in files:
+        if f.endswith("GenUtil.hs"):
+            yhefiles.append(hsenv.HaskellObject(root + os.sep + f, HSFLAGS=["-fglasgow-exts"]))
+        elif f.endswith("GenUtil.hs") or f.endswith("Interact.hs") or f.endswith("GuiGtk.hs"):
+            yhefiles.append(hsenv.HaskellObject(root + os.sep + f, HSFLAGS=["-cpp"]))
+        elif f.endswith(".hs") or f.endswith(".lhs"):
+            yhefiles.append(hsenv.HaskellObject(root + os.sep + f))
+
+Return("yhefiles")

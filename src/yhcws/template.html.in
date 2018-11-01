@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style type="text/css">
+
+body {
+        font-family: sans-serif;
+        background-color: #ddd;
+        margin: 0;
+        padding: 0;
+}
+
+.shell {
+	border: 1px solid black;
+	width: 80%;
+	height: 75%;
+	margin: auto;
+}
+
+.gap {
+	width: 100%;
+	height: 10px;
+	margin: auto;
+}
+
+.title {
+	background-color: navy;
+	color: #eee;
+	text-align: center;
+	font-weight: bold;
+	font-size: 14pt;
+}
+
+.client {
+	background-color: #eee;
+	text-align: left;
+	padding: 3px;
+}
+
+.fltleft {
+	width: auto;
+	height: inherit;
+	float: left;
+	padding: 3px;
+	height: 95%;
+	font-size: 12pt;
+}
+
+.fltright {
+	width: auto;
+	height: inherit;
+	float: right;
+	padding: 3px;
+	height: 95%;
+	font-size: 12pt;
+}
+
+.fltcenter {
+	width: auto;
+	height: inherit;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 3px;
+	height: 95%;
+	font-size: 12pt;
+}
+
+
+.cell {
+	padding: 3px;
+	font-size: 11pt;
+	height: 12pt;
+	vertical-align: middle;
+	margin: 0px;
+	float: left;
+	border: 1px dotted #999;
+}
+
+.high {
+	font-weight: bold;
+}
+
+.low {
+	font-weight: normal;
+}
+
+.w10p {
+	width: 10%;
+}
+
+.w15p {
+	width: 15%;
+}
+
+.w20p {
+	width: 20%;
+}
+
+
+.w30p {
+	width: 30%;
+}
+
+.w35p {
+	width: 35%;
+}
+
+.w40p {
+        width: 40%;
+}
+
+.w45p {
+	width: 45%;
+}
+
+.w75p {
+        width: 75%;
+}
+	
+.w85p {
+	width: 85%;
+}
+
+.h4p {
+	height: 4%;
+}
+
+.framed {
+	border: 1px solid black;
+}
+
+.scrolled {
+        border: 1px solid black;
+        width: 600px;
+        padding: 0px;
+        margin: 0px;
+        background-color: #efe;
+        height: 250px;
+	overflow-y: scroll;
+	overflow-x: auto;
+}
+
+.static {
+	width: 600px;
+	height: auto;
+	padding: 0px;
+	margin: 0px;
+}
+
+.abs {
+	position: relative;
+	top: 0px;
+}
+
+input {
+	font-size: inherit;
+	border: 1px solid #777;
+	padding: 3px;
+	margin-top: 0px;
+}
+
+select {
+	border: 1px solid black;
+	margin-bottom: 0px;
+	padding: 1px;
+	padding-bottom: 2px;
+	margin-top: 0px;
+	font-size: inherit;
+}
+
+button {
+	font-size: inherit;
+}
+
+pre {
+        white-space: pre;
+}
+
+a {
+	font-size: inherit;
+	text-decoration: none;
+}
+
+a img {
+        border: none
+}
+
+textarea {
+	font-size: inherit;
+        border: 1px solid #777;
+        padding: 3px;
+        margin-top: 0px;
+	white-space: pre;
+	overflow: auto;
+}
+
+.centered {
+	text-align: center;
+}
+
+.leftalign {
+	text-align: left;
+}
+
+.rightalign {
+	text-align: right;
+}
+
+.display {
+	width: 30%;
+	border: 1px solid black;
+	float: left;
+	text-align: right;
+	padding: 3px;
+	font-size: 12pt;
+	margin-top: 3px;
+}
+
+.divider {
+        height: 0px;
+	clear: both;
+}
+
+.blackln {
+	height: 1px;
+	background-color: #000;
+}
+
+.banner {
+	width: 98%;
+	margin-left: auto;
+       	margin-right: auto;
+	margin-top: 0px;
+	margin-bottom: 3px;
+	text-align: left;
+	font-size: 12pt;
+	color: #080;
+	white-space: nowrap;
+}
+
+.label {
+	font-size: 12pt;
+	font-family: sans-serif;
+	font-weight: bold;
+	float: left;
+}
+
+.entry {
+	font-size: 12pt;
+	font-family: monospace;
+	font-weight: normal;
+	float: right;
+}
+
+.vstrut {
+	width: 0px;
+	height: 400px;
+	float: left;
+}
+
+.listbody {
+	float: right;
+	vertical-align: top;
+	height: 350px;
+}
+
+.viewbody {
+	float: left;
+	vertical-align: top;
+	height: 350px;
+	font-family: monospace;
+	overflow: auto;
+	white-space: nowrap;
+	width: 100%
+}
+
+.listhd {
+	font-size: 85%;
+	font-family: sans-serif;
+	font-weight: bold;
+	float: left;
+        border-bottom: 1px solid #ccc;
+}
+
+.listrow {
+	font-size: 75%;
+	font-family: sans-serif;
+	font-weight: normal;
+	float: left;
+	border-top: 1px solid #ddd;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+
+
+</style>	
+<meta name="generator" content=
+"HTML Tidy for Linux/x86 (vers 1 September 2005), see www.w3.org" />
+<title>Empty Page Template for Haskell Applications</title>
+<meta http-equiv="content-type" content=
+"text/html; charset=utf-8" />
+</head>
+<body>
+</body>
+</html>

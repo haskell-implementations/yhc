@@ -1,0 +1,6 @@
+interface Attribute : Node {
+  readonly attribute  DOMString            name;
+  readonly attribute  boolean              specified;
+           attribute  DOMString            value;
+};
+

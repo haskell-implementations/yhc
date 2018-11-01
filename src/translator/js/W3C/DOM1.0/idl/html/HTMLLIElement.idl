@@ -1,0 +1,5 @@
+interface HTMLLIElement : HTMLElement {
+           attribute  DOMString            type;
+           attribute  long                 value;
+};
+

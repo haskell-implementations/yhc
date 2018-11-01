@@ -1,0 +1,4 @@
+interface HTMLQuoteElement : HTMLElement {
+           attribute  DOMString            cite;
+};
+

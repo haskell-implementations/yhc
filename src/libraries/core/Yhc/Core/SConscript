@@ -1,0 +1,13 @@
+import os
+
+Import("env")
+Import("hsenv")
+
+generalfiles = []
+for root, dir, files in list(os.walk(".")):
+    for f in files:
+        if f.endswith(".hs") or f.endswith(".lhs"):
+            generalfiles.append(hsenv.HaskellObject(root + os.sep + f))
+            hsenv.Command("#inst/api/core/Core/%s" % (root + os.sep + f, ), root + os.sep + f, Copy("$TARGET", "$SOURCE"))
+
+Return("generalfiles")

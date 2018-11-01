@@ -1,0 +1,17 @@
+#! /bin/sh
+
+# Shell script to be run periodically to cut couchdb logs
+# in size as they do not have any real value.
+
+LOGLINES=100
+
+cd /YHCWS/var/log/couchdb
+
+for log in * ; do
+  tail -n $LOGLINES $log > $log.tmp
+  chown couchdb.couchdb *.tmp
+  mv $log.tmp $log
+done
+
+/etc/rc.d/couchdb restart &> /dev/null
+

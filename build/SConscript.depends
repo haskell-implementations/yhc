@@ -1,0 +1,8 @@
+import sys
+
+cpphsfiles = SConscript("cpphs/SConscript")
+libffifiles = SConscript("ctypes/SConscript")
+filepathfiles = SConscript("filepath/SConscript")
+uniplatefiles = SConscript("uniplate/SConscript")
+
+Return("cpphsfiles", "libffifiles", "filepathfiles", "uniplatefiles")

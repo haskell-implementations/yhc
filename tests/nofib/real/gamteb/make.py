@@ -1,0 +1,16 @@
+def main():
+    build("GamtebType.hs")
+    build("Consts.hs")
+    build("InitTable.hs")
+    build("Utils.hs")
+    build("Distance.hs")
+    build("RoulSplit.hs")
+    build("PhotoElec.hs")
+    build("Compton.hs")
+    build("Pair.hs")
+    build("TransPort.hs")
+    build("Output.hs")    
+    build("GamtebMain.hs")
+    build("Main.hs")
+    run("Main")
+    

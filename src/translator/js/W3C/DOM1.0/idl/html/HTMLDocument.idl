@@ -1,0 +1,20 @@
+interface HTMLDocument : Document {
+           attribute  DOMString            title;
+  readonly attribute  DOMString            referrer;
+  readonly attribute  DOMString            domain;
+  readonly attribute  DOMString            URL;
+           attribute  HTMLElement          body;
+  readonly attribute  HTMLCollection       images;
+  readonly attribute  HTMLCollection       applets;
+  readonly attribute  HTMLCollection       links;
+  readonly attribute  HTMLCollection       forms;
+  readonly attribute  HTMLCollection       anchors;
+           attribute  DOMString            cookie;
+  void                      open();
+  void                      close();
+  void                      write(in DOMString text);
+  void                      writeln(in DOMString text);
+  Element                   getElementById(in DOMString elementId);
+  NodeList                  getElementsByName(in DOMString elementName);
+};
+

@@ -1,0 +1,4 @@
+interface HTMLBlockquoteElement : HTMLElement {
+           attribute  DOMString            cite;
+};
+

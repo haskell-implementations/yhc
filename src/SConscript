@@ -1,0 +1,28 @@
+Import("build")
+
+if 'yhc' in build:
+    yhc_main = SConscript("compiler/SConscript") + SConscript("libraries/SConscript")
+else:
+    yhc_main = []
+
+if 'yhi' in build:
+    yhi_objs = SConscript("runtime/SConscript")
+else:
+    yhi_objs = []
+
+if 'library' in build:
+    yhc_lib = SConscript("packages/SConscript")
+else:
+    yhc_lib = []
+
+if 'yhe' in build:
+    yhe_main = SConscript("interactive/SConscript")
+else:
+    yhe_main = []
+
+if 'tester' in build:
+    testerfiles = SConscript("tester/SConscript")
+else:
+    testerfiles = []
+
+Return("yhi_objs", "yhc_main", "yhc_lib", "yhe_main", "testerfiles")

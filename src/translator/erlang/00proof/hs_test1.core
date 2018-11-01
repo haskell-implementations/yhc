@@ -1,0 +1,2394 @@
+%% --------------  Strictness Map -------------------------------
+%% ("ADD_W",[True,True])
+%% ("EQ_W",[True,True])
+%% ("GE_W",[True,True])
+%% ("GT_W",[True,True])
+%% ("LE_W",[True,True])
+%% ("LT_W",[True,True])
+%% ("MUL_W",[True,True])
+%% ("NEG_W",[True])
+%% ("NE_W",[True,True])
+%% ("Prelude;$",[True,False])
+%% ("Prelude;++",[True,False])
+%% ("Prelude;-",[True])
+%% ("Prelude;.",[False,False])
+%% ("Prelude;1111_showPosInt",[False,False])
+%% ("Prelude;1114_quot10",[True])
+%% ("Prelude;1115_rem10",[True])
+%% ("Prelude;1116_nr",[False])
+%% ("Prelude;625_showl",[False,True])
+%% ("Prelude;<=",[True])
+%% ("Prelude;==",[True])
+%% ("Prelude;>=",[True])
+%% ("Prelude;LAMBDA27194",[False,True,False])
+%% ("Prelude;LAMBDA27509",[False,False])
+%% ("Prelude;LAMBDA27540",[])
+%% ("Prelude;LAMBDA27541",[])
+%% ("Prelude;LAMBDA27542",[])
+%% ("Prelude;LAMBDA27898",[])
+%% ("Prelude;LAMBDA27899",[])
+%% ("Prelude;LAMBDA27900",[True])
+%% ("Prelude;Prelude.Eq;Prelude.Ord",[True])
+%% ("Prelude;Prelude.Int;Prelude.Bounded;minBound",[])
+%% ("Prelude;Prelude.Int;Prelude.Eq",[])
+%% ("Prelude;Prelude.Int;Prelude.Eq;/=",[True,True])
+%% ("Prelude;Prelude.Int;Prelude.Eq;==",[True,True])
+%% ("Prelude;Prelude.Int;Prelude.Num",[])
+%% ("Prelude;Prelude.Int;Prelude.Num;*",[True,True])
+%% ("Prelude;Prelude.Int;Prelude.Num;+",[True,True])
+%% ("Prelude;Prelude.Int;Prelude.Num;-",[True,True])
+%% ("Prelude;Prelude.Int;Prelude.Num;abs",[False])
+%% ("Prelude;Prelude.Int;Prelude.Num;fromInteger",[False])
+%% ("Prelude;Prelude.Int;Prelude.Num;negate",[True])
+%% ("Prelude;Prelude.Int;Prelude.Num;signum",[False])
+%% ("Prelude;Prelude.Int;Prelude.Ord",[])
+%% ("Prelude;Prelude.Int;Prelude.Ord;<",[True,True])
+%% ("Prelude;Prelude.Int;Prelude.Ord;<=",[True,True])
+%% ("Prelude;Prelude.Int;Prelude.Ord;>",[True,True])
+%% ("Prelude;Prelude.Int;Prelude.Ord;>=",[True,True])
+%% ("Prelude;Prelude.Int;Prelude.Ord;compare",[False,False])
+%% ("Prelude;Prelude.Int;Prelude.Ord;max",[False,False])
+%% ("Prelude;Prelude.Int;Prelude.Ord;min",[False,False])
+%% ("Prelude;Prelude.Int;Prelude.Show",[])
+%% ("Prelude;Prelude.Int;Prelude.Show;show",[False])
+%% ("Prelude;Prelude.Int;Prelude.Show;showList",[False])
+%% ("Prelude;Prelude.Int;Prelude.Show;showsPrec",[False,True])
+%% ("Prelude;Prelude.Int;Prelude.Show;showsType",[False])
+%% ("Prelude;Prelude.Show;Prelude.Num",[True])
+%% ("Prelude;_;Prelude;compare",[False,False,False])
+%% ("Prelude;_;Prelude;max",[False,False,False])
+%% ("Prelude;_;Prelude;min",[False,False,False])
+%% ("Prelude;_;Prelude;show",[False,False])
+%% ("Prelude;_;Prelude;showList",[False,True])
+%% ("Prelude;_patternMatchFail",[False])
+%% ("Prelude;error",[False])
+%% ("Prelude;fromInteger",[True])
+%% ("Prelude;map",[False,True])
+%% ("Prelude;show",[True])
+%% ("Prelude;showChar",[])
+%% ("Prelude;showParen",[True,False])
+%% ("Prelude;showString",[])
+%% ("Prelude;showsPrec",[True])
+%% ("QUOT",[True,True])
+%% ("REM",[True,True])
+%% ("SUB_W",[True,True])
+%% ("Test1;289_ping'",[False,False,False,False])
+%% ("Test1;LAMBDA756",[])
+%% ("Test1;LAMBDA757",[False,False,True])
+%% ("Test1;LAMBDA758",[])
+%% ("Test1;LAMBDA759",[])
+%% ("Test1;LAMBDA760",[])
+%% ("Test1;LAMBDA761",[])
+%% ("Test1;LAMBDA762",[])
+%% ("Test1;LAMBDA763",[])
+%% ("Test1;LAMBDA764",[])
+%% ("Test1;LAMBDA765",[])
+%% ("Test1;LAMBDA766",[False])
+%% ("Test1;LAMBDA767",[False])
+%% ("Test1;LAMBDA768",[])
+%% ("Test1;LAMBDA769",[])
+%% ("Test1;LAMBDA770",[])
+%% ("Test1;LAMBDA771",[])
+%% ("Test1;LAMBDA772",[False,False,False,False,False])
+%% ("Test1;LAMBDA773",[False,False,False,False,False])
+%% ("Test1;LAMBDA774",[False,False,False,False,False])
+%% ("Test1;LAMBDA775",[False,False,False,False,False])
+%% ("Test1;LAMBDA776",[])
+%% ("Test1;LAMBDA777",[])
+%% ("Test1;LAMBDA778",[])
+%% ("Test1;LAMBDA779",[])
+%% ("Test1;LAMBDA780",[])
+%% ("Test1;LAMBDA781",[])
+%% ("Test1;LAMBDA782",[])
+%% ("Test1;LAMBDA783",[False])
+%% ("Test1;LAMBDA784",[False,False])
+%% ("Test1;LAMBDA785",[False,False,False,False,True])
+%% ("Test1;LAMBDA786",[])
+%% ("Test1;LAMBDA787",[])
+%% ("Test1;LAMBDA788",[])
+%% ("Test1;LAMBDA789",[False,False,False])
+%% ("Test1;LAMBDA790",[False,False,False])
+%% ("Test1;LAMBDA791",[False,False,False])
+%% ("Test1;LAMBDA792",[])
+%% ("Test1;LAMBDA793",[])
+%% ("Test1;LAMBDA794",[])
+%% ("Test1;LAMBDA795",[])
+%% ("Test1;LAMBDA796",[False])
+%% ("Test1;LAMBDA797",[])
+%% ("Test1;LAMBDA798",[])
+%% ("Test1;LAMBDA799",[])
+%% ("Test1;LAMBDA800",[True,False])
+%% ("Test1;LAMBDA801",[False,False,False])
+%% ("Test1;LAMBDA802",[])
+%% ("Test1;LAMBDA803",[False,True])
+%% ("Test1;LAMBDA804",[])
+%% ("Test1;LAMBDA805",[])
+%% ("Test1;LAMBDA806",[])
+%% ("Test1;LAMBDA807",[True,False])
+%% ("Test1;LAMBDA808",[False,True])
+%% ("Test1;LAMBDA809",[])
+%% ("Test1;LAMBDA810",[])
+%% ("Test1;LAMBDA811",[])
+%% ("Test1;LAMBDA812",[])
+%% ("Test1;LAMBDA813",[])
+%% ("Test1;LAMBDA814",[])
+%% ("Test1;LAMBDA815",[])
+%% ("Test1;LAMBDA816",[])
+%% ("Test1;LAMBDA817",[False])
+%% ("Test1;LAMBDA818",[False])
+%% ("Test1;LAMBDA819",[False,False])
+%% ("Test1;LAMBDA820",[False,False])
+%% ("Test1;Prelude.Char;Test1.Erlang",[])
+%% ("Test1;Prelude.Char;Test1.Erlang;toErlang",[True])
+%% ("Test1;Prelude.[];Test1.Erlang",[False])
+%% ("Test1;Prelude.[];Test1.Erlang;toErlang",[False,False])
+%% ("Test1;Test1.Atom;Test1.Erlang",[])
+%% ("Test1;Test1.Atom;Test1.Erlang;toErlang",[True])
+%% ("Test1;Test1.PID;Test1.Erlang",[])
+%% ("Test1;Test1.PID;Test1.Erlang;toErlang",[True])
+%% ("Test1;addArg",[True,True])
+%% ("Test1;comma",[False,True,False])
+%% ("Test1;erlCall",[True])
+%% ("Test1;exit",[True])
+%% ("Test1;fac",[True])
+%% ("Test1;force",[True])
+%% ("Test1;fuse",[True,True])
+%% ("Test1;hsList",[True])
+%% ("Test1;identity",[True])
+%% ("Test1;list_to_atom",[True])
+%% ("Test1;lpar",[False,True,False])
+%% ("Test1;main",[False])
+%% ("Test1;mkAtom",[])
+%% ("Test1;mkEApp",[True,True,True])
+%% ("Test1;ping",[False,True])
+%% ("Test1;pong",[])
+%% ("Test1;pong27998",[])
+%% ("Test1;rpar",[False,True])
+%% ("Test1;self",[True])
+%% ("Test1;self0",[])
+%% ("Test1;send",[False,False])
+%% ("Test1;send0",[True,True])
+%% ("Test1;spawn",[False])
+%% ("Test1;spawn0",[True])
+%% ("Test1;toErlang",[True])
+%% ("YHC.Exception;throw",[False])
+%% ("YHC.Internal;_id",[True])
+%% ("YHC.Primitive;primIntAbs",[])
+%% ("YHC.Primitive;primIntFromInteger",[])
+%% ("YHC.Primitive;primIntSignum",[])
+%% ("YHC.Primitive;primThrow",[])
+%% ----------------  Yhc Core  ----------------------------------
+%% module Test1 where
+%% 
+%% 
+%% data Prelude;1() a =
+%%       Prelude;1() a
+%% 
+%% data Test1;PingPong =
+%%       Test1;Finished 
+%%     | Test1;Ping (Test1.PID Test1.PingPong)
+%%     | Test1;Pong 
+%% 
+%% data Test1;Boxed b =
+%%       Test1;Boxed b
+%% 
+%% data Prelude;Ordering =
+%%       Prelude;LT 
+%%     | Prelude;EQ 
+%%     | Prelude;GT 
+%% 
+%% data Prelude;Bool =
+%%       Prelude;True 
+%%     | Prelude;False 
+%% 
+%% data Prelude;[] b =
+%%       Prelude;[] 
+%%     | Prelude;: b (Prelude.[] b)
+%% 
+%% data Prelude;(,,,,,,,,) b c d e f g h i j =
+%%       Prelude;(,,,,,,,,) b c d e f g h i j
+%% 
+%% data Prelude;(,,,,,,,) b c d e f g h i =
+%%       Prelude;(,,,,,,,) b c d e f g h i
+%% 
+%% data Prelude;(,,,) b c d e =
+%%       Prelude;(,,,) b c d e
+%% 
+%% data Prelude;(,) b c =
+%%       Prelude;(,) b c
+%% 
+%% data YHC.Exception;Exception =
+%%       YHC.Exception;ArithException YHC.Exception.ArithException
+%%     | YHC.Exception;ArrayException YHC.Exception.ArrayException
+%%     | YHC.Exception;AssertionFailed Prelude.String
+%%     | YHC.Exception;AsyncException YHC.Exception.AsyncException
+%%     | YHC.Exception;BlockedOnDeadMVar 
+%%     | YHC.Exception;BlockedIndefinitely 
+%%     | YHC.Exception;NestedAtomically 
+%%     | YHC.Exception;Deadlock 
+%%     | YHC.Exception;ErrorCall Prelude.String
+%%     | YHC.Exception;ExitException YHC.Exception.ExitCode
+%%     | YHC.Exception;IOException YHC.Exception.IOException
+%%     | YHC.Exception;NoMethodError Prelude.String
+%%     | YHC.Exception;NonTermination 
+%%     | YHC.Exception;PatternMatchFail Prelude.String
+%%     | YHC.Exception;RecConError Prelude.String
+%%     | YHC.Exception;RecSelError Prelude.String
+%%     | YHC.Exception;RecUpdError Prelude.String
+%% 
+%% foreign import bytecode "ADD_W" ADD_W :: 
+%% 
+%% foreign import bytecode "EQ_W" EQ_W :: 
+%% 
+%% foreign import bytecode "GE_W" GE_W :: 
+%% 
+%% foreign import bytecode "GT_W" GT_W :: 
+%% 
+%% foreign import bytecode "LE_W" LE_W :: 
+%% 
+%% foreign import bytecode "LT_W" LT_W :: 
+%% 
+%% foreign import bytecode "MUL_W" MUL_W :: 
+%% 
+%% foreign import bytecode "NEG_W" NEG_W :: 
+%% 
+%% foreign import bytecode "NE_W" NE_W :: 
+%% 
+%% Prelude;$ v25470_f v25471 =
+%%     let v25470 = _f_ v25470_f
+%%     in v25470 v25471
+%% 
+%% Prelude;++ v22185_f v22186 =
+%%     let v22185 = _f_ v22185_f
+%%     in let v22185_c = _f_ v22185
+%%        in case v22185_c of
+%%               Prelude;[] -> v22186
+%%               (Prelude;:) v22187 v22188 ->
+%%                   (Prelude;:) v22187 ((Prelude;++) v22188 v22186)
+%% 
+%% Prelude;- v27031_f =
+%%     let v27031 = _f_ v27031_f
+%%     in let v27031_c = _f_ v27031
+%%        in case v27031_c of
+%%               Prelude;(,,,,,,,,)
+%%                 v27018
+%%                 v27019
+%%                 v27020
+%%                 v27021
+%%                 v27022
+%%                 v27023
+%%                 v27024
+%%                 v27025
+%%                 v27026 ->
+%%                   v27022
+%% 
+%% Prelude;. v22169 v22170 = Prelude;LAMBDA27194 v22170 v22169
+%% 
+%% Prelude;1111_showPosInt v26407 v26408 =
+%%     let 1117_n' = Prelude;1114_quot10 v26407
+%%     in let e_405373541_c = _f_ (EQ_W 1117_n' 0)
+%%        in case e_405373541_c of
+%%               Prelude;True ->
+%%                   (Prelude;:) (Prelude;1116_nr (Prelude;1115_rem10 v26407)) v26408
+%%               Prelude;False ->
+%%                   Prelude;1111_showPosInt
+%%                     1117_n'
+%%                     ((Prelude;:) (Prelude;1116_nr (Prelude;1115_rem10 v26407)) v26408)
+%% 
+%% Prelude;1114_quot10 v26411_f =
+%%     let v26411 = _f_ v26411_f
+%%     in QUOT v26411 10
+%% 
+%% Prelude;1115_rem10 v26410_f =
+%%     let v26410 = _f_ v26410_f
+%%     in REM v26410 10
+%% 
+%% Prelude;1116_nr v26409 =
+%%     (Prelude;Prelude.Int;Prelude.Num;+) 48 v26409
+%% 
+%% Prelude;625_showl v23622 v23623_f =
+%%     let v23623 = _f_ v23623_f
+%%     in let v23623_c = _f_ v23623
+%%        in case v23623_c of
+%%               Prelude;[] -> Prelude;showChar ']'
+%%               (Prelude;:) v23624 v23625 ->
+%%                   (Prelude;.)
+%%                     (Prelude;showString Prelude;LAMBDA27541)
+%%                     ((Prelude;.)
+%%                        (Prelude;showsPrec v23622 0 v23624)
+%%                        (Prelude;625_showl v23622 v23625))
+%% 
+%% Prelude;<= v27011_f =
+%%     let v27011 = _f_ v27011_f
+%%     in let v27011_c = _f_ v27011
+%%        in case v27011_c of
+%%               Prelude;(,,,,,,,)
+%%                 v27001
+%%                 v27002
+%%                 v27003
+%%                 v27004
+%%                 v27005
+%%                 v27006
+%%                 v27007
+%%                 v27008 ->
+%%                   v27003
+%% 
+%% Prelude;== v27000_f =
+%%     let v27000 = _f_ v27000_f
+%%     in let v27000_c = _f_ v27000
+%%        in case v27000_c of
+%%               Prelude;(,) v26997 v26998 -> v26998
+%% 
+%% Prelude;>= v27012_f =
+%%     let v27012 = _f_ v27012_f
+%%     in let v27012_c = _f_ v27012
+%%        in case v27012_c of
+%%               Prelude;(,,,,,,,)
+%%                 v27001
+%%                 v27002
+%%                 v27003
+%%                 v27004
+%%                 v27005
+%%                 v27006
+%%                 v27007
+%%                 v27008 ->
+%%                   v27004
+%% 
+%% Prelude;LAMBDA27194 v22170 v22169_f v2008 =
+%%     let v22169 = _f_ v22169_f
+%%     in v22169 (v22170 v2008)
+%% 
+%% Prelude;LAMBDA27509 v27183 v27182 = (Prelude;:) v27183 v27182
+%% 
+%% Prelude;LAMBDA27540 = "[]"
+%% 
+%% Prelude;LAMBDA27541 = ","
+%% 
+%% Prelude;LAMBDA27542 = ""
+%% 
+%% Prelude;LAMBDA27898 = "Int"
+%% 
+%% Prelude;LAMBDA27899 = "2147483648"
+%% 
+%% Prelude;LAMBDA27900 v26406_f =
+%%     let v26406 = _f_ v26406_f
+%%     in let e_2870054035_c =
+%%                _f_ (EQ_W v26406 Prelude;Prelude.Int;Prelude.Bounded;minBound)
+%%        in case e_2870054035_c of
+%%               Prelude;True -> Prelude;showString Prelude;LAMBDA27899
+%%               Prelude;False ->
+%%                   Prelude;1111_showPosInt
+%%                     (Prelude;Prelude.Int;Prelude.Num;negate v26406)
+%% 
+%% Prelude;Prelude.Eq;Prelude.Ord v27009_f =
+%%     let v27009 = _f_ v27009_f
+%%     in let v27009_c = _f_ v27009
+%%        in case v27009_c of
+%%               Prelude;(,,,,,,,)
+%%                 v27001
+%%                 v27002
+%%                 v27003
+%%                 v27004
+%%                 v27005
+%%                 v27006
+%%                 v27007
+%%                 v27008 ->
+%%                   v27001
+%% 
+%% Prelude;Prelude.Int;Prelude.Bounded;minBound = (-2147483648)
+%% 
+%% Prelude;Prelude.Int;Prelude.Eq =
+%%     Prelude;(,)
+%%       (Prelude;Prelude.Int;Prelude.Eq;/=)
+%%       (Prelude;Prelude.Int;Prelude.Eq;==)
+%% 
+%% Prelude;Prelude.Int;Prelude.Eq;/= v26467_f v26468_f =
+%%     let v26467 = _f_ v26467_f
+%%         v26468 = _f_ v26468_f
+%%     in NE_W v26467 v26468
+%% 
+%% Prelude;Prelude.Int;Prelude.Eq;== v26469_f v26470_f =
+%%     let v26469 = _f_ v26469_f
+%%         v26470 = _f_ v26470_f
+%%     in EQ_W v26469 v26470
+%% 
+%% Prelude;Prelude.Int;Prelude.Num =
+%%     Prelude;(,,,,,,,,)
+%%       Prelude;Prelude.Int;Prelude.Eq
+%%       Prelude;Prelude.Int;Prelude.Show
+%%       (Prelude;Prelude.Int;Prelude.Num;*)
+%%       (Prelude;Prelude.Int;Prelude.Num;+)
+%%       (Prelude;Prelude.Int;Prelude.Num;-)
+%%       Prelude;Prelude.Int;Prelude.Num;negate
+%%       Prelude;Prelude.Int;Prelude.Num;signum
+%%       Prelude;Prelude.Int;Prelude.Num;fromInteger
+%%       Prelude;Prelude.Int;Prelude.Num;abs
+%% 
+%% Prelude;Prelude.Int;Prelude.Num;* v26447_f v26448_f =
+%%     let v26447 = _f_ v26447_f
+%%         v26448 = _f_ v26448_f
+%%     in MUL_W v26447 v26448
+%% 
+%% Prelude;Prelude.Int;Prelude.Num;+ v26451_f v26452_f =
+%%     let v26451 = _f_ v26451_f
+%%         v26452 = _f_ v26452_f
+%%     in ADD_W v26451 v26452
+%% 
+%% Prelude;Prelude.Int;Prelude.Num;- v26449_f v26450_f =
+%%     let v26449 = _f_ v26449_f
+%%         v26450 = _f_ v26450_f
+%%     in SUB_W v26449 v26450
+%% 
+%% Prelude;Prelude.Int;Prelude.Num;abs v26445 =
+%%     YHC.Primitive;primIntAbs v26445
+%% 
+%% Prelude;Prelude.Int;Prelude.Num;fromInteger v26443 =
+%%     YHC.Primitive;primIntFromInteger v26443
+%% 
+%% Prelude;Prelude.Int;Prelude.Num;negate v26446_f =
+%%     let v26446 = _f_ v26446_f
+%%     in NEG_W v26446
+%% 
+%% Prelude;Prelude.Int;Prelude.Num;signum v26444 =
+%%     YHC.Primitive;primIntSignum v26444
+%% 
+%% Prelude;Prelude.Int;Prelude.Ord =
+%%     Prelude;(,,,,,,,)
+%%       Prelude;Prelude.Int;Prelude.Eq
+%%       (Prelude;Prelude.Int;Prelude.Ord;<)
+%%       (Prelude;Prelude.Int;Prelude.Ord;<=)
+%%       (Prelude;Prelude.Int;Prelude.Ord;>=)
+%%       (Prelude;Prelude.Int;Prelude.Ord;>)
+%%       Prelude;Prelude.Int;Prelude.Ord;compare
+%%       Prelude;Prelude.Int;Prelude.Ord;min
+%%       Prelude;Prelude.Int;Prelude.Ord;max
+%% 
+%% Prelude;Prelude.Int;Prelude.Ord;< v26459_f v26460_f =
+%%     let v26459 = _f_ v26459_f
+%%         v26460 = _f_ v26460_f
+%%     in LT_W v26459 v26460
+%% 
+%% Prelude;Prelude.Int;Prelude.Ord;<= v26457_f v26458_f =
+%%     let v26457 = _f_ v26457_f
+%%         v26458 = _f_ v26458_f
+%%     in LE_W v26457 v26458
+%% 
+%% Prelude;Prelude.Int;Prelude.Ord;> v26453_f v26454_f =
+%%     let v26453 = _f_ v26453_f
+%%         v26454 = _f_ v26454_f
+%%     in GT_W v26453 v26454
+%% 
+%% Prelude;Prelude.Int;Prelude.Ord;>= v26455_f v26456_f =
+%%     let v26455 = _f_ v26455_f
+%%         v26456 = _f_ v26456_f
+%%     in GE_W v26455 v26456
+%% 
+%% Prelude;Prelude.Int;Prelude.Ord;compare v26465 v26466 =
+%%     Prelude;_;Prelude;compare
+%%       Prelude;Prelude.Int;Prelude.Ord
+%%       v26465
+%%       v26466
+%% 
+%% Prelude;Prelude.Int;Prelude.Ord;max v26463 v26464 =
+%%     Prelude;_;Prelude;max Prelude;Prelude.Int;Prelude.Ord v26463 v26464
+%% 
+%% Prelude;Prelude.Int;Prelude.Ord;min v26461 v26462 =
+%%     Prelude;_;Prelude;min Prelude;Prelude.Int;Prelude.Ord v26461 v26462
+%% 
+%% Prelude;Prelude.Int;Prelude.Show =
+%%     Prelude;(,,,)
+%%       Prelude;Prelude.Int;Prelude.Show;showsPrec
+%%       Prelude;Prelude.Int;Prelude.Show;showsType
+%%       Prelude;Prelude.Int;Prelude.Show;showList
+%%       Prelude;Prelude.Int;Prelude.Show;show
+%% 
+%% Prelude;Prelude.Int;Prelude.Show;show v26413 =
+%%     Prelude;_;Prelude;show Prelude;Prelude.Int;Prelude.Show v26413
+%% 
+%% Prelude;Prelude.Int;Prelude.Show;showList v26412 =
+%%     Prelude;_;Prelude;showList Prelude;Prelude.Int;Prelude.Show v26412
+%% 
+%% Prelude;Prelude.Int;Prelude.Show;showsPrec v26405 v26406_f =
+%%     let v26406 = _f_ v26406_f
+%%     in let e_2509281990_c = _f_ (LT_W v26406 0)
+%%        in case e_2509281990_c of
+%%               Prelude;True ->
+%%                   Prelude;showParen
+%%                     ((Prelude;Prelude.Int;Prelude.Ord;>) v26405 6)
+%%                     ((Prelude;.) (Prelude;showChar '-') (Prelude;LAMBDA27900 v26406))
+%%               Prelude;False -> Prelude;1111_showPosInt v26406
+%% 
+%% Prelude;Prelude.Int;Prelude.Show;showsType v26404 =
+%%     Prelude;showString Prelude;LAMBDA27898
+%% 
+%% Prelude;Prelude.Show;Prelude.Num v27028_f =
+%%     let v27028 = _f_ v27028_f
+%%     in let v27028_c = _f_ v27028
+%%        in case v27028_c of
+%%               Prelude;(,,,,,,,,)
+%%                 v27018
+%%                 v27019
+%%                 v27020
+%%                 v27021
+%%                 v27022
+%%                 v27023
+%%                 v27024
+%%                 v27025
+%%                 v27026 ->
+%%                   v27019
+%% 
+%% Prelude;_;Prelude;compare v25957 v25958 v25959 =
+%%     let e_4261865881_c =
+%%             _f_
+%%               ((Prelude;==)
+%%                  (Prelude;Prelude.Eq;Prelude.Ord v25957)
+%%                  v25958
+%%                  v25959)
+%%     in case e_4261865881_c of
+%%            Prelude;True -> Prelude;EQ
+%%            Prelude;False ->
+%%                let e_3441125279_c = _f_ ((Prelude;<=) v25957 v25958 v25959)
+%%                in case e_3441125279_c of
+%%                       Prelude;True -> Prelude;LT
+%%                       Prelude;False -> Prelude;GT
+%% 
+%% Prelude;_;Prelude;max v25774 v25775 v25776 =
+%%     let e_3237233633_c = _f_ ((Prelude;>=) v25774 v25775 v25776)
+%%     in case e_3237233633_c of
+%%            Prelude;True -> v25775
+%%            Prelude;False -> v25776
+%% 
+%% Prelude;_;Prelude;min v25769 v25770 v25771 =
+%%     let e_2637035444_c = _f_ ((Prelude;<=) v25769 v25770 v25771)
+%%     in case e_2637035444_c of
+%%            Prelude;True -> v25770
+%%            Prelude;False -> v25771
+%% 
+%% Prelude;_;Prelude;show v23642 v23643 =
+%%     Prelude;showsPrec v23642 0 v23643 Prelude;LAMBDA27542
+%% 
+%% Prelude;_;Prelude;showList v23618 v23619_f =
+%%     let v23619 = _f_ v23619_f
+%%     in let v23619_c = _f_ v23619
+%%        in case v23619_c of
+%%               Prelude;[] -> Prelude;showString Prelude;LAMBDA27540
+%%               (Prelude;:) v23620 v23621 ->
+%%                   (Prelude;.)
+%%                     (Prelude;showChar '[')
+%%                     ((Prelude;.)
+%%                        (Prelude;showsPrec v23618 0 v23620)
+%%                        (Prelude;625_showl v23618 v23621))
+%% 
+%% Prelude;_patternMatchFail v25396 =
+%%     YHC.Exception;throw (YHC.Exception;PatternMatchFail v25396)
+%% 
+%% Prelude;error v25398 =
+%%     YHC.Exception;throw (YHC.Exception;ErrorCall v25398)
+%% 
+%% Prelude;fromInteger v27034_f =
+%%     let v27034 = _f_ v27034_f
+%%     in let v27034_c = _f_ v27034
+%%        in case v27034_c of
+%%               Prelude;(,,,,,,,,)
+%%                 v27018
+%%                 v27019
+%%                 v27020
+%%                 v27021
+%%                 v27022
+%%                 v27023
+%%                 v27024
+%%                 v27025
+%%                 v27026 ->
+%%                   v27025
+%% 
+%% Prelude;map v22178 v22179_f =
+%%     let v22179 = _f_ v22179_f
+%%     in let v22179_c = _f_ v22179
+%%        in case v22179_c of
+%%               Prelude;[] -> Prelude;[]
+%%               (Prelude;:) v22180 v22181 ->
+%%                   (Prelude;:) (v22178 v22180) (Prelude;map v22178 v22181)
+%% 
+%% Prelude;show v26996_f =
+%%     let v26996 = _f_ v26996_f
+%%     in let v26996_c = _f_ v26996
+%%        in case v26996_c of
+%%               Prelude;(,,,) v26989 v26990 v26991 v26992 -> v26992
+%% 
+%% Prelude;showChar = Prelude;LAMBDA27509
+%% 
+%% Prelude;showParen v25512_f v25513 =
+%%     let v25512 = _f_ v25512_f
+%%     in let v25512_c = _f_ v25512
+%%        in case v25512_c of
+%%               Prelude;True ->
+%%                   (Prelude;.)
+%%                     (Prelude;showChar '(')
+%%                     ((Prelude;.) v25513 (Prelude;showChar ')'))
+%%               Prelude;False -> v25513
+%% 
+%% Prelude;showString = (Prelude;++)
+%% 
+%% Prelude;showsPrec v26993_f =
+%%     let v26993 = _f_ v26993_f
+%%     in let v26993_c = _f_ v26993
+%%        in case v26993_c of
+%%               Prelude;(,,,) v26989 v26990 v26991 v26992 -> v26989
+%% 
+%% foreign import bytecode "QUOT" QUOT :: 
+%% 
+%% foreign import bytecode "REM" REM :: 
+%% 
+%% foreign import bytecode "SUB_W" SUB_W :: 
+%% 
+%% Test1;289_ping' v712 v714 v715 v716 =
+%%     Test1;LAMBDA785 v715 v716 v714 v712
+%% 
+%% Test1;LAMBDA756 =
+%%     "Test1: Pattern match failure in function at 145:1-147:37."
+%% 
+%% Test1;LAMBDA757 v710 v711 v280_f =
+%%     let v280 = _f_ v280_f
+%%     in v280 (Test1;send0 v710 v711)
+%% 
+%% Test1;LAMBDA758 = "ok"
+%% 
+%% Test1;LAMBDA759 = "io"
+%% 
+%% Test1;LAMBDA760 = "format"
+%% 
+%% Test1;LAMBDA761 = "PING: Pong!!!\n"
+%% 
+%% Test1;LAMBDA762 = "io"
+%% 
+%% Test1;LAMBDA763 = "format"
+%% 
+%% Test1;LAMBDA764 = "PING: Finished\n"
+%% 
+%% Test1;LAMBDA765 = "ok"
+%% 
+%% Test1;LAMBDA766 v719 = Test1;exit (Test1;mkAtom Test1;LAMBDA765)
+%% 
+%% Test1;LAMBDA767 v718 =
+%%     Test1;rpar
+%%       (Test1;lpar
+%%          (Test1;Prelude.[];Test1.Erlang Test1;Prelude.Char;Test1.Erlang)
+%%          (Prelude;(,) Test1;LAMBDA762 Test1;LAMBDA763)
+%%          Test1;LAMBDA764)
+%%       Test1;LAMBDA766
+%% 
+%% Test1;LAMBDA768 = "io"
+%% 
+%% Test1;LAMBDA769 = "format"
+%% 
+%% Test1;LAMBDA770 = "PING: "
+%% 
+%% Test1;LAMBDA771 = " to go\n"
+%% 
+%% Test1;LAMBDA772 v715 v716 v714 v712 v721 =
+%%     (Prelude;$)
+%%       YHC.Internal;_id
+%%       (Test1;289_ping'
+%%          v712
+%%          v714
+%%          v715
+%%          ((Prelude;-) v714 v716 (Prelude;fromInteger v714 1)))
+%% 
+%% Test1;LAMBDA773 v715 v716 v714 v712 v720 =
+%%     Test1;rpar
+%%       (Test1;lpar
+%%          (Test1;Prelude.[];Test1.Erlang Test1;Prelude.Char;Test1.Erlang)
+%%          (Prelude;(,) Test1;LAMBDA768 Test1;LAMBDA769)
+%%          ((Prelude;++)
+%%             Test1;LAMBDA770
+%%             ((Prelude;++)
+%%                (Prelude;show (Prelude;Prelude.Show;Prelude.Num v714) v716)
+%%                Test1;LAMBDA771)))
+%%       (Test1;LAMBDA772 v715 v716 v714 v712)
+%% 
+%% Test1;LAMBDA774 v715 v716 v714 v712 v292 =
+%%     (Prelude;$)
+%%       (Test1;send v712 (Test1;Ping v292))
+%%       (Test1;LAMBDA773 v715 v716 v714 v712)
+%% 
+%% Test1;LAMBDA775 v715 v716 v714 v712 v717 =
+%%     let e_4089271270_c =
+%%             _f_ ((Prelude;<=) v715 v716 (Prelude;fromInteger v714 0))
+%%     in case e_4089271270_c of
+%%            Prelude;True ->
+%%                (Prelude;$) (Test1;send v712 Test1;Finished) Test1;LAMBDA767
+%%            Prelude;False ->
+%%                (Prelude;$) Test1;self (Test1;LAMBDA774 v715 v716 v714 v712)
+%% 
+%% Test1;LAMBDA776 = "io"
+%% 
+%% Test1;LAMBDA777 = "format"
+%% 
+%% Test1;LAMBDA778 = "PING: Wrong!!!\n"
+%% 
+%% Test1;LAMBDA779 = "erlang"
+%% 
+%% Test1;LAMBDA780 = "exit"
+%% 
+%% Test1;LAMBDA781 = "kill"
+%% 
+%% Test1;LAMBDA782 = "ok"
+%% 
+%% Test1;LAMBDA783 v723 = Test1;exit (Test1;mkAtom Test1;LAMBDA782)
+%% 
+%% Test1;LAMBDA784 v712 v722 =
+%%     Test1;rpar
+%%       (Test1;comma
+%%          Test1;Test1.Atom;Test1.Erlang
+%%          (Test1;lpar
+%%             Test1;Test1.PID;Test1.Erlang
+%%             (Prelude;(,) Test1;LAMBDA779 Test1;LAMBDA780)
+%%             v712)
+%%          (Test1;mkAtom Test1;LAMBDA781))
+%%       Test1;LAMBDA783
+%% 
+%% Test1;LAMBDA785 v715 v716 v714 v712 v291_f =
+%%     let v291 = _f_ v291_f
+%%     in let v291_c = _f_ v291
+%%        in case v291_c of
+%%               Test1;Pong ->
+%%                   Test1;rpar
+%%                     (Test1;lpar
+%%                        (Test1;Prelude.[];Test1.Erlang Test1;Prelude.Char;Test1.Erlang)
+%%                        (Prelude;(,) Test1;LAMBDA759 Test1;LAMBDA760)
+%%                        Test1;LAMBDA761)
+%%                     (Test1;LAMBDA775 v715 v716 v714 v712)
+%%               _ ->
+%%                   Test1;rpar
+%%                     (Test1;lpar
+%%                        (Test1;Prelude.[];Test1.Erlang Test1;Prelude.Char;Test1.Erlang)
+%%                        (Prelude;(,) Test1;LAMBDA776 Test1;LAMBDA777)
+%%                        Test1;LAMBDA778)
+%%                     (Test1;LAMBDA784 v712)
+%% 
+%% Test1;LAMBDA786 = "io"
+%% 
+%% Test1;LAMBDA787 = "format"
+%% 
+%% Test1;LAMBDA788 = "Ping started\n"
+%% 
+%% Test1;LAMBDA789 v713 v712 v725 =
+%%     Test1;289_ping'
+%%       v712
+%%       Prelude;Prelude.Int;Prelude.Num
+%%       Prelude;Prelude.Int;Prelude.Ord
+%%       ((Prelude;Prelude.Int;Prelude.Num;-) v713 1)
+%% 
+%% Test1;LAMBDA790 v713 v712 v293 =
+%%     (Prelude;$)
+%%       (Test1;send v712 (Test1;Ping v293))
+%%       (Test1;LAMBDA789 v713 v712)
+%% 
+%% Test1;LAMBDA791 v713 v712 v724 =
+%%     (Prelude;$) Test1;self (Test1;LAMBDA790 v713 v712)
+%% 
+%% Test1;LAMBDA792 = "io"
+%% 
+%% Test1;LAMBDA793 = "format"
+%% 
+%% Test1;LAMBDA794 = "PONG: Finished\n"
+%% 
+%% Test1;LAMBDA795 = "ok"
+%% 
+%% Test1;LAMBDA796 v726 = Test1;exit (Test1;mkAtom Test1;LAMBDA795)
+%% 
+%% Test1;LAMBDA797 = "io"
+%% 
+%% Test1;LAMBDA798 = "format"
+%% 
+%% Test1;LAMBDA799 = "PONG: Ping!!!\n"
+%% 
+%% Test1;LAMBDA800 283_pong'_f v729 =
+%%     let 283_pong' = _f_ 283_pong'_f
+%%     in 283_pong'
+%% 
+%% Test1;LAMBDA801 v727 283_pong' v728 =
+%%     (Prelude;$)
+%%       (Test1;send v727 Test1;Pong)
+%%       (Test1;LAMBDA800 283_pong')
+%% 
+%% Test1;LAMBDA802 = "Pong"
+%% 
+%% Test1;LAMBDA803 283_pong' v284_f =
+%%     let v284 = _f_ v284_f
+%%     in let v284_c = _f_ v284
+%%        in case v284_c of
+%%               Test1;Finished ->
+%%                   Test1;rpar
+%%                     (Test1;lpar
+%%                        (Test1;Prelude.[];Test1.Erlang Test1;Prelude.Char;Test1.Erlang)
+%%                        (Prelude;(,) Test1;LAMBDA792 Test1;LAMBDA793)
+%%                        Test1;LAMBDA794)
+%%                     Test1;LAMBDA796
+%%               Test1;Ping v727 ->
+%%                   Test1;rpar
+%%                     (Test1;lpar
+%%                        (Test1;Prelude.[];Test1.Erlang Test1;Prelude.Char;Test1.Erlang)
+%%                        (Prelude;(,) Test1;LAMBDA797 Test1;LAMBDA798)
+%%                        Test1;LAMBDA799)
+%%                     (Test1;LAMBDA801 v727 283_pong')
+%%               _ -> Prelude;error Test1;LAMBDA802
+%% 
+%% Test1;LAMBDA804 = "io"
+%% 
+%% Test1;LAMBDA805 = "format"
+%% 
+%% Test1;LAMBDA806 = "Pong started\n"
+%% 
+%% Test1;LAMBDA807 283_pong'_f v730 =
+%%     let 283_pong' = _f_ 283_pong'_f
+%%     in 283_pong'
+%% 
+%% Test1;LAMBDA808 v731 v276_f =
+%%     let v276 = _f_ v276_f
+%%     in v276 (Test1;force ((Prelude;$) Test1;spawn0 (Test1;Boxed v731)))
+%% 
+%% Test1;LAMBDA809 = "io"
+%% 
+%% Test1;LAMBDA810 = "format"
+%% 
+%% Test1;LAMBDA811 = "Main: Starting ping-pong "
+%% 
+%% Test1;LAMBDA812 = " times\n"
+%% 
+%% Test1;LAMBDA813 = "io"
+%% 
+%% Test1;LAMBDA814 = "format"
+%% 
+%% Test1;LAMBDA815 = "Main: Finishing\n"
+%% 
+%% Test1;LAMBDA816 = "ok"
+%% 
+%% Test1;LAMBDA817 v735 = Test1;mkAtom Test1;LAMBDA816
+%% 
+%% Test1;LAMBDA818 v734 =
+%%     Test1;rpar
+%%       (Test1;lpar
+%%          (Test1;Prelude.[];Test1.Erlang Test1;Prelude.Char;Test1.Erlang)
+%%          (Prelude;(,) Test1;LAMBDA813 Test1;LAMBDA814)
+%%          Test1;LAMBDA815)
+%%       Test1;LAMBDA817
+%% 
+%% Test1;LAMBDA819 v732 v282 =
+%%     (Prelude;$) (Test1;spawn (Test1;ping v282 v732)) Test1;LAMBDA818
+%% 
+%% Test1;LAMBDA820 v732 v733 =
+%%     (Prelude;$) (Test1;spawn Test1;pong) (Test1;LAMBDA819 v732)
+%% 
+%% Test1;Prelude.Char;Test1.Erlang =
+%%     Prelude;1() Test1;Prelude.Char;Test1.Erlang;toErlang
+%% 
+%% Test1;Prelude.Char;Test1.Erlang;toErlang v742_f =
+%%     let v742 = _f_ v742_f
+%%     in Test1;identity v742
+%% 
+%% Test1;Prelude.[];Test1.Erlang v678 =
+%%     Prelude;1() (Test1;Prelude.[];Test1.Erlang;toErlang v678)
+%% 
+%% Test1;Prelude.[];Test1.Erlang;toErlang v746 v747 =
+%%     (Prelude;.) Test1;hsList (Prelude;map (Test1;toErlang v746)) v747
+%% 
+%% Test1;Test1.Atom;Test1.Erlang =
+%%     Prelude;1() Test1;Test1.Atom;Test1.Erlang;toErlang
+%% 
+%% Test1;Test1.Atom;Test1.Erlang;toErlang v741_f =
+%%     let v741 = _f_ v741_f
+%%     in Test1;identity v741
+%% 
+%% Test1;Test1.PID;Test1.Erlang =
+%%     Prelude;1() Test1;Test1.PID;Test1.Erlang;toErlang
+%% 
+%% Test1;Test1.PID;Test1.Erlang;toErlang v744_f =
+%%     let v744 = _f_ v744_f
+%%     in Test1;identity v744
+%% 
+%% foreign import erlang "hserl:addarg" Test1;addArg :: Prelude;a -> Prelude;a -> Prelude;a
+%% 
+%% Test1;comma v699 v700_f v701 =
+%%     let v700 = _f_ v700_f
+%%     in Test1;addArg v700 (Test1;toErlang v699 v701)
+%% 
+%% foreign import erlang "hserl:erlcall" Test1;erlCall :: Prelude;a -> Prelude;a
+%% 
+%% foreign import erlang "erlang:exit" Test1;exit :: Prelude;a -> Prelude;a
+%% 
+%% Test1;fac v692_f =
+%%     let v692 = _f_ v692_f
+%%     in let v692_c = _f_ v692
+%%        in case v692_c of
+%%               0 -> 0
+%%               1 -> 1
+%%               _ ->
+%%                   MUL_W
+%%                     v692_c
+%%                     (Test1;fac ((Prelude;Prelude.Int;Prelude.Num;-) v692_c 1))
+%% 
+%% foreign import erlang "hserl:force" Test1;force :: Prelude;a -> Prelude;a
+%% 
+%% Test1;fuse v693_f v694_f =
+%%     let v693 = _f_ v693_f
+%%         v694 = _f_ v694_f
+%%     in let v693_c = _f_ v693
+%%        in case v693_c of
+%%               Prelude;[] -> v694
+%%               _ ->
+%%                   let v694_c = _f_ v694
+%%                   in case v694_c of
+%%                          Prelude;[] -> v693
+%%                          _ ->
+%%                              let v693_c = _f_ v693
+%%                              in case v693_c of
+%%                                     (Prelude;:) v695 v696 ->
+%%                                         let v694_c = _f_ v694
+%%                                         in case v694_c of
+%%                                                (Prelude;:) v697 v698 ->
+%%                                                    (Prelude;:)
+%%                                                      v695
+%%                                                      ((Prelude;:) v697 (Test1;fuse v696 v698))
+%%                                                _ -> Prelude;_patternMatchFail Test1;LAMBDA756
+%%                                     _ -> Prelude;_patternMatchFail Test1;LAMBDA756
+%% 
+%% foreign import erlang "hserl:hslist" Test1;hsList :: Prelude;a -> Prelude;a
+%% 
+%% foreign import erlang "hserl:identity" Test1;identity :: Prelude;a -> Prelude;a
+%% 
+%% foreign import erlang "erlang:list_to_atom" Test1;list_to_atom :: Prelude;a -> Prelude;a
+%% 
+%% Test1;lpar v704 v705_f v706 =
+%%     let v705 = _f_ v705_f
+%%     in let v705_c = _f_ v705
+%%        in case v705_c of
+%%               Prelude;(,) v707 v708 ->
+%%                   Test1;mkEApp
+%%                     (Test1;mkAtom v707)
+%%                     (Test1;mkAtom v708)
+%%                     (Test1;toErlang v704 v706)
+%% 
+%% Test1;main v732 =
+%%     Test1;rpar
+%%       (Test1;lpar
+%%          (Test1;Prelude.[];Test1.Erlang Test1;Prelude.Char;Test1.Erlang)
+%%          (Prelude;(,) Test1;LAMBDA809 Test1;LAMBDA810)
+%%          ((Prelude;++)
+%%             Test1;LAMBDA811
+%%             ((Prelude;++)
+%%                (Prelude;Prelude.Int;Prelude.Show;show v732)
+%%                Test1;LAMBDA812)))
+%%       (Test1;LAMBDA820 v732)
+%% 
+%% Test1;mkAtom =
+%%     (Prelude;.)
+%%       Test1;list_to_atom
+%%       (Test1;Prelude.[];Test1.Erlang;toErlang
+%%          Test1;Prelude.Char;Test1.Erlang)
+%% 
+%% foreign import erlang "hserl:mkeapp" Test1;mkEApp :: Prelude;a -> Prelude;a -> Prelude;a -> Prelude;a
+%% 
+%% Test1;ping v712 v713_f =
+%%     let v713 = _f_ v713_f
+%%     in let e_3782140301_c = _f_ (LE_W v713 0)
+%%        in case e_3782140301_c of
+%%               Prelude;True -> Test1;exit (Test1;mkAtom Test1;LAMBDA758)
+%%               Prelude;False ->
+%%                   Test1;rpar
+%%                     (Test1;lpar
+%%                        (Test1;Prelude.[];Test1.Erlang Test1;Prelude.Char;Test1.Erlang)
+%%                        (Prelude;(,) Test1;LAMBDA786 Test1;LAMBDA787)
+%%                        Test1;LAMBDA788)
+%%                     (Test1;LAMBDA791 v713 v712)
+%% 
+%% Test1;pong =
+%%     Test1;rpar
+%%       (Test1;lpar
+%%          (Test1;Prelude.[];Test1.Erlang Test1;Prelude.Char;Test1.Erlang)
+%%          (Prelude;(,) Test1;LAMBDA804 Test1;LAMBDA805)
+%%          Test1;LAMBDA806)
+%%       (Test1;LAMBDA807 Test1;pong27998)
+%% 
+%% Test1;pong27998 = Test1;LAMBDA803 Test1;pong27998
+%% 
+%% Test1;rpar v702 v703_f =
+%%     let v703 = _f_ v703_f
+%%     in v703 (Test1;force (Test1;erlCall v702))
+%% 
+%% Test1;self v709_f =
+%%     let v709 = _f_ v709_f
+%%     in v709 (Test1;force Test1;self0)
+%% 
+%% foreign import erlang "erlang:self" Test1;self0 :: Prelude;a
+%% 
+%% Test1;send v710 v711 = Test1;LAMBDA757 v710 v711
+%% 
+%% foreign import erlang "hserl:send" Test1;send0 :: Prelude;a -> Prelude;a -> Prelude;a
+%% 
+%% Test1;spawn v731 = Test1;LAMBDA808 v731
+%% 
+%% foreign import erlang "hserl:spawn" Test1;spawn0 :: Prelude;a -> Prelude;a
+%% 
+%% Test1;toErlang v752_f =
+%%     let v752 = _f_ v752_f
+%%     in let v752_c = _f_ v752
+%%        in case v752_c of
+%%               Prelude;1() v750 -> v750
+%% 
+%% YHC.Exception;throw v1145 = YHC.Primitive;primThrow v1145
+%% 
+%% YHC.Internal;_id v927_f =
+%%     let v927 = _f_ v927_f
+%%     in v927
+%% 
+%% foreign import primitive "primIntAbs" YHC.Primitive;primIntAbs :: Prelude;Int -> Prelude;Int
+%% 
+%% foreign import primitive "primIntFromInteger" YHC.Primitive;primIntFromInteger :: Prelude;Integer -> Prelude;Int
+%% 
+%% foreign import primitive "primIntSignum" YHC.Primitive;primIntSignum :: Prelude;Int -> Prelude;Int
+%% 
+%% foreign import builtin "primThrow" YHC.Primitive;primThrow :: Prelude;a -> Prelude;a
+%% --------------  Functions Renamed  ---------------------------
+%% ("ADD_W",".171")
+%% ("EQ_W",".150")
+%% ("GE_W",".192")
+%% ("GT_W",".189")
+%% ("LE_W",".186")
+%% ("LT_W",".183")
+%% ("MUL_W",".168")
+%% ("NEG_W",".180")
+%% ("NE_W",".163")
+%% ("Prelude;$",".1")
+%% ("Prelude;(,)",".TUP1")
+%% ("Prelude;(,,,)",".TUP3")
+%% ("Prelude;(,,,,,,,)",".TUP7")
+%% ("Prelude;(,,,,,,,,)",".TUP8")
+%% ("Prelude;++",".2")
+%% ("Prelude;-",".3")
+%% ("Prelude;.",".4")
+%% ("Prelude;1()",".218")
+%% ("Prelude;1111_showPosInt",".5")
+%% ("Prelude;1114_quot10",".6")
+%% ("Prelude;1115_rem10",".7")
+%% ("Prelude;1116_nr",".8")
+%% ("Prelude;625_showl",".9")
+%% ("Prelude;:",".CONS")
+%% ("Prelude;<=",".10")
+%% ("Prelude;==",".11")
+%% ("Prelude;>=",".12")
+%% ("Prelude;EQ",".198")
+%% ("Prelude;GT",".200")
+%% ("Prelude;LAMBDA27194",".13")
+%% ("Prelude;LAMBDA27509",".14")
+%% ("Prelude;LAMBDA27540",".15")
+%% ("Prelude;LAMBDA27541",".16")
+%% ("Prelude;LAMBDA27542",".17")
+%% ("Prelude;LAMBDA27898",".18")
+%% ("Prelude;LAMBDA27899",".19")
+%% ("Prelude;LAMBDA27900",".20")
+%% ("Prelude;LT",".199")
+%% ("Prelude;Prelude.Eq;Prelude.Ord",".21")
+%% ("Prelude;Prelude.Int;Prelude.Bounded;minBound",".22")
+%% ("Prelude;Prelude.Int;Prelude.Eq",".23")
+%% ("Prelude;Prelude.Int;Prelude.Eq;/=",".24")
+%% ("Prelude;Prelude.Int;Prelude.Eq;==",".25")
+%% ("Prelude;Prelude.Int;Prelude.Num",".26")
+%% ("Prelude;Prelude.Int;Prelude.Num;*",".27")
+%% ("Prelude;Prelude.Int;Prelude.Num;+",".28")
+%% ("Prelude;Prelude.Int;Prelude.Num;-",".29")
+%% ("Prelude;Prelude.Int;Prelude.Num;abs",".30")
+%% ("Prelude;Prelude.Int;Prelude.Num;fromInteger",".31")
+%% ("Prelude;Prelude.Int;Prelude.Num;negate",".32")
+%% ("Prelude;Prelude.Int;Prelude.Num;signum",".33")
+%% ("Prelude;Prelude.Int;Prelude.Ord",".34")
+%% ("Prelude;Prelude.Int;Prelude.Ord;<",".35")
+%% ("Prelude;Prelude.Int;Prelude.Ord;<=",".36")
+%% ("Prelude;Prelude.Int;Prelude.Ord;>",".37")
+%% ("Prelude;Prelude.Int;Prelude.Ord;>=",".38")
+%% ("Prelude;Prelude.Int;Prelude.Ord;compare",".39")
+%% ("Prelude;Prelude.Int;Prelude.Ord;max",".40")
+%% ("Prelude;Prelude.Int;Prelude.Ord;min",".41")
+%% ("Prelude;Prelude.Int;Prelude.Show",".42")
+%% ("Prelude;Prelude.Int;Prelude.Show;show",".43")
+%% ("Prelude;Prelude.Int;Prelude.Show;showList",".44")
+%% ("Prelude;Prelude.Int;Prelude.Show;showsPrec",".45")
+%% ("Prelude;Prelude.Int;Prelude.Show;showsType",".46")
+%% ("Prelude;Prelude.Show;Prelude.Num",".47")
+%% ("Prelude;[]",".EOL")
+%% ("Prelude;_;Prelude;compare",".48")
+%% ("Prelude;_;Prelude;max",".49")
+%% ("Prelude;_;Prelude;min",".50")
+%% ("Prelude;_;Prelude;show",".51")
+%% ("Prelude;_;Prelude;showList",".52")
+%% ("Prelude;_patternMatchFail",".53")
+%% ("Prelude;error",".54")
+%% ("Prelude;fromInteger",".55")
+%% ("Prelude;map",".56")
+%% ("Prelude;show",".57")
+%% ("Prelude;showChar",".58")
+%% ("Prelude;showParen",".59")
+%% ("Prelude;showString",".60")
+%% ("Prelude;showsPrec",".61")
+%% ("QUOT",".153")
+%% ("REM",".156")
+%% ("SUB_W",".174")
+%% ("Test1;289_ping'",".62")
+%% ("Test1;Boxed",".217")
+%% ("Test1;Finished",".209")
+%% ("Test1;LAMBDA756",".63")
+%% ("Test1;LAMBDA757",".64")
+%% ("Test1;LAMBDA758",".65")
+%% ("Test1;LAMBDA759",".66")
+%% ("Test1;LAMBDA760",".67")
+%% ("Test1;LAMBDA761",".68")
+%% ("Test1;LAMBDA762",".69")
+%% ("Test1;LAMBDA763",".70")
+%% ("Test1;LAMBDA764",".71")
+%% ("Test1;LAMBDA765",".72")
+%% ("Test1;LAMBDA766",".73")
+%% ("Test1;LAMBDA767",".74")
+%% ("Test1;LAMBDA768",".75")
+%% ("Test1;LAMBDA769",".76")
+%% ("Test1;LAMBDA770",".77")
+%% ("Test1;LAMBDA771",".78")
+%% ("Test1;LAMBDA772",".79")
+%% ("Test1;LAMBDA773",".80")
+%% ("Test1;LAMBDA774",".81")
+%% ("Test1;LAMBDA775",".82")
+%% ("Test1;LAMBDA776",".83")
+%% ("Test1;LAMBDA777",".84")
+%% ("Test1;LAMBDA778",".85")
+%% ("Test1;LAMBDA779",".86")
+%% ("Test1;LAMBDA780",".87")
+%% ("Test1;LAMBDA781",".88")
+%% ("Test1;LAMBDA782",".89")
+%% ("Test1;LAMBDA783",".90")
+%% ("Test1;LAMBDA784",".91")
+%% ("Test1;LAMBDA785",".92")
+%% ("Test1;LAMBDA786",".93")
+%% ("Test1;LAMBDA787",".94")
+%% ("Test1;LAMBDA788",".95")
+%% ("Test1;LAMBDA789",".96")
+%% ("Test1;LAMBDA790",".97")
+%% ("Test1;LAMBDA791",".98")
+%% ("Test1;LAMBDA792",".99")
+%% ("Test1;LAMBDA793",".100")
+%% ("Test1;LAMBDA794",".101")
+%% ("Test1;LAMBDA795",".102")
+%% ("Test1;LAMBDA796",".103")
+%% ("Test1;LAMBDA797",".104")
+%% ("Test1;LAMBDA798",".105")
+%% ("Test1;LAMBDA799",".106")
+%% ("Test1;LAMBDA800",".107")
+%% ("Test1;LAMBDA801",".108")
+%% ("Test1;LAMBDA802",".109")
+%% ("Test1;LAMBDA803",".110")
+%% ("Test1;LAMBDA804",".111")
+%% ("Test1;LAMBDA805",".112")
+%% ("Test1;LAMBDA806",".113")
+%% ("Test1;LAMBDA807",".114")
+%% ("Test1;LAMBDA808",".115")
+%% ("Test1;LAMBDA809",".116")
+%% ("Test1;LAMBDA810",".117")
+%% ("Test1;LAMBDA811",".118")
+%% ("Test1;LAMBDA812",".119")
+%% ("Test1;LAMBDA813",".120")
+%% ("Test1;LAMBDA814",".121")
+%% ("Test1;LAMBDA815",".122")
+%% ("Test1;LAMBDA816",".123")
+%% ("Test1;LAMBDA817",".124")
+%% ("Test1;LAMBDA818",".125")
+%% ("Test1;LAMBDA819",".126")
+%% ("Test1;LAMBDA820",".127")
+%% ("Test1;Ping",".208")
+%% ("Test1;Pong",".211")
+%% ("Test1;Prelude.Char;Test1.Erlang",".128")
+%% ("Test1;Prelude.Char;Test1.Erlang;toErlang",".129")
+%% ("Test1;Prelude.[];Test1.Erlang",".130")
+%% ("Test1;Prelude.[];Test1.Erlang;toErlang",".131")
+%% ("Test1;Test1.Atom;Test1.Erlang",".132")
+%% ("Test1;Test1.Atom;Test1.Erlang;toErlang",".133")
+%% ("Test1;Test1.PID;Test1.Erlang",".134")
+%% ("Test1;Test1.PID;Test1.Erlang;toErlang",".135")
+%% ("Test1;addArg",".225")
+%% ("Test1;comma",".136")
+%% ("Test1;erlCall",".240")
+%% ("Test1;exit",".206")
+%% ("Test1;force",".213")
+%% ("Test1;hsList",".221")
+%% ("Test1;identity",".219")
+%% ("Test1;list_to_atom",".234")
+%% ("Test1;lpar",".137")
+%% ("Test1;mkAtom",".138")
+%% ("Test1;mkEApp",".230")
+%% ("Test1;ping",".139")
+%% ("Test1;pong",".140")
+%% ("Test1;pong27998",".141")
+%% ("Test1;rpar",".142")
+%% ("Test1;self",".143")
+%% ("Test1;self0",".243")
+%% ("Test1;send",".144")
+%% ("Test1;send0",".203")
+%% ("Test1;spawn",".145")
+%% ("Test1;spawn0",".215")
+%% ("Test1;toErlang",".146")
+%% ("YHC.Exception;ErrorCall",".202")
+%% ("YHC.Exception;PatternMatchFail",".201")
+%% ("YHC.Exception;throw",".147")
+%% ("YHC.Internal;_id",".148")
+%% ("YHC.Primitive;primIntAbs",".177")
+%% ("YHC.Primitive;primIntFromInteger",".178")
+%% ("YHC.Primitive;primIntSignum",".182")
+%% ("YHC.Primitive;primThrow",".244")
+%% --------------  Erlang Core  ---------------------------------
+module 'hs_test1' ['.1'/2,'.2'/2,'.3'/1,'.4'/2,'.5'/2,'.6'/1,'.7'/1,'.8'/1,'.9'/2,'.10'/1,'.11'/1,'.12'/1,'.13'/3,'.14'/2,'.15'/0,'.16'/0,'.17'/0,'.18'/0,'.19'/0,'.20'/1,'.21'/1,'.22'/0,'.23'/0,'.24'/2,'.25'/2,'.26'/0,'.27'/2,'.28'/2,'.29'/2,'.30'/1,'.31'/1,'.32'/1,'.33'/1,'.34'/0,'.35'/2,'.36'/2,'.37'/2,'.38'/2,'.39'/2,'.40'/2,'.41'/2,'.42'/0,'.43'/1,'.44'/1,'.45'/2,'.46'/1,'.47'/1,'.48'/3,'.49'/3,'.50'/3,'.51'/2,'.52'/2,'.53'/1,'.54'/1,'.55'/1,'.56'/2,'.57'/1,'.58'/0,'.59'/2,'.60'/0,'.61'/1,'.62'/4,'.63'/0,'.64'/3,'.65'/0,'.66'/0,'.67'/0,'.68'/0,'.69'/0,'.70'/0,'.71'/0,'.72'/0,'.73'/1,'.74'/1,'.75'/0,'.76'/0,'.77'/0,'.78'/0,'.79'/5,'.80'/5,'.81'/5,'.82'/5,'.83'/0,'.84'/0,'.85'/0,'.86'/0,'.87'/0,'.88'/0,'.89'/0,'.90'/1,'.91'/2,'.92'/5,'.93'/0,'.94'/0,'.95'/0,'.96'/3,'.97'/3,'.98'/3,'.99'/0,'.100'/0,'.101'/0,'.102'/0,'.103'/1,'.104'/0,'.105'/0,'.106'/0,'.107'/2,'.108'/3,'.109'/0,'.110'/2,'.111'/0,'.112'/0,'.113'/0,'.114'/2,'.115'/2,'.116'/0,'.117'/0,'.118'/0,'.119'/0,'.120'/0,'.121'/0,'.122'/0,'.123'/0,'.124'/1,'.125'/1,'.126'/2,'.127'/2,'.128'/0,'.129'/1,'.130'/1,'.131'/2,'.132'/0,'.133'/1,'.134'/0,'.135'/1,'.136'/3,'fac'/1,'fuse'/2,'.137'/3,'main'/1,'.138'/0,'.139'/2,'.140'/0,'.141'/0,'.142'/2,'.143'/1,'.144'/2,'.145'/1,'.146'/1,'.147'/1,'.148'/1,'.1_c'/1,'.2_c'/1,'.3_c'/1,'.4_c'/1,'.5_c'/1,'.6_c'/1,'.7_c'/1,'.8_c'/1,'.9_c'/1,'.10_c'/1,'.11_c'/1,'.12_c'/1,'.13_c'/1,'.14_c'/1,'.15_c'/1,'.16_c'/1,'.17_c'/1,'.18_c'/1,'.19_c'/1,'.20_c'/1,'.21_c'/1,'.22_c'/1,'.23_c'/1,'.24_c'/1,'.25_c'/1,'.26_c'/1,'.27_c'/1,'.28_c'/1,'.29_c'/1,'.30_c'/1,'.31_c'/1,'.32_c'/1,'.33_c'/1,'.34_c'/1,'.35_c'/1,'.36_c'/1,'.37_c'/1,'.38_c'/1,'.39_c'/1,'.40_c'/1,'.41_c'/1,'.42_c'/1,'.43_c'/1,'.44_c'/1,'.45_c'/1,'.46_c'/1,'.47_c'/1,'.48_c'/1,'.49_c'/1,'.50_c'/1,'.51_c'/1,'.52_c'/1,'.53_c'/1,'.54_c'/1,'.55_c'/1,'.56_c'/1,'.57_c'/1,'.58_c'/1,'.59_c'/1,'.60_c'/1,'.61_c'/1,'.62_c'/1,'.63_c'/1,'.64_c'/1,'.65_c'/1,'.66_c'/1,'.67_c'/1,'.68_c'/1,'.69_c'/1,'.70_c'/1,'.71_c'/1,'.72_c'/1,'.73_c'/1,'.74_c'/1,'.75_c'/1,'.76_c'/1,'.77_c'/1,'.78_c'/1,'.79_c'/1,'.80_c'/1,'.81_c'/1,'.82_c'/1,'.83_c'/1,'.84_c'/1,'.85_c'/1,'.86_c'/1,'.87_c'/1,'.88_c'/1,'.89_c'/1,'.90_c'/1,'.91_c'/1,'.92_c'/1,'.93_c'/1,'.94_c'/1,'.95_c'/1,'.96_c'/1,'.97_c'/1,'.98_c'/1,'.99_c'/1,'.100_c'/1,'.101_c'/1,'.102_c'/1,'.103_c'/1,'.104_c'/1,'.105_c'/1,'.106_c'/1,'.107_c'/1,'.108_c'/1,'.109_c'/1,'.110_c'/1,'.111_c'/1,'.112_c'/1,'.113_c'/1,'.114_c'/1,'.115_c'/1,'.116_c'/1,'.117_c'/1,'.118_c'/1,'.119_c'/1,'.120_c'/1,'.121_c'/1,'.122_c'/1,'.123_c'/1,'.124_c'/1,'.125_c'/1,'.126_c'/1,'.127_c'/1,'.128_c'/1,'.129_c'/1,'.130_c'/1,'.131_c'/1,'.132_c'/1,'.133_c'/1,'.134_c'/1,'.135_c'/1,'.136_c'/1,'fac_c'/1,'fuse_c'/1,'.137_c'/1,'main_c'/1,'.138_c'/1,'.139_c'/1,'.140_c'/1,'.141_c'/1,'.142_c'/1,'.143_c'/1,'.144_c'/1,'.145_c'/1,'.146_c'/1,'.147_c'/1,'.148_c'/1,'module_info'/0,'module_info'/1] 
+attributes []
+
+
+'.1'/2 =
+  fun (_v25470_f,_v25471) ->
+    let <_v25470> =
+      <call 'hserl':'force'(_v25470_f)>
+      in {'@ap',_v25470,1,[_v25471|[]]}
+
+'.2'/2 =
+  fun (_v22185_f,_v22186) ->
+    let <_v22185> =
+      <call 'hserl':'force'(_v22185_f)>
+      in let <_v22185_c> =
+      <call 'hserl':'force'(_v22185)>
+      in case <_v22185_c> of
+      <{'@dt','.EOL'}> when 'true' ->
+        _v22186
+      <{'@dt','.CONS',_v22187,_v22188}> when 'true' ->
+        {'@dt','.CONS',_v22187,{'@ap',{'hs_test1','.2'},2,[_v22188|[_v22186|[]]]}}
+
+    end
+
+
+
+'.3'/1 =
+  fun (_v27031_f) ->
+    let <_v27031> =
+      <call 'hserl':'force'(_v27031_f)>
+      in let <_v27031_c> =
+      <call 'hserl':'force'(_v27031)>
+      in case <_v27031_c> of
+      <{'@dt','.TUP8',_v27018,_v27019,_v27020,_v27021,_v27022,_v27023,_v27024,_v27025,_v27026}> when 'true' ->
+        _v27022
+
+    end
+
+
+
+'.4'/2 =
+  fun (_v22169,_v22170) ->
+    {'@ap',{'hs_test1','.13_c'},1,[_v22170|[_v22169|[]]]}
+'.5'/2 =
+  fun (_v26407,_v26408) ->
+    let <_1117_n_> =
+      <{'@ap',{'hs_test1','.6'},1,[_v26407|[]]}>
+      in let <_e_405373541_c> =
+      <call 'erlang':'=='(call 'hserl':'force'(_1117_n_),0)>
+      in case <_e_405373541_c> of
+      <'true'> when 'true' ->
+        {'@dt','.CONS',{'@ap',{'hs_test1','.8'},1,[{'@ap',{'hs_test1','.7'},1,[_v26407|[]]}|[]]},_v26408}
+      <'false'> when 'true' ->
+        {'@ap',{'hs_test1','.5'},2,[_1117_n_|[{'@dt','.CONS',{'@ap',{'hs_test1','.8'},1,[{'@ap',{'hs_test1','.7'},1,[_v26407|[]]}|[]]},_v26408}|[]]]}
+
+    end
+
+
+
+'.6'/1 =
+  fun (_v26411_f) ->
+    let <_v26411> =
+      <call 'hserl':'force'(_v26411_f)>
+      in call 'erlang':'div'(_v26411,10)
+
+'.7'/1 =
+  fun (_v26410_f) ->
+    let <_v26410> =
+      <call 'hserl':'force'(_v26410_f)>
+      in call 'erlang':'rem'(_v26410,10)
+
+'.8'/1 =
+  fun (_v26409) ->
+    {'@ap',{'hs_test1','.28'},2,[48|[_v26409|[]]]}
+'.9'/2 =
+  fun (_v23622,_v23623_f) ->
+    let <_v23623> =
+      <call 'hserl':'force'(_v23623_f)>
+      in let <_v23623_c> =
+      <call 'hserl':'force'(_v23623)>
+      in case <_v23623_c> of
+      <{'@dt','.EOL'}> when 'true' ->
+        {'@ap',{'@caf','hs_test1','.58'},1,[93|[]]}
+      <{'@dt','.CONS',_v23624,_v23625}> when 'true' ->
+        {'@ap',{'hs_test1','.4'},2,[{'@ap',{'@caf','hs_test1','.60'},1,[{'@caf','hs_test1','.16'}|[]]}|[{'@ap',{'hs_test1','.4'},2,[{'@ap',{'hs_test1','.61'},1,[_v23622|[0|[_v23624|[]]]]}|[{'@ap',{'hs_test1','.9'},2,[_v23622|[_v23625|[]]]}|[]]]}|[]]]}
+
+    end
+
+
+
+'.10'/1 =
+  fun (_v27011_f) ->
+    let <_v27011> =
+      <call 'hserl':'force'(_v27011_f)>
+      in let <_v27011_c> =
+      <call 'hserl':'force'(_v27011)>
+      in case <_v27011_c> of
+      <{'@dt','.TUP7',_v27001,_v27002,_v27003,_v27004,_v27005,_v27006,_v27007,_v27008}> when 'true' ->
+        _v27003
+
+    end
+
+
+
+'.11'/1 =
+  fun (_v27000_f) ->
+    let <_v27000> =
+      <call 'hserl':'force'(_v27000_f)>
+      in let <_v27000_c> =
+      <call 'hserl':'force'(_v27000)>
+      in case <_v27000_c> of
+      <{'@dt','.TUP1',_v26997,_v26998}> when 'true' ->
+        _v26998
+
+    end
+
+
+
+'.12'/1 =
+  fun (_v27012_f) ->
+    let <_v27012> =
+      <call 'hserl':'force'(_v27012_f)>
+      in let <_v27012_c> =
+      <call 'hserl':'force'(_v27012)>
+      in case <_v27012_c> of
+      <{'@dt','.TUP7',_v27001,_v27002,_v27003,_v27004,_v27005,_v27006,_v27007,_v27008}> when 'true' ->
+        _v27004
+
+    end
+
+
+
+'.13'/3 =
+  fun (_v22170,_v22169_f,_v2008) ->
+    let <_v22169> =
+      <call 'hserl':'force'(_v22169_f)>
+      in {'@ap',_v22169,1,[{'@ap',_v22170,1,[_v2008|[]]}|[]]}
+
+'.14'/2 =
+  fun (_v27183,_v27182) ->
+    {'@dt','.CONS',_v27183,_v27182}
+'.15'/0 =
+  fun () ->
+    {'@lst',[91|[93|[]]]}
+'.16'/0 =
+  fun () ->
+    {'@lst',[44|[]]}
+'.17'/0 =
+  fun () ->
+    {'@lst',[]}
+'.18'/0 =
+  fun () ->
+    {'@lst',[73|[110|[116|[]]]]}
+'.19'/0 =
+  fun () ->
+    {'@lst',[50|[49|[52|[55|[52|[56|[51|[54|[52|[56|[]]]]]]]]]]]}
+'.20'/1 =
+  fun (_v26406_f) ->
+    let <_v26406> =
+      <call 'hserl':'force'(_v26406_f)>
+      in let <_e_2870054035_c> =
+      <call 'erlang':'=='(_v26406,call 'hs_test1':'.22'())>
+      in case <_e_2870054035_c> of
+      <'true'> when 'true' ->
+        {'@ap',{'@caf','hs_test1','.60'},1,[{'@caf','hs_test1','.19'}|[]]}
+      <'false'> when 'true' ->
+        {'@ap',{'hs_test1','.5_c'},1,[{'@ap',{'hs_test1','.32'},1,[_v26406|[]]}|[]]}
+
+    end
+
+
+
+'.21'/1 =
+  fun (_v27009_f) ->
+    let <_v27009> =
+      <call 'hserl':'force'(_v27009_f)>
+      in let <_v27009_c> =
+      <call 'hserl':'force'(_v27009)>
+      in case <_v27009_c> of
+      <{'@dt','.TUP7',_v27001,_v27002,_v27003,_v27004,_v27005,_v27006,_v27007,_v27008}> when 'true' ->
+        _v27001
+
+    end
+
+
+
+'.22'/0 =
+  fun () ->
+    -2147483648
+'.23'/0 =
+  fun () ->
+    {'@dt','.TUP1',{'hs_test1','.24_c'},{'hs_test1','.25_c'}}
+'.24'/2 =
+  fun (_v26467_f,_v26468_f) ->
+    let <_v26467,_v26468> =
+      <call 'hserl':'force'(_v26467_f),        call 'hserl':'force'(_v26468_f)>
+      in call 'erlang':'=/='(_v26467,_v26468)
+
+'.25'/2 =
+  fun (_v26469_f,_v26470_f) ->
+    let <_v26469,_v26470> =
+      <call 'hserl':'force'(_v26469_f),        call 'hserl':'force'(_v26470_f)>
+      in call 'erlang':'=='(_v26469,_v26470)
+
+'.26'/0 =
+  fun () ->
+    {'@dt','.TUP8',{'@caf','hs_test1','.23'},{'@caf','hs_test1','.42'},{'hs_test1','.27_c'},{'hs_test1','.28_c'},{'hs_test1','.29_c'},{'hs_test1','.32'},{'hs_test1','.33'},{'hs_test1','.31'},{'hs_test1','.30'}}
+'.27'/2 =
+  fun (_v26447_f,_v26448_f) ->
+    let <_v26447,_v26448> =
+      <call 'hserl':'force'(_v26447_f),        call 'hserl':'force'(_v26448_f)>
+      in call 'erlang':'*'(_v26447,_v26448)
+
+'.28'/2 =
+  fun (_v26451_f,_v26452_f) ->
+    let <_v26451,_v26452> =
+      <call 'hserl':'force'(_v26451_f),        call 'hserl':'force'(_v26452_f)>
+      in call 'erlang':'+'(_v26451,_v26452)
+
+'.29'/2 =
+  fun (_v26449_f,_v26450_f) ->
+    let <_v26449,_v26450> =
+      <call 'hserl':'force'(_v26449_f),        call 'hserl':'force'(_v26450_f)>
+      in call 'erlang':'-'(_v26449,_v26450)
+
+'.30'/1 =
+  fun (_v26445) ->
+    call 'erlang':'error'([117|[110|[107|[110|[111|[119|[110|[32|[112|[114|[105|[109|[105|[116|[105|[118|[101|[32|[89|[72|[67|[46|[80|[114|[105|[109|[105|[116|[105|[118|[101|[59|[112|[114|[105|[109|[73|[110|[116|[65|[98|[115|[47|[112|[114|[105|[109|[73|[110|[116|[65|[98|[115|[32|[97|[112|[112|[108|[105|[101|[100|[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]])
+'.31'/1 =
+  fun (_v26443) ->
+    call 'hserl':'identity'(call 'hserl':'force'(_v26443))
+'.32'/1 =
+  fun (_v26446_f) ->
+    let <_v26446> =
+      <call 'hserl':'force'(_v26446_f)>
+      in call 'erlang':'-'(_v26446)
+
+'.33'/1 =
+  fun (_v26444) ->
+    call 'erlang':'error'([117|[110|[107|[110|[111|[119|[110|[32|[112|[114|[105|[109|[105|[116|[105|[118|[101|[32|[89|[72|[67|[46|[80|[114|[105|[109|[105|[116|[105|[118|[101|[59|[112|[114|[105|[109|[73|[110|[116|[83|[105|[103|[110|[117|[109|[47|[112|[114|[105|[109|[73|[110|[116|[83|[105|[103|[110|[117|[109|[32|[97|[112|[112|[108|[105|[101|[100|[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]])
+'.34'/0 =
+  fun () ->
+    {'@dt','.TUP7',{'@caf','hs_test1','.23'},{'hs_test1','.35_c'},{'hs_test1','.36_c'},{'hs_test1','.38_c'},{'hs_test1','.37_c'},{'hs_test1','.39_c'},{'hs_test1','.41_c'},{'hs_test1','.40_c'}}
+'.35'/2 =
+  fun (_v26459_f,_v26460_f) ->
+    let <_v26459,_v26460> =
+      <call 'hserl':'force'(_v26459_f),        call 'hserl':'force'(_v26460_f)>
+      in call 'erlang':'<'(_v26459,_v26460)
+
+'.36'/2 =
+  fun (_v26457_f,_v26458_f) ->
+    let <_v26457,_v26458> =
+      <call 'hserl':'force'(_v26457_f),        call 'hserl':'force'(_v26458_f)>
+      in call 'erlang':'=<'(_v26457,_v26458)
+
+'.37'/2 =
+  fun (_v26453_f,_v26454_f) ->
+    let <_v26453,_v26454> =
+      <call 'hserl':'force'(_v26453_f),        call 'hserl':'force'(_v26454_f)>
+      in call 'erlang':'>'(_v26453,_v26454)
+
+'.38'/2 =
+  fun (_v26455_f,_v26456_f) ->
+    let <_v26455,_v26456> =
+      <call 'hserl':'force'(_v26455_f),        call 'hserl':'force'(_v26456_f)>
+      in call 'erlang':'>='(_v26455,_v26456)
+
+'.39'/2 =
+  fun (_v26465,_v26466) ->
+    {'@ap',{'hs_test1','.48'},3,[{'@caf','hs_test1','.34'}|[_v26465|[_v26466|[]]]]}
+'.40'/2 =
+  fun (_v26463,_v26464) ->
+    {'@ap',{'hs_test1','.49'},3,[{'@caf','hs_test1','.34'}|[_v26463|[_v26464|[]]]]}
+'.41'/2 =
+  fun (_v26461,_v26462) ->
+    {'@ap',{'hs_test1','.50'},3,[{'@caf','hs_test1','.34'}|[_v26461|[_v26462|[]]]]}
+'.42'/0 =
+  fun () ->
+    {'@dt','.TUP3',{'hs_test1','.45_c'},{'hs_test1','.46'},{'hs_test1','.44'},{'hs_test1','.43'}}
+'.43'/1 =
+  fun (_v26413) ->
+    {'@ap',{'hs_test1','.51'},2,[{'@caf','hs_test1','.42'}|[_v26413|[]]]}
+'.44'/1 =
+  fun (_v26412) ->
+    {'@ap',{'hs_test1','.52'},2,[{'@caf','hs_test1','.42'}|[_v26412|[]]]}
+'.45'/2 =
+  fun (_v26405,_v26406_f) ->
+    let <_v26406> =
+      <call 'hserl':'force'(_v26406_f)>
+      in let <_e_2509281990_c> =
+      <call 'erlang':'<'(_v26406,0)>
+      in case <_e_2509281990_c> of
+      <'true'> when 'true' ->
+        {'@ap',{'hs_test1','.59'},2,[{'@ap',{'hs_test1','.37'},2,[_v26405|[6|[]]]}|[{'@ap',{'hs_test1','.4'},2,[{'@ap',{'@caf','hs_test1','.58'},1,[45|[]]}|[{'@ap',{'hs_test1','.20'},1,[_v26406|[]]}|[]]]}|[]]]}
+      <'false'> when 'true' ->
+        {'@ap',{'hs_test1','.5_c'},1,[_v26406|[]]}
+
+    end
+
+
+
+'.46'/1 =
+  fun (_v26404) ->
+    {'@ap',{'@caf','hs_test1','.60'},1,[{'@caf','hs_test1','.18'}|[]]}
+'.47'/1 =
+  fun (_v27028_f) ->
+    let <_v27028> =
+      <call 'hserl':'force'(_v27028_f)>
+      in let <_v27028_c> =
+      <call 'hserl':'force'(_v27028)>
+      in case <_v27028_c> of
+      <{'@dt','.TUP8',_v27018,_v27019,_v27020,_v27021,_v27022,_v27023,_v27024,_v27025,_v27026}> when 'true' ->
+        _v27019
+
+    end
+
+
+
+'.48'/3 =
+  fun (_v25957,_v25958,_v25959) ->
+    let <_e_4261865881_c> =
+      <call 'hserl':'force'({'@ap',{'hs_test1','.11'},1,[{'@ap',{'hs_test1','.21'},1,[_v25957|[]]}|[_v25958|[_v25959|[]]]]})>
+      in case <_e_4261865881_c> of
+      <'true'> when 'true' ->
+        {'@dt','.198'}
+      <'false'> when 'true' ->
+        let <_e_3441125279_c> =
+          <call 'hserl':'force'({'@ap',{'hs_test1','.10'},1,[_v25957|[_v25958|[_v25959|[]]]]})>
+          in case <_e_3441125279_c> of
+          <'true'> when 'true' ->
+            {'@dt','.199'}
+          <'false'> when 'true' ->
+            {'@dt','.200'}
+
+        end
+
+
+
+    end
+
+
+'.49'/3 =
+  fun (_v25774,_v25775,_v25776) ->
+    let <_e_3237233633_c> =
+      <call 'hserl':'force'({'@ap',{'hs_test1','.12'},1,[_v25774|[_v25775|[_v25776|[]]]]})>
+      in case <_e_3237233633_c> of
+      <'true'> when 'true' ->
+        _v25775
+      <'false'> when 'true' ->
+        _v25776
+
+    end
+
+
+'.50'/3 =
+  fun (_v25769,_v25770,_v25771) ->
+    let <_e_2637035444_c> =
+      <call 'hserl':'force'({'@ap',{'hs_test1','.10'},1,[_v25769|[_v25770|[_v25771|[]]]]})>
+      in case <_e_2637035444_c> of
+      <'true'> when 'true' ->
+        _v25770
+      <'false'> when 'true' ->
+        _v25771
+
+    end
+
+
+'.51'/2 =
+  fun (_v23642,_v23643) ->
+    {'@ap',{'hs_test1','.61'},1,[_v23642|[0|[_v23643|[{'@caf','hs_test1','.17'}|[]]]]]}
+'.52'/2 =
+  fun (_v23618,_v23619_f) ->
+    let <_v23619> =
+      <call 'hserl':'force'(_v23619_f)>
+      in let <_v23619_c> =
+      <call 'hserl':'force'(_v23619)>
+      in case <_v23619_c> of
+      <{'@dt','.EOL'}> when 'true' ->
+        {'@ap',{'@caf','hs_test1','.60'},1,[{'@caf','hs_test1','.15'}|[]]}
+      <{'@dt','.CONS',_v23620,_v23621}> when 'true' ->
+        {'@ap',{'hs_test1','.4'},2,[{'@ap',{'@caf','hs_test1','.58'},1,[91|[]]}|[{'@ap',{'hs_test1','.4'},2,[{'@ap',{'hs_test1','.61'},1,[_v23618|[0|[_v23620|[]]]]}|[{'@ap',{'hs_test1','.9'},2,[_v23618|[_v23621|[]]]}|[]]]}|[]]]}
+
+    end
+
+
+
+'.53'/1 =
+  fun (_v25396) ->
+    {'@ap',{'hs_test1','.147'},1,[{'@dt','.201',_v25396}|[]]}
+'.54'/1 =
+  fun (_v25398) ->
+    {'@ap',{'hs_test1','.147'},1,[{'@dt','.202',_v25398}|[]]}
+'.55'/1 =
+  fun (_v27034_f) ->
+    let <_v27034> =
+      <call 'hserl':'force'(_v27034_f)>
+      in let <_v27034_c> =
+      <call 'hserl':'force'(_v27034)>
+      in case <_v27034_c> of
+      <{'@dt','.TUP8',_v27018,_v27019,_v27020,_v27021,_v27022,_v27023,_v27024,_v27025,_v27026}> when 'true' ->
+        _v27025
+
+    end
+
+
+
+'.56'/2 =
+  fun (_v22178,_v22179_f) ->
+    let <_v22179> =
+      <call 'hserl':'force'(_v22179_f)>
+      in let <_v22179_c> =
+      <call 'hserl':'force'(_v22179)>
+      in case <_v22179_c> of
+      <{'@dt','.EOL'}> when 'true' ->
+        {'@dt','.EOL'}
+      <{'@dt','.CONS',_v22180,_v22181}> when 'true' ->
+        {'@dt','.CONS',{'@ap',_v22178,1,[_v22180|[]]},{'@ap',{'hs_test1','.56'},2,[_v22178|[_v22181|[]]]}}
+
+    end
+
+
+
+'.57'/1 =
+  fun (_v26996_f) ->
+    let <_v26996> =
+      <call 'hserl':'force'(_v26996_f)>
+      in let <_v26996_c> =
+      <call 'hserl':'force'(_v26996)>
+      in case <_v26996_c> of
+      <{'@dt','.TUP3',_v26989,_v26990,_v26991,_v26992}> when 'true' ->
+        _v26992
+
+    end
+
+
+
+'.58'/0 =
+  fun () ->
+    {'hs_test1','.14_c'}
+'.59'/2 =
+  fun (_v25512_f,_v25513) ->
+    let <_v25512> =
+      <call 'hserl':'force'(_v25512_f)>
+      in let <_v25512_c> =
+      <call 'hserl':'force'(_v25512)>
+      in case <_v25512_c> of
+      <'true'> when 'true' ->
+        {'@ap',{'hs_test1','.4'},2,[{'@ap',{'@caf','hs_test1','.58'},1,[40|[]]}|[{'@ap',{'hs_test1','.4'},2,[_v25513|[{'@ap',{'@caf','hs_test1','.58'},1,[41|[]]}|[]]]}|[]]]}
+      <'false'> when 'true' ->
+        _v25513
+
+    end
+
+
+
+'.60'/0 =
+  fun () ->
+    {'hs_test1','.2_c'}
+'.61'/1 =
+  fun (_v26993_f) ->
+    let <_v26993> =
+      <call 'hserl':'force'(_v26993_f)>
+      in let <_v26993_c> =
+      <call 'hserl':'force'(_v26993)>
+      in case <_v26993_c> of
+      <{'@dt','.TUP3',_v26989,_v26990,_v26991,_v26992}> when 'true' ->
+        _v26989
+
+    end
+
+
+
+'.62'/4 =
+  fun (_v712,_v714,_v715,_v716) ->
+    {'@ap',{'hs_test1','.92_c'},1,[_v715|[_v716|[_v714|[_v712|[]]]]]}
+'.63'/0 =
+  fun () ->
+    {'@lst',[84|[101|[115|[116|[49|[58|[32|[80|[97|[116|[116|[101|[114|[110|[32|[109|[97|[116|[99|[104|[32|[102|[97|[105|[108|[117|[114|[101|[32|[105|[110|[32|[102|[117|[110|[99|[116|[105|[111|[110|[32|[97|[116|[32|[49|[52|[53|[58|[49|[45|[49|[52|[55|[58|[51|[55|[46|[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]}
+'.64'/3 =
+  fun (_v710,_v711,_v280_f) ->
+    let <_v280> =
+      <call 'hserl':'force'(_v280_f)>
+      in {'@ap',_v280,1,[call 'hserl':'send'(call 'hserl':'force'(_v710),call 'hserl':'force'(_v711))|[]]}
+
+'.65'/0 =
+  fun () ->
+    {'@lst',[111|[107|[]]]}
+'.66'/0 =
+  fun () ->
+    {'@lst',[105|[111|[]]]}
+'.67'/0 =
+  fun () ->
+    {'@lst',[102|[111|[114|[109|[97|[116|[]]]]]]]}
+'.68'/0 =
+  fun () ->
+    {'@lst',[80|[73|[78|[71|[58|[32|[80|[111|[110|[103|[33|[33|[33|[10|[]]]]]]]]]]]]]]]}
+'.69'/0 =
+  fun () ->
+    {'@lst',[105|[111|[]]]}
+'.70'/0 =
+  fun () ->
+    {'@lst',[102|[111|[114|[109|[97|[116|[]]]]]]]}
+'.71'/0 =
+  fun () ->
+    {'@lst',[80|[73|[78|[71|[58|[32|[70|[105|[110|[105|[115|[104|[101|[100|[10|[]]]]]]]]]]]]]]]]}
+'.72'/0 =
+  fun () ->
+    {'@lst',[111|[107|[]]]}
+'.73'/1 =
+  fun (_v719) ->
+    call 'erlang':'exit'(call 'hserl':'force'({'@ap',{'@caf','hs_test1','.138'},1,[{'@caf','hs_test1','.72'}|[]]}))
+'.74'/1 =
+  fun (_v718) ->
+    {'@ap',{'hs_test1','.142'},2,[{'@ap',{'hs_test1','.137'},3,[{'@ap',{'hs_test1','.130'},1,[{'@caf','hs_test1','.128'}|[]]}|[{'@dt','.TUP1',{'@caf','hs_test1','.69'},{'@caf','hs_test1','.70'}}|[{'@caf','hs_test1','.71'}|[]]]]}|[{'hs_test1','.73'}|[]]]}
+'.75'/0 =
+  fun () ->
+    {'@lst',[105|[111|[]]]}
+'.76'/0 =
+  fun () ->
+    {'@lst',[102|[111|[114|[109|[97|[116|[]]]]]]]}
+'.77'/0 =
+  fun () ->
+    {'@lst',[80|[73|[78|[71|[58|[32|[]]]]]]]}
+'.78'/0 =
+  fun () ->
+    {'@lst',[32|[116|[111|[32|[103|[111|[10|[]]]]]]]]}
+'.79'/5 =
+  fun (_v715,_v716,_v714,_v712,_v721) ->
+    {'@ap',{'hs_test1','.1'},2,[{'hs_test1','.148'}|[{'@ap',{'hs_test1','.62'},4,[_v712|[_v714|[_v715|[{'@ap',{'hs_test1','.3'},1,[_v714|[_v716|[{'@ap',{'hs_test1','.55'},1,[_v714|[1|[]]]}|[]]]]}|[]]]]]}|[]]]}
+'.80'/5 =
+  fun (_v715,_v716,_v714,_v712,_v720) ->
+    {'@ap',{'hs_test1','.142'},2,[{'@ap',{'hs_test1','.137'},3,[{'@ap',{'hs_test1','.130'},1,[{'@caf','hs_test1','.128'}|[]]}|[{'@dt','.TUP1',{'@caf','hs_test1','.75'},{'@caf','hs_test1','.76'}}|[{'@ap',{'hs_test1','.2'},2,[{'@caf','hs_test1','.77'}|[{'@ap',{'hs_test1','.2'},2,[{'@ap',{'hs_test1','.57'},1,[{'@ap',{'hs_test1','.47'},1,[_v714|[]]}|[_v716|[]]]}|[{'@caf','hs_test1','.78'}|[]]]}|[]]]}|[]]]]}|[{'@ap',{'hs_test1','.79_c'},1,[_v715|[_v716|[_v714|[_v712|[]]]]]}|[]]]}
+'.81'/5 =
+  fun (_v715,_v716,_v714,_v712,_v292) ->
+    {'@ap',{'hs_test1','.1'},2,[{'@ap',{'hs_test1','.144'},2,[_v712|[{'@dt','.208',_v292}|[]]]}|[{'@ap',{'hs_test1','.80_c'},1,[_v715|[_v716|[_v714|[_v712|[]]]]]}|[]]]}
+'.82'/5 =
+  fun (_v715,_v716,_v714,_v712,_v717) ->
+    let <_e_4089271270_c> =
+      <call 'hserl':'force'({'@ap',{'hs_test1','.10'},1,[_v715|[_v716|[{'@ap',{'hs_test1','.55'},1,[_v714|[0|[]]]}|[]]]]})>
+      in case <_e_4089271270_c> of
+      <'true'> when 'true' ->
+        {'@ap',{'hs_test1','.1'},2,[{'@ap',{'hs_test1','.144'},2,[_v712|[{'@dt','.209'}|[]]]}|[{'hs_test1','.74'}|[]]]}
+      <'false'> when 'true' ->
+        {'@ap',{'hs_test1','.1'},2,[{'hs_test1','.143'}|[{'@ap',{'hs_test1','.81_c'},1,[_v715|[_v716|[_v714|[_v712|[]]]]]}|[]]]}
+
+    end
+
+
+'.83'/0 =
+  fun () ->
+    {'@lst',[105|[111|[]]]}
+'.84'/0 =
+  fun () ->
+    {'@lst',[102|[111|[114|[109|[97|[116|[]]]]]]]}
+'.85'/0 =
+  fun () ->
+    {'@lst',[80|[73|[78|[71|[58|[32|[87|[114|[111|[110|[103|[33|[33|[33|[10|[]]]]]]]]]]]]]]]]}
+'.86'/0 =
+  fun () ->
+    {'@lst',[101|[114|[108|[97|[110|[103|[]]]]]]]}
+'.87'/0 =
+  fun () ->
+    {'@lst',[101|[120|[105|[116|[]]]]]}
+'.88'/0 =
+  fun () ->
+    {'@lst',[107|[105|[108|[108|[]]]]]}
+'.89'/0 =
+  fun () ->
+    {'@lst',[111|[107|[]]]}
+'.90'/1 =
+  fun (_v723) ->
+    call 'erlang':'exit'(call 'hserl':'force'({'@ap',{'@caf','hs_test1','.138'},1,[{'@caf','hs_test1','.89'}|[]]}))
+'.91'/2 =
+  fun (_v712,_v722) ->
+    {'@ap',{'hs_test1','.142'},2,[{'@ap',{'hs_test1','.136'},3,[{'@caf','hs_test1','.132'}|[{'@ap',{'hs_test1','.137'},3,[{'@caf','hs_test1','.134'}|[{'@dt','.TUP1',{'@caf','hs_test1','.86'},{'@caf','hs_test1','.87'}}|[_v712|[]]]]}|[{'@ap',{'@caf','hs_test1','.138'},1,[{'@caf','hs_test1','.88'}|[]]}|[]]]]}|[{'hs_test1','.90'}|[]]]}
+'.92'/5 =
+  fun (_v715,_v716,_v714,_v712,_v291_f) ->
+    let <_v291> =
+      <call 'hserl':'force'(_v291_f)>
+      in let <_v291_c> =
+      <call 'hserl':'force'(_v291)>
+      in case <_v291_c> of
+      <{'@dt','.211'}> when 'true' ->
+        {'@ap',{'hs_test1','.142'},2,[{'@ap',{'hs_test1','.137'},3,[{'@ap',{'hs_test1','.130'},1,[{'@caf','hs_test1','.128'}|[]]}|[{'@dt','.TUP1',{'@caf','hs_test1','.66'},{'@caf','hs_test1','.67'}}|[{'@caf','hs_test1','.68'}|[]]]]}|[{'@ap',{'hs_test1','.82_c'},1,[_v715|[_v716|[_v714|[_v712|[]]]]]}|[]]]}
+      <_> when 'true' ->
+        {'@ap',{'hs_test1','.142'},2,[{'@ap',{'hs_test1','.137'},3,[{'@ap',{'hs_test1','.130'},1,[{'@caf','hs_test1','.128'}|[]]}|[{'@dt','.TUP1',{'@caf','hs_test1','.83'},{'@caf','hs_test1','.84'}}|[{'@caf','hs_test1','.85'}|[]]]]}|[{'@ap',{'hs_test1','.91_c'},1,[_v712|[]]}|[]]]}
+
+    end
+
+
+
+'.93'/0 =
+  fun () ->
+    {'@lst',[105|[111|[]]]}
+'.94'/0 =
+  fun () ->
+    {'@lst',[102|[111|[114|[109|[97|[116|[]]]]]]]}
+'.95'/0 =
+  fun () ->
+    {'@lst',[80|[105|[110|[103|[32|[115|[116|[97|[114|[116|[101|[100|[10|[]]]]]]]]]]]]]]}
+'.96'/3 =
+  fun (_v713,_v712,_v725) ->
+    {'@ap',{'hs_test1','.62'},4,[_v712|[{'@caf','hs_test1','.26'}|[{'@caf','hs_test1','.34'}|[{'@ap',{'hs_test1','.29'},2,[_v713|[1|[]]]}|[]]]]]}
+'.97'/3 =
+  fun (_v713,_v712,_v293) ->
+    {'@ap',{'hs_test1','.1'},2,[{'@ap',{'hs_test1','.144'},2,[_v712|[{'@dt','.208',_v293}|[]]]}|[{'@ap',{'hs_test1','.96_c'},1,[_v713|[_v712|[]]]}|[]]]}
+'.98'/3 =
+  fun (_v713,_v712,_v724) ->
+    {'@ap',{'hs_test1','.1'},2,[{'hs_test1','.143'}|[{'@ap',{'hs_test1','.97_c'},1,[_v713|[_v712|[]]]}|[]]]}
+'.99'/0 =
+  fun () ->
+    {'@lst',[105|[111|[]]]}
+'.100'/0 =
+  fun () ->
+    {'@lst',[102|[111|[114|[109|[97|[116|[]]]]]]]}
+'.101'/0 =
+  fun () ->
+    {'@lst',[80|[79|[78|[71|[58|[32|[70|[105|[110|[105|[115|[104|[101|[100|[10|[]]]]]]]]]]]]]]]]}
+'.102'/0 =
+  fun () ->
+    {'@lst',[111|[107|[]]]}
+'.103'/1 =
+  fun (_v726) ->
+    call 'erlang':'exit'(call 'hserl':'force'({'@ap',{'@caf','hs_test1','.138'},1,[{'@caf','hs_test1','.102'}|[]]}))
+'.104'/0 =
+  fun () ->
+    {'@lst',[105|[111|[]]]}
+'.105'/0 =
+  fun () ->
+    {'@lst',[102|[111|[114|[109|[97|[116|[]]]]]]]}
+'.106'/0 =
+  fun () ->
+    {'@lst',[80|[79|[78|[71|[58|[32|[80|[105|[110|[103|[33|[33|[33|[10|[]]]]]]]]]]]]]]]}
+'.107'/2 =
+  fun (_283_pong__f,_v729) ->
+    let <_283_pong_> =
+      <call 'hserl':'force'(_283_pong__f)>
+      in _283_pong_
+
+'.108'/3 =
+  fun (_v727,_283_pong_,_v728) ->
+    {'@ap',{'hs_test1','.1'},2,[{'@ap',{'hs_test1','.144'},2,[_v727|[{'@dt','.211'}|[]]]}|[{'@ap',{'hs_test1','.107_c'},1,[_283_pong_|[]]}|[]]]}
+'.109'/0 =
+  fun () ->
+    {'@lst',[80|[111|[110|[103|[]]]]]}
+'.110'/2 =
+  fun (_283_pong_,_v284_f) ->
+    let <_v284> =
+      <call 'hserl':'force'(_v284_f)>
+      in let <_v284_c> =
+      <call 'hserl':'force'(_v284)>
+      in case <_v284_c> of
+      <{'@dt','.209'}> when 'true' ->
+        {'@ap',{'hs_test1','.142'},2,[{'@ap',{'hs_test1','.137'},3,[{'@ap',{'hs_test1','.130'},1,[{'@caf','hs_test1','.128'}|[]]}|[{'@dt','.TUP1',{'@caf','hs_test1','.99'},{'@caf','hs_test1','.100'}}|[{'@caf','hs_test1','.101'}|[]]]]}|[{'hs_test1','.103'}|[]]]}
+      <{'@dt','.208',_v727}> when 'true' ->
+        {'@ap',{'hs_test1','.142'},2,[{'@ap',{'hs_test1','.137'},3,[{'@ap',{'hs_test1','.130'},1,[{'@caf','hs_test1','.128'}|[]]}|[{'@dt','.TUP1',{'@caf','hs_test1','.104'},{'@caf','hs_test1','.105'}}|[{'@caf','hs_test1','.106'}|[]]]]}|[{'@ap',{'hs_test1','.108_c'},1,[_v727|[_283_pong_|[]]]}|[]]]}
+      <_> when 'true' ->
+        {'@ap',{'hs_test1','.54'},1,[{'@caf','hs_test1','.109'}|[]]}
+
+    end
+
+
+
+'.111'/0 =
+  fun () ->
+    {'@lst',[105|[111|[]]]}
+'.112'/0 =
+  fun () ->
+    {'@lst',[102|[111|[114|[109|[97|[116|[]]]]]]]}
+'.113'/0 =
+  fun () ->
+    {'@lst',[80|[111|[110|[103|[32|[115|[116|[97|[114|[116|[101|[100|[10|[]]]]]]]]]]]]]]}
+'.114'/2 =
+  fun (_283_pong__f,_v730) ->
+    let <_283_pong_> =
+      <call 'hserl':'force'(_283_pong__f)>
+      in _283_pong_
+
+'.115'/2 =
+  fun (_v731,_v276_f) ->
+    let <_v276> =
+      <call 'hserl':'force'(_v276_f)>
+      in {'@ap',_v276,1,[call 'hserl':'force'(call 'hs_test1':'.1'(fun (_ll216) ->
+  call 'hserl':'spawn'(call 'hserl':'force'(_ll216)),{'@dt','.217',_v731}))|[]]}
+
+'.116'/0 =
+  fun () ->
+    {'@lst',[105|[111|[]]]}
+'.117'/0 =
+  fun () ->
+    {'@lst',[102|[111|[114|[109|[97|[116|[]]]]]]]}
+'.118'/0 =
+  fun () ->
+    {'@lst',[77|[97|[105|[110|[58|[32|[83|[116|[97|[114|[116|[105|[110|[103|[32|[112|[105|[110|[103|[45|[112|[111|[110|[103|[32|[]]]]]]]]]]]]]]]]]]]]]]]]]]}
+'.119'/0 =
+  fun () ->
+    {'@lst',[32|[116|[105|[109|[101|[115|[10|[]]]]]]]]}
+'.120'/0 =
+  fun () ->
+    {'@lst',[105|[111|[]]]}
+'.121'/0 =
+  fun () ->
+    {'@lst',[102|[111|[114|[109|[97|[116|[]]]]]]]}
+'.122'/0 =
+  fun () ->
+    {'@lst',[77|[97|[105|[110|[58|[32|[70|[105|[110|[105|[115|[104|[105|[110|[103|[10|[]]]]]]]]]]]]]]]]]}
+'.123'/0 =
+  fun () ->
+    {'@lst',[111|[107|[]]]}
+'.124'/1 =
+  fun (_v735) ->
+    {'@ap',{'@caf','hs_test1','.138'},1,[{'@caf','hs_test1','.123'}|[]]}
+'.125'/1 =
+  fun (_v734) ->
+    {'@ap',{'hs_test1','.142'},2,[{'@ap',{'hs_test1','.137'},3,[{'@ap',{'hs_test1','.130'},1,[{'@caf','hs_test1','.128'}|[]]}|[{'@dt','.TUP1',{'@caf','hs_test1','.120'},{'@caf','hs_test1','.121'}}|[{'@caf','hs_test1','.122'}|[]]]]}|[{'hs_test1','.124'}|[]]]}
+'.126'/2 =
+  fun (_v732,_v282) ->
+    {'@ap',{'hs_test1','.1'},2,[{'@ap',{'hs_test1','.145'},1,[{'@ap',{'hs_test1','.139'},2,[_v282|[_v732|[]]]}|[]]}|[{'hs_test1','.125'}|[]]]}
+'.127'/2 =
+  fun (_v732,_v733) ->
+    {'@ap',{'hs_test1','.1'},2,[{'@ap',{'hs_test1','.145'},1,[{'@caf','hs_test1','.140'}|[]]}|[{'@ap',{'hs_test1','.126_c'},1,[_v732|[]]}|[]]]}
+'.128'/0 =
+  fun () ->
+    {'@dt','.218',{'hs_test1','.129'}}
+'.129'/1 =
+  fun (_v742_f) ->
+    let <_v742> =
+      <call 'hserl':'force'(_v742_f)>
+      in call 'hserl':'identity'(_v742)
+
+'.130'/1 =
+  fun (_v678) ->
+    {'@dt','.218',{'@ap',{'hs_test1','.131_c'},1,[_v678|[]]}}
+'.131'/2 =
+  fun (_v746,_v747) ->
+    {'@ap',{'hs_test1','.4_c'},1,[fun (_ll222) ->
+  call 'hserl':'hslist'(call 'hserl':'force'(_ll222))|[{'@ap',{'hs_test1','.56_c'},1,[{'@ap',{'hs_test1','.146'},1,[_v746|[]]}|[]]}|[_v747|[]]]]}
+'.132'/0 =
+  fun () ->
+    {'@dt','.218',{'hs_test1','.133'}}
+'.133'/1 =
+  fun (_v741_f) ->
+    let <_v741> =
+      <call 'hserl':'force'(_v741_f)>
+      in call 'hserl':'identity'(_v741)
+
+'.134'/0 =
+  fun () ->
+    {'@dt','.218',{'hs_test1','.135'}}
+'.135'/1 =
+  fun (_v744_f) ->
+    let <_v744> =
+      <call 'hserl':'force'(_v744_f)>
+      in call 'hserl':'identity'(_v744)
+
+'.136'/3 =
+  fun (_v699,_v700_f,_v701) ->
+    let <_v700> =
+      <call 'hserl':'force'(_v700_f)>
+      in call 'hserl':'addarg'(_v700,call 'hserl':'force'({'@ap',{'hs_test1','.146'},1,[_v699|[_v701|[]]]}))
+
+'fac'/1 =
+  fun (_v692_f) ->
+    let <_v692> =
+      <call 'hserl':'force'(_v692_f)>
+      in let <_v692_c> =
+      <call 'hserl':'force'(_v692)>
+      in case <_v692_c> of
+      <0> when 'true' ->
+        0
+      <1> when 'true' ->
+        1
+      <_> when 'true' ->
+        call 'erlang':'*'(_v692_c,call 'hs_test1':'fac'({'@ap',{'hs_test1','.29'},2,[_v692_c|[1|[]]]}))
+
+    end
+
+
+
+'fuse'/2 =
+  fun (_v693_f,_v694_f) ->
+    let <_v693,_v694> =
+      <call 'hserl':'force'(_v693_f),        call 'hserl':'force'(_v694_f)>
+      in let <_v693_c> =
+      <call 'hserl':'force'(_v693)>
+      in case <_v693_c> of
+      <{'@dt','.EOL'}> when 'true' ->
+        _v694
+      <_> when 'true' ->
+        let <_v694_c> =
+          <call 'hserl':'force'(_v694)>
+          in case <_v694_c> of
+          <{'@dt','.EOL'}> when 'true' ->
+            _v693
+          <_> when 'true' ->
+            let <_v693_c> =
+              <call 'hserl':'force'(_v693)>
+              in case <_v693_c> of
+              <{'@dt','.CONS',_v695,_v696}> when 'true' ->
+                let <_v694_c> =
+                  <call 'hserl':'force'(_v694)>
+                  in case <_v694_c> of
+                  <{'@dt','.CONS',_v697,_v698}> when 'true' ->
+                    {'@dt','.CONS',_v695,{'@dt','.CONS',_v697,{'@ap',{'hs_test1','fuse'},2,[_v696|[_v698|[]]]}}}
+                  <_> when 'true' ->
+                    {'@ap',{'hs_test1','.53'},1,[{'@caf','hs_test1','.63'}|[]]}
+
+                end
+
+
+              <_> when 'true' ->
+                {'@ap',{'hs_test1','.53'},1,[{'@caf','hs_test1','.63'}|[]]}
+
+            end
+
+
+
+        end
+
+
+
+    end
+
+
+
+'.137'/3 =
+  fun (_v704,_v705_f,_v706) ->
+    let <_v705> =
+      <call 'hserl':'force'(_v705_f)>
+      in let <_v705_c> =
+      <call 'hserl':'force'(_v705)>
+      in case <_v705_c> of
+      <{'@dt','.TUP1',_v707,_v708}> when 'true' ->
+        call 'hserl':'mkeapp'(call 'hserl':'force'({'@ap',{'@caf','hs_test1','.138'},1,[_v707|[]]}),call 'hserl':'force'({'@ap',{'@caf','hs_test1','.138'},1,[_v708|[]]}),call 'hserl':'force'({'@ap',{'hs_test1','.146'},1,[_v704|[_v706|[]]]}))
+
+    end
+
+
+
+'main'/1 =
+  fun (_v732) ->
+    {'@ap',{'hs_test1','.142'},2,[{'@ap',{'hs_test1','.137'},3,[{'@ap',{'hs_test1','.130'},1,[{'@caf','hs_test1','.128'}|[]]}|[{'@dt','.TUP1',{'@caf','hs_test1','.116'},{'@caf','hs_test1','.117'}}|[{'@ap',{'hs_test1','.2'},2,[{'@caf','hs_test1','.118'}|[{'@ap',{'hs_test1','.2'},2,[{'@ap',{'hs_test1','.43'},1,[_v732|[]]}|[{'@caf','hs_test1','.119'}|[]]]}|[]]]}|[]]]]}|[{'@ap',{'hs_test1','.127_c'},1,[_v732|[]]}|[]]]}
+'.138'/0 =
+  fun () ->
+    {'@ap',{'hs_test1','.4'},2,[fun (_ll235) ->
+  call 'erlang':'list_to_atom'(call 'hserl':'force'(_ll235))|[{'@ap',{'hs_test1','.131_c'},1,[{'@caf','hs_test1','.128'}|[]]}|[]]]}
+'.139'/2 =
+  fun (_v712,_v713_f) ->
+    let <_v713> =
+      <call 'hserl':'force'(_v713_f)>
+      in let <_e_3782140301_c> =
+      <call 'erlang':'=<'(_v713,0)>
+      in case <_e_3782140301_c> of
+      <'true'> when 'true' ->
+        call 'erlang':'exit'(call 'hserl':'force'({'@ap',{'@caf','hs_test1','.138'},1,[{'@caf','hs_test1','.65'}|[]]}))
+      <'false'> when 'true' ->
+        {'@ap',{'hs_test1','.142'},2,[{'@ap',{'hs_test1','.137'},3,[{'@ap',{'hs_test1','.130'},1,[{'@caf','hs_test1','.128'}|[]]}|[{'@dt','.TUP1',{'@caf','hs_test1','.93'},{'@caf','hs_test1','.94'}}|[{'@caf','hs_test1','.95'}|[]]]]}|[{'@ap',{'hs_test1','.98_c'},1,[_v713|[_v712|[]]]}|[]]]}
+
+    end
+
+
+
+'.140'/0 =
+  fun () ->
+    {'@ap',{'hs_test1','.142'},2,[{'@ap',{'hs_test1','.137'},3,[{'@ap',{'hs_test1','.130'},1,[{'@caf','hs_test1','.128'}|[]]}|[{'@dt','.TUP1',{'@caf','hs_test1','.111'},{'@caf','hs_test1','.112'}}|[{'@caf','hs_test1','.113'}|[]]]]}|[{'@ap',{'hs_test1','.114_c'},1,[{'@caf','hs_test1','.141'}|[]]}|[]]]}
+'.141'/0 =
+  fun () ->
+    {'@ap',{'hs_test1','.110_c'},1,[{'@caf','hs_test1','.141'}|[]]}
+'.142'/2 =
+  fun (_v702,_v703_f) ->
+    let <_v703> =
+      <call 'hserl':'force'(_v703_f)>
+      in {'@ap',_v703,1,[call 'hserl':'force'(call 'hserl':'force'(call 'hserl':'erlcall'(call 'hserl':'force'(_v702))))|[]]}
+
+'.143'/1 =
+  fun (_v709_f) ->
+    let <_v709> =
+      <call 'hserl':'force'(_v709_f)>
+      in {'@ap',_v709,1,[call 'hserl':'force'(call 'erlang':'self'())|[]]}
+
+'.144'/2 =
+  fun (_v710,_v711) ->
+    {'@ap',{'hs_test1','.64_c'},1,[_v710|[_v711|[]]]}
+'.145'/1 =
+  fun (_v731) ->
+    {'@ap',{'hs_test1','.115_c'},1,[_v731|[]]}
+'.146'/1 =
+  fun (_v752_f) ->
+    let <_v752> =
+      <call 'hserl':'force'(_v752_f)>
+      in let <_v752_c> =
+      <call 'hserl':'force'(_v752)>
+      in case <_v752_c> of
+      <{'@dt','.218',_v750}> when 'true' ->
+        _v750
+
+    end
+
+
+
+'.147'/1 =
+  fun (_v1145) ->
+    call 'erlang':'throw'(call 'hserl':'force'(_v1145))
+'.148'/1 =
+  fun (_v927_f) ->
+    let <_v927> =
+      <call 'hserl':'force'(_v927_f)>
+      in _v927
+
+'.1_c'/1 =
+  fun (_v25470_f) ->
+    fun (_v25471) ->
+      call 'hs_test1':'.1'(_v25470_f,_v25471)
+'.2_c'/1 =
+  fun (_v22185_f) ->
+    fun (_v22186) ->
+      call 'hs_test1':'.2'(_v22185_f,_v22186)
+'.4_c'/1 =
+  fun (_v22169) ->
+    fun (_v22170) ->
+      call 'hs_test1':'.4'(_v22169,_v22170)
+'.5_c'/1 =
+  fun (_v26407) ->
+    fun (_v26408) ->
+      call 'hs_test1':'.5'(_v26407,_v26408)
+'.9_c'/1 =
+  fun (_v23622) ->
+    fun (_v23623_f) ->
+      call 'hs_test1':'.9'(_v23622,_v23623_f)
+'.13_c'/1 =
+  fun (_v22170) ->
+    fun (_v22169_f) ->
+      fun (_v2008) ->
+        call 'hs_test1':'.13'(_v22170,_v22169_f,_v2008)
+'.14_c'/1 =
+  fun (_v27183) ->
+    fun (_v27182) ->
+      call 'hs_test1':'.14'(_v27183,_v27182)
+'.24_c'/1 =
+  fun (_v26467_f) ->
+    fun (_v26468_f) ->
+      call 'hs_test1':'.24'(_v26467_f,_v26468_f)
+'.25_c'/1 =
+  fun (_v26469_f) ->
+    fun (_v26470_f) ->
+      call 'hs_test1':'.25'(_v26469_f,_v26470_f)
+'.27_c'/1 =
+  fun (_v26447_f) ->
+    fun (_v26448_f) ->
+      call 'hs_test1':'.27'(_v26447_f,_v26448_f)
+'.28_c'/1 =
+  fun (_v26451_f) ->
+    fun (_v26452_f) ->
+      call 'hs_test1':'.28'(_v26451_f,_v26452_f)
+'.29_c'/1 =
+  fun (_v26449_f) ->
+    fun (_v26450_f) ->
+      call 'hs_test1':'.29'(_v26449_f,_v26450_f)
+'.35_c'/1 =
+  fun (_v26459_f) ->
+    fun (_v26460_f) ->
+      call 'hs_test1':'.35'(_v26459_f,_v26460_f)
+'.36_c'/1 =
+  fun (_v26457_f) ->
+    fun (_v26458_f) ->
+      call 'hs_test1':'.36'(_v26457_f,_v26458_f)
+'.37_c'/1 =
+  fun (_v26453_f) ->
+    fun (_v26454_f) ->
+      call 'hs_test1':'.37'(_v26453_f,_v26454_f)
+'.38_c'/1 =
+  fun (_v26455_f) ->
+    fun (_v26456_f) ->
+      call 'hs_test1':'.38'(_v26455_f,_v26456_f)
+'.39_c'/1 =
+  fun (_v26465) ->
+    fun (_v26466) ->
+      call 'hs_test1':'.39'(_v26465,_v26466)
+'.40_c'/1 =
+  fun (_v26463) ->
+    fun (_v26464) ->
+      call 'hs_test1':'.40'(_v26463,_v26464)
+'.41_c'/1 =
+  fun (_v26461) ->
+    fun (_v26462) ->
+      call 'hs_test1':'.41'(_v26461,_v26462)
+'.45_c'/1 =
+  fun (_v26405) ->
+    fun (_v26406_f) ->
+      call 'hs_test1':'.45'(_v26405,_v26406_f)
+'.48_c'/1 =
+  fun (_v25957) ->
+    fun (_v25958) ->
+      fun (_v25959) ->
+        call 'hs_test1':'.48'(_v25957,_v25958,_v25959)
+'.49_c'/1 =
+  fun (_v25774) ->
+    fun (_v25775) ->
+      fun (_v25776) ->
+        call 'hs_test1':'.49'(_v25774,_v25775,_v25776)
+'.50_c'/1 =
+  fun (_v25769) ->
+    fun (_v25770) ->
+      fun (_v25771) ->
+        call 'hs_test1':'.50'(_v25769,_v25770,_v25771)
+'.51_c'/1 =
+  fun (_v23642) ->
+    fun (_v23643) ->
+      call 'hs_test1':'.51'(_v23642,_v23643)
+'.52_c'/1 =
+  fun (_v23618) ->
+    fun (_v23619_f) ->
+      call 'hs_test1':'.52'(_v23618,_v23619_f)
+'.56_c'/1 =
+  fun (_v22178) ->
+    fun (_v22179_f) ->
+      call 'hs_test1':'.56'(_v22178,_v22179_f)
+'.59_c'/1 =
+  fun (_v25512_f) ->
+    fun (_v25513) ->
+      call 'hs_test1':'.59'(_v25512_f,_v25513)
+'.62_c'/1 =
+  fun (_v712) ->
+    fun (_v714) ->
+      fun (_v715) ->
+        fun (_v716) ->
+          call 'hs_test1':'.62'(_v712,_v714,_v715,_v716)
+'.64_c'/1 =
+  fun (_v710) ->
+    fun (_v711) ->
+      fun (_v280_f) ->
+        call 'hs_test1':'.64'(_v710,_v711,_v280_f)
+'.79_c'/1 =
+  fun (_v715) ->
+    fun (_v716) ->
+      fun (_v714) ->
+        fun (_v712) ->
+          fun (_v721) ->
+            call 'hs_test1':'.79'(_v715,_v716,_v714,_v712,_v721)
+'.80_c'/1 =
+  fun (_v715) ->
+    fun (_v716) ->
+      fun (_v714) ->
+        fun (_v712) ->
+          fun (_v720) ->
+            call 'hs_test1':'.80'(_v715,_v716,_v714,_v712,_v720)
+'.81_c'/1 =
+  fun (_v715) ->
+    fun (_v716) ->
+      fun (_v714) ->
+        fun (_v712) ->
+          fun (_v292) ->
+            call 'hs_test1':'.81'(_v715,_v716,_v714,_v712,_v292)
+'.82_c'/1 =
+  fun (_v715) ->
+    fun (_v716) ->
+      fun (_v714) ->
+        fun (_v712) ->
+          fun (_v717) ->
+            call 'hs_test1':'.82'(_v715,_v716,_v714,_v712,_v717)
+'.91_c'/1 =
+  fun (_v712) ->
+    fun (_v722) ->
+      call 'hs_test1':'.91'(_v712,_v722)
+'.92_c'/1 =
+  fun (_v715) ->
+    fun (_v716) ->
+      fun (_v714) ->
+        fun (_v712) ->
+          fun (_v291_f) ->
+            call 'hs_test1':'.92'(_v715,_v716,_v714,_v712,_v291_f)
+'.96_c'/1 =
+  fun (_v713) ->
+    fun (_v712) ->
+      fun (_v725) ->
+        call 'hs_test1':'.96'(_v713,_v712,_v725)
+'.97_c'/1 =
+  fun (_v713) ->
+    fun (_v712) ->
+      fun (_v293) ->
+        call 'hs_test1':'.97'(_v713,_v712,_v293)
+'.98_c'/1 =
+  fun (_v713) ->
+    fun (_v712) ->
+      fun (_v724) ->
+        call 'hs_test1':'.98'(_v713,_v712,_v724)
+'.107_c'/1 =
+  fun (_283_pong__f) ->
+    fun (_v729) ->
+      call 'hs_test1':'.107'(_283_pong__f,_v729)
+'.108_c'/1 =
+  fun (_v727) ->
+    fun (_283_pong_) ->
+      fun (_v728) ->
+        call 'hs_test1':'.108'(_v727,_283_pong_,_v728)
+'.110_c'/1 =
+  fun (_283_pong_) ->
+    fun (_v284_f) ->
+      call 'hs_test1':'.110'(_283_pong_,_v284_f)
+'.114_c'/1 =
+  fun (_283_pong__f) ->
+    fun (_v730) ->
+      call 'hs_test1':'.114'(_283_pong__f,_v730)
+'.115_c'/1 =
+  fun (_v731) ->
+    fun (_v276_f) ->
+      call 'hs_test1':'.115'(_v731,_v276_f)
+'.126_c'/1 =
+  fun (_v732) ->
+    fun (_v282) ->
+      call 'hs_test1':'.126'(_v732,_v282)
+'.127_c'/1 =
+  fun (_v732) ->
+    fun (_v733) ->
+      call 'hs_test1':'.127'(_v732,_v733)
+'.131_c'/1 =
+  fun (_v746) ->
+    fun (_v747) ->
+      call 'hs_test1':'.131'(_v746,_v747)
+'.136_c'/1 =
+  fun (_v699) ->
+    fun (_v700_f) ->
+      fun (_v701) ->
+        call 'hs_test1':'.136'(_v699,_v700_f,_v701)
+'fuse_c'/1 =
+  fun (_v693_f) ->
+    fun (_v694_f) ->
+      call 'hs_test1':'fuse'(_v693_f,_v694_f)
+'.137_c'/1 =
+  fun (_v704) ->
+    fun (_v705_f) ->
+      fun (_v706) ->
+        call 'hs_test1':'.137'(_v704,_v705_f,_v706)
+'.139_c'/1 =
+  fun (_v712) ->
+    fun (_v713_f) ->
+      call 'hs_test1':'.139'(_v712,_v713_f)
+'.142_c'/1 =
+  fun (_v702) ->
+    fun (_v703_f) ->
+      call 'hs_test1':'.142'(_v702,_v703_f)
+'.144_c'/1 =
+  fun (_v710) ->
+    fun (_v711) ->
+      call 'hs_test1':'.144'(_v710,_v711)
+
+'module_info'/0 = fun () -> call 'erlang':'get_module_info' ('hs_test1')
+'module_info'/1 = fun (_cor0) -> call 'erlang':'get_module_info' ('hs_test1', _cor0)
+end
+

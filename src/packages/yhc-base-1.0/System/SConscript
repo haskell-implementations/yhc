@@ -1,0 +1,11 @@
+import os
+import glob
+
+Import("env")
+
+files = glob.glob("*.hs")
+files.remove("IOF.hs")
+
+objs = [env.YHC(f) for f in files] + SConscript("IO/SConscript")
+
+Return("objs")

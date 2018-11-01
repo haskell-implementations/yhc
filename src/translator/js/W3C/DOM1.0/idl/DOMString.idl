@@ -1,0 +1,2 @@
+typedef sequence<unsigned short> DOMString;
+

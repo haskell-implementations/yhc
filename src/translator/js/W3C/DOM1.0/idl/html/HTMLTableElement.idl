@@ -1,0 +1,25 @@
+interface HTMLTableElement : HTMLElement {
+           attribute  HTMLTableCaptionElement caption;
+           attribute  HTMLTableSectionElement tHead;
+           attribute  HTMLTableSectionElement tFoot;
+  readonly attribute  HTMLCollection       rows;
+  readonly attribute  HTMLCollection       tBodies;
+           attribute  DOMString            align;
+           attribute  DOMString            bgColor;
+           attribute  DOMString            border;
+           attribute  DOMString            cellPadding;
+           attribute  DOMString            cellSpacing;
+           attribute  DOMString            frame;
+           attribute  DOMString            rules;
+           attribute  DOMString            summary;
+           attribute  DOMString            width;
+  HTMLElement               createTHead();
+  void                      deleteTHead();
+  HTMLElement               createTFoot();
+  void                      deleteTFoot();
+  HTMLElement               createCaption();
+  void                      deleteCaption();
+  HTMLElement               insertRow(in long index);
+  void                      deleteRow(in long index);
+};
+

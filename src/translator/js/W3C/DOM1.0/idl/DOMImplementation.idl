@@ -1,0 +1,5 @@
+interface DOMImplementation {
+  boolean                   hasFeature(in DOMString feature, 
+                                       in DOMString version);
+};
+

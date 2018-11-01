@@ -1,0 +1,12 @@
+import os
+
+Import("env")
+Import("hsenv")
+
+testerfiles = []
+for root, dir, files in list(os.walk(".")):
+    for f in files:
+        if f.endswith(".hs") or f.endswith(".lhs"):
+            testerfiles.append(os.sep.join(["src", "tester"]) + root[1:] + os.sep + f)
+
+Return("testerfiles")

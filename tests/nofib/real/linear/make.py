@@ -1,0 +1,13 @@
+def main():
+    build("Utils.lhs", "-unlit")
+    build("Densematrix.lhs", "-unlit")
+    build("AbsDensematrix.lhs", "-unlit")
+    build("Matrix.lhs", "-unlit")
+    build("Input.lhs", "-unlit")
+    build("Misc.lhs", "-unlit")
+    build("Cg.lhs", "-unlit")
+    build("AbsCg.lhs", "-unlit")
+    build("Matlib.lhs", "-unlit")
+    build("Absmatlib.lhs", "-unlit")
+    build("Main.lhs", "-unlit")
+    run("Main")

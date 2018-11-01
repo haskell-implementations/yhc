@@ -1,0 +1,4 @@
+interface HTMLHtmlElement : HTMLElement {
+           attribute  DOMString            version;
+};
+

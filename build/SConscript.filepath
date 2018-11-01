@@ -1,0 +1,9 @@
+import os
+
+Import("hsenv")
+
+filepathfiles = [hsenv.HaskellObject("System" + os.sep + "FilePath" + os.sep + "Version_0_11.hs")
+				,hsenv.HaskellObject("System" + os.sep + "FilePath")
+				]
+
+Return("filepathfiles")

@@ -1,0 +1,6 @@
+interface HTMLStyleElement : HTMLElement {
+           attribute  boolean              disabled;
+           attribute  DOMString            media;
+           attribute  DOMString            type;
+};
+

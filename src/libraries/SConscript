@@ -1,0 +1,2 @@
+coreobjs = SConscript("core/SConscript")
+Return("coreobjs")

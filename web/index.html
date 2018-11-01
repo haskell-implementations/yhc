@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>yhc - York Haskell Compiler</title>
+
+		<style type="text/css">
+		body {background-color: white; color: black; font-family: sans-serif;}
+		.heading img {vertical-align:middle;border:0px;border-right:10px solid white;text-decoration:none;}
+		.heading a {font-weight: bold;}
+		</style>
+	</head>
+	<body>
+
+
+<h1>
+	<img style="vertical-align:bottom;" src="yhc.png" alt="yhc" /> - York Haskell Compiler
+</h1>
+
+<p>
+	Yhc is a <a href="http://haskell.org/">Haskell 98</a> Compiler. Based on <a href="http://haskell.org/nhc98">nhc98</a>, but with an entirely rewritten backend, it takes lots of good features from nhc98, and adds lots of new ones.
+</p><p class="heading">
+	<a href="http://yhc06.blogspot.com/"><img src="blog.png" alt="Blogger Logo"/>Blog:</a> Announcements from the Yhc team.
+</p><p class="heading">
+	<a href="http://haskell.org/mailman/listinfo/yhc"><img src="email.png" alt="Email icon"/>Mailing List:</a> General discussions, developer and user orientated.
+</p><p class="heading">
+	<a href="http://haskell.org/hawiki/Yhc"><img src="wiki.png" alt="Wiki icon"/>Wiki:</a> Documentation you can edit yourself.
+</p><p class="heading">
+	<a href="docs/"><img src="docs.png" alt="Documentation icon"/>Documentation:</a> Descriptions of all the modules, from the source code.
+</p><p class="heading">
+	<a href="report.html"><img src="tests.png" alt="Test icon"/>Test Suite:</a> A report on the regression test suite.
+</p>
+
+<p style="border:2px solid red;background-color:#ffb;margin-left:50px;margin-right:50px;padding:3px;">
+	<b>Warning:</b><br/>
+	This project is by no means finished, and is not useable as a standard Haskell compiler yet.<br/>
+	This project is run by 3 York [ex-]students, and is not an official York Uni project.
+</p>
+
+<h2>The Headlines</h2>
+
+<ul>
+	<li>Cross platform bytecode</li>
+	<li>Highly portable, far more portable than Hugs</li>
+	<li>20% faster than nhc</li>
+	<li>Faster compilation than nhc</li>
+	<li>Bugs fixed, including the himem bug</li>
+	<li>Small heap usage</li>
+	<li>Small bytecode packages</li>
+</ul>
+
+
+<h2>Download</h2>
+
+<p>
+	The current development version is available online. Please note that yhc is still not finished, so don't expect a full polished compiler yet!
+</p><p>
+	There are two versions, the stable one and the development one. If you want to contribute to Yhc, we recommend the development one.
+</p><p>
+	<tt><a href="http://www.darcs.net/">darcs</a> get http://www.cs.york.ac.uk/fp/darcs/yhc</tt><br/>
+	<tt><a href="http://www.darcs.net/">darcs</a> get http://www.cs.york.ac.uk/fp/darcs/yhc-devel</tt>
+</p>
+
+<h2>License</h2>
+
+<p>
+	The compiler, runtime and libraries are all licensed under the <a href="http://www.gnu.org/licenses/gpl.html">GPL</a> version 2.0. Any code compiled with yhc does not become GPL'd by virtue of being compiled with it, but retains its original license. Programs that use the standard libraries unmodified do not become GPL'd because of this. There is no warranty for yhc.
+</p>
+
+<h2>The Architecture</h2>
+
+<p>
+	In order to understand where many of the advantages come from, its necessary to look at how the compiler is constructed. The yhc package is three separate elements.
+</p>
+
+<p><b>A Haskell Compiler</b>, written in Haskell, and producing Haskell Bytecode files.</p>
+
+<p><b>A Haskell Bytecode Format</b>, a specification for cross platform, architecture independent bytecode files.</p>
+
+<p><b>A runtime</b>, written in highly portable ANSI C, which runs the bytecode files. This runs on Linux and Windows, 32bit and 64bit, and should port to any platform very quickly.</p>
+
+
+<h2>Speed</h2>
+
+<p>
+	Speed is a funny thing, people always want faster Haskell compilers. But what does faster mean? yhc is not as fast as ghc, but its certainly faster than Hugs. However, it is quicker at compilation than ghc, but not as fast a Hugs. yhc can be seen as a good middle ground, and it always helps to compile your Haskell program with more than one compiler to keep to portable Haskell.
+</p>
+
+<p style="text-align:center;">
+	<img src="graph-primes.png" alt="Graph of finding the nth prime number" />
+</p>
+
+<p>
+	This graph shows the time to compile and run a program that finds the n'th prime number (run 10 times), using a sieve. The lowest line at any point is the best. As you can see, for small values of n, Hugs is best - then yhc, then ghc. Of course, that isn't the end story - the yhc team is working on improvements to the speed of the compiler, new benchmarks will be back soon.
+</p>
+
+
+<h2>Cross Platform Bytecode</h2>
+
+<p>
+	This is a massive advantage of yhc. Compile your Haskell program on your platform, post a single bytecode package on the web and <i>anyone</i> can run it. They don't need a Haskell Compiler installed, they just need the simple and small runtime system - which you can even distribute with your application.
+</p>
+
+<p>
+	The other advantage of having a bytecode is that the packages are small. Hello World fits into 130 bytes!
+</p>
+
+<h2>The yhc Team</h2>
+
+<p>
+	The yhc team consists of Tom Shackell, plus various cheerleaders, but he's the only one who does the code. A lot of the code comes from nhc98, so the <a href="http://haskell.org/nhc98/copyright.html">nhc98 team</a> also deserves some credit.
+</p>
+
+<p>
+	<a href="http://validator.w3.org/check?uri=referer">
+		<img src="http://www.w3.org/Icons/valid-xhtml10"
+        alt="Valid XHTML 1.0 Strict" height="31" width="88" style="border:0px;" />
+	</a>
+</p>
+
+	</body>
+</html>
+

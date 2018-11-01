@@ -1,0 +1,11 @@
+interface HTMLFrameElement : HTMLElement {
+           attribute  DOMString            frameBorder;
+           attribute  DOMString            longDesc;
+           attribute  DOMString            marginHeight;
+           attribute  DOMString            marginWidth;
+           attribute  DOMString            name;
+           attribute  boolean              noResize;
+           attribute  DOMString            scrolling;
+           attribute  DOMString            src;
+};
+

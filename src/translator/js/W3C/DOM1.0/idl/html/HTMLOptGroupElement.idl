@@ -1,0 +1,5 @@
+interface HTMLOptGroupElement : HTMLElement {
+           attribute  boolean              disabled;
+           attribute  DOMString            label;
+};
+

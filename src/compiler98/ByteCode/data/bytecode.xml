@@ -1,0 +1,583 @@
+<?xml version="1.0"?>
+<!--
+	Yhc Bytecode Reference
+	
+	This file should be used to generate any bytecode interfaces that are required.
+-->
+<bytecodes>
+	<bytecode name="END_CODE" value="0">
+		<description>
+			This instruction is placed at the end of every function, after the
+			RETURN/RETURN_EVAL. If it is executed the machine will crash with an
+			error. The idea is that if the mutator accidentally starts running
+			non-code (for example because the compiler mis-generated a JUMP
+			instruction) then the program will exit swiftly. The value of this
+			instruction code being 0 aids in this.
+		</description>
+	</bytecode>
+	
+	<bytecode name="NEED_HEAP" value="2">
+		<arg type="u8">Space required</arg>
+		
+		<description>
+			NEED_HEAP specifies the number of heap words required to run the whole
+			of the next basic block (which is calculated by the compiler). Here the
+			number of words required is given by n*32, or in the case of
+			NEED_HEAP_32 it is assumed to be less than or equal to 32 words (if
+			we've got less than 32 words left then a GC is needed anyway).
+			<br/>
+			If the required number of words is available then NEED_HEAP does
+			nothing, otherwise it calls the GC to try and free up the requested
+			quantity of heap. If there still isn't enough the program terminates.
+		</description>
+		
+		<specific value="1"><arg value="32" /></specific>
+	</bytecode>
+	
+	<bytecode name="NEED_STACK" value="4" depreciated="1">
+		<arg type="u8" />
+		<description>Unused</description>
+		<specific value="3"><arg value="16" /></specific>
+	</bytecode>
+	
+	<bytecode name="PUSH" value="6">
+		<arg type="u16" />
+		<description>
+			PUSH takes the nth argument on the stack and pushes the same pointer onto the top. So: 
+<code>
+PUSH n         s_0 .. s_n : ss  ==&gt;
+         s_n : s_0 .. s_n : ss
+</code>
+        </description>
+        
+		<specific value="5"><arg type="u8" /></specific>
+		<specific value="7"><arg value="0" /></specific>
+		<specific value="8"><arg value="1" /></specific>
+	</bytecode>
+	
+	<bytecode name="PUSH_ZAP" value="10">
+		<arg type="u16" mode="stack" />
+		<description>
+			PUSH_ZAP n is simply an abbreviated form for  
+			<code>PUSH n ; ZAP_STACK (n+1)</code>
+			because this is such a common operation.	
+		</description>
+		<specific  value="9"><arg type="u8" /></specific>
+		<specific value="11"><arg value="0" /></specific>
+		<specific value="12"><arg value="1" /></specific>
+		<specific value="13"><arg value="2" /></specific>
+		<specific value="14"><arg value="3" /></specific>
+	</bytecode>
+	
+	<bytecode name="ZAP_STACK" value="16">
+		<arg type="u16" mode="stack" />
+		<description>
+			ZAP_STACK simply replaces the nth stack item with a pointer to a
+			'Prelude._zap_stack'. This is used to help prevent space leaks: when a
+			value is no longer needed its stack reference can be 'zapped'. If this
+			was the last reference to an object then if the GC runs it can collect
+			the unused application.
+			<br/>
+			If _zap_stack is evaluated it will terminate the program as this
+			signifies that the compiler issued instructions to zap something too
+			early.
+		</description>
+		<specific value="15"><arg type="u8" /></specific>
+	</bytecode>
+	
+	<bytecode name="PUSH_ARG" value="17">
+		<arg type="u8" mode="arg" />
+		<description>
+			PUSH_ARG n pushes the nth argument of the 'current application node'
+			(See <a href="http://www.haskell.org/hawiki/Yhc/RTS/Machine">Yhc/RTS/Machine</a>)
+			onto the top of the stack. 
+		</description>
+		<specific value="18"><arg value="0" /></specific>
+		<specific value="19"><arg value="1" /></specific>
+		<specific value="20"><arg value="2" /></specific>
+		<specific value="21"><arg value="3" /></specific>
+	</bytecode>
+	
+	<bytecode name="PUSH_ZAP_ARG" value="22">
+		<arg type="u8" mode="arg" />
+		<description>
+			PUSH_ZAP n is equivilent to 
+			<code>PUSH_ARG n ; ZAP_ARG n</code>
+		</description>
+		<specific value="23"><arg value="0" /></specific>
+		<specific value="24"><arg value="1" /></specific>
+		<specific value="25"><arg value="2" /></specific>
+		<specific value="26"><arg value="3" /></specific>
+	</bytecode>
+	
+	<bytecode name="ZAP_ARG" value="27">
+		<arg type="u8" mode="arg" />
+		<description>
+			ZAP_ARG n replaces the nth argument of the 'current application node' with an
+			application to 'Prelude._zap_arg'.
+		</description>
+		<specific value="28"><arg value="0" /></specific>
+		<specific value="29"><arg value="1" /></specific>
+	</bytecode>
+	
+	<bytecode name="PUSH_INT" value="31">
+		<arg type="s16" />
+		<description>
+			PUSH_INT n allocates a heap node for the Int n and pushes a pointer to
+			the heap node on the top of the stack.
+		</description>
+		<specific value="30"><arg type="s8" /></specific>
+		<specific value="32"><arg value="0" /></specific>
+		<specific value="33"><arg value="1" /></specific>
+	</bytecode>
+	
+	<bytecode name="PUSH_CHAR" value="34">
+		<arg type="u8" />
+		<description>
+			PUSH_CHAR n allocates a heap node for the Char n and pushes a pointer to
+			the heap node on the top of the stack.
+		</description>
+	</bytecode>
+	
+	<bytecode name="PUSH_CONST" value="36">
+		<arg type="u16" mode="const" />
+		<description>
+			PUSH_CONST n pushes the nth item of the current application node's
+			constant table onto the top of the stack. This constant item must be a
+			C_NODE rather than a C_INFO (See <a href="http://www.haskell.org/hawiki/Yhc_2fRTS_2fHeap">Yhc/RTS/Heap</a>).
+		</description>
+		<specific value="35"><arg type="u8" /></specific>
+		<specific value="37"><arg value="0" /></specific>
+		<specific value="38"><arg value="1" /></specific>
+		<specific value="39"><arg value="2" /></specific>
+		<specific value="40"><arg value="3" /></specific>
+		<specific value="41"><arg value="4" /></specific>
+		<specific value="42"><arg value="5" /></specific>
+		<specific value="43"><arg value="6" /></specific>
+		<specific value="44"><arg value="7" /></specific>
+	</bytecode>
+	
+	<bytecode name="MK_AP" value="46">
+		<arg type="u16" mode="const" />
+		<description>
+			MK_AP n looks up the nth item of the constant table (which must be a
+			FInfo). It then makes a fully saturated application to this function by
+			taking m arguments off the stack (where m is the arity of the
+			function). It then builds an application in the heap to the given
+			function with those arguments. It then pushes a pointer to the new
+			application onto the top of the stack.
+<code>
+MK_AP n        s_1 .. s_m : ss ==&gt;
+                        a : ss                 
+  where
+  a is the new application of the given function to the arguments s_1 .. s_m  
+  m is the arity of the function described by constant table item n.
+</code>
+		</description>
+		<specific value="45"><arg type="u8"  /></specific>
+		<specific value="47"><arg value="0"  /></specific>
+		<specific value="48"><arg value="1"  /></specific>
+		<specific value="49"><arg value="2"  /></specific>
+		<specific value="50"><arg value="3"  /></specific>
+		<specific value="51"><arg value="4"  /></specific>
+		<specific value="52"><arg value="5"  /></specific>
+		<specific value="53"><arg value="6"  /></specific>
+		<specific value="54"><arg value="7"  /></specific>
+		<specific value="55"><arg value="8"  /></specific>
+		<specific value="56"><arg value="9"  /></specific>
+		<specific value="57"><arg value="10" /></specific>
+		<specific value="58"><arg value="11" /></specific>
+		<specific value="59"><arg value="12" /></specific>
+		<specific value="60"><arg value="13" /></specific>
+		<specific value="61"><arg value="14" /></specific>
+		<specific value="62"><arg value="15" /></specific>
+	</bytecode>
+	
+	<bytecode name="MK_PAP" value="64">
+		<arg type="u16" mode="const">Constant table entry</arg>
+		<arg type="u8">Arity</arg>
+		<description>
+			MK_PAP n m is a more generalised version of MK_AP that can also build
+			partial applications. As with MK_AP here n refers to the nth constant
+			table item, but unlike MK_AP the arity of the application is specified
+			explicitly in m.
+<code>
+MK_PAP n m    s_1 .. s_m : ss ==&gt;
+                       a : ss
+</code>
+		</description>
+		<specific value="63">
+			<arg type="u8" />
+			<arg type="u8" />
+		</specific>
+	</bytecode>
+	
+	<bytecode name="APPLY" value="65">
+		<arg type="u8" />
+		<description>
+			APPLY n takes an application on the top of the stack an application to
+			additional n arguments from the stack to create a new application.
+<code>
+APPLY n      a : s_1 .. s_n : ss ==&gt;
+                          b : ss
+</code>
+			If applying an extra n arguments to the application a would
+			super-saturate it (i.e. apply it to more arguments that the functions
+			arity) then APPLY satures the application fully and then builds further
+			applications to the built in function '_apply' to apply the rest of the
+			argument.
+			<br/>
+			The function '_apply' is defined in src/runtime/BCKernel/primitive.c as: 
+<code>
+_apply(app,arg):
+	NEED_HEAP_32
+	PUSH_ZAP arg
+	PUSH_ZAP app
+	EVAL
+	APPLY 1
+	RETURN_EVAL
+</code>
+			which is to say it evaluates the fully-staturated application which
+			then returns another application, and this application is then applied
+			to the additional argument.
+		</description>
+		<specific value="66"><arg value="1" /></specific>
+		<specific value="67"><arg value="2" /></specific>
+	</bytecode>
+	
+	<bytecode name="MK_CON" value="69">
+		<arg type="u16" mode="const" />
+		<description>
+			MK_CON n looks up the nth item of the constant table (which must be a
+			CInfo). It then builds a fully saturated application to the constructor
+			using the correct number of arguments from the stack.
+<code>
+MK_CON n    s_1 .. s_m : ss ==&gt;
+                     a : ss
+  where
+  a is the application to the constructor given by constant table item n
+  m is the arity of the constructor
+</code>
+		</description>
+		<specific value="68"><arg type="u8" /></specific>
+		<specific value="70"><arg value="0" /></specific>
+		<specific value="71"><arg value="1" /></specific>
+		<specific value="72"><arg value="2" /></specific>
+		<specific value="73"><arg value="3" /></specific>
+	</bytecode>
+	
+	<bytecode name="UNPACK" value="74">
+		<description>
+			UNPACK takes from the top of the stack an application to a constructor.
+			It then pushes on the stack all the arguments of that constructor with
+			the first argument on top.
+<code>
+UNPACK            a : ss ==&gt;
+         c_1 .. c_m : ss 
+  where
+  c_1 .. c_m are the arguments of the constructor application a
+  m is the arity of the application a
+</code>
+		</description>
+	</bytecode>
+	
+	<bytecode name="SLIDE" value="76">
+		<arg type="u16" />
+		<description>
+			SLIDE n takes the top item off the stack, pops n items from the stack
+			and then pushes the first item removed back on to the top of the stack
+<code>
+SLIDE n   s_0 .. s_n : ss ==&gt;
+                 s_0 : ss
+</code>
+		</description>		
+		<specific value="75"><arg type="u8" /></specific>
+		<specific value="77"><arg value="1" /></specific>
+		<specific value="78"><arg value="2" /></specific>
+	</bytecode>
+
+	<bytecode name="POP" value="80">
+		<arg type="u16" />
+		<description>
+			POP n removes n items from the top of the stack. 
+<code>
+POP n      s_1 .. s_n : ss ==&gt;
+                        ss
+</code>
+		</description>
+		<specific value="79"><arg type="u8" /></specific>
+	</bytecode>
+
+	<bytecode name="ALLOC" value="82">
+		<arg type="u16" />
+		<description>
+			ALLOC n creates n 'blackhole' applications in the heap and
+			pushes the pointers to the applications on to the top of the stack. 
+<code> 
+ALLOC n                ss ==&gt;
+          a_1 .. a_n : ss
+  where
+  a_1 .. a_n are 'blackhole' applications.
+</code>
+			The applications are to the function 'Prelude._black_hole'
+			which will terminate the program if evaluated.
+			<br/>
+			ALLOC n is used in conjunction with UPDATE n to create
+			circular heap nodes. For example 
+<code>
+repeat x = xs
+  where
+  xs = x : xs
+</code>
+			would be compiled as 
+<code>
+repeat(x):                       []
+   ALLOC 1                       [ hole ]
+   PUSH 0                        [ hole, hole ]
+   PUSH_ZAP_ARG x                [ x, hole, hole ]
+   MK_CON (:)                    [ x : hole, hole ]
+   UPDATE 0                      [ x:x:x:... ]
+   PUSH_ZAP 0                    [ x:x:x:..., ZAP ]
+   RETURN
+</code>
+		</description>
+		<specific value="81"><arg type="u8" /></specific>
+	</bytecode>
+
+	<bytecode name="UPDATE" value="84">
+		<arg type="u16" />
+		<description>
+			UPDATE n removes the top item from stack and uses it to 'update' the
+			application pointed to by the nth item of the stack. To 'update' the
+			application it is overwritten with an application the value from the
+			top of the stack.
+<code>
+UPDATE n         a : s_0 .. s_n : ss ==&gt;
+                     s_0 .. s_n : ss
+  where
+  the application at s_n is overwritten with an indirection to a
+</code>
+			UPDATE is used in conjunction with ALLOC to create cyclic memory structures. 
+		</description>
+		<specific value="83"><arg type="u8" /></specific>
+	</bytecode>
+		
+	<bytecode name="SELECT" value="86">
+		<arg type="u16" mode="stack" />
+		<description>
+			SELECT n is an abbreviation for  
+			<code>UNPACK ; PUSH_ZAP n ; RETURN_EVAL</code>
+It is used to implement dictionaries and selectors. 
+		</description>
+		<specific value="85"><arg type="u8" /></specific>
+		<specific value="87"><arg value="0" /></specific>
+		<specific value="88"><arg value="1" /></specific>
+	</bytecode>
+	
+	<bytecode name="RETURN" value="89">
+		<description>
+			RETURN returns the value on the top of the stack as the result of the
+			current function call. It then pops the top item off the frame stack to
+			continue the function below it (see <a href="http://www.haskell.org/hawiki/Yhc_2fRTS_2fMachine">Yhc/RTS/Machine</a>). 
+		</description>
+	</bytecode>
+	
+	<bytecode name="EVAL" value="90">
+		<description>
+			EVAL takes the value on the top of the stack and evaluates it to weak
+			head normal form (WHNF). If the value on the top of the stack is a
+			constructor or partial application EVAL does nothing. If it is a
+			saturated application then EVAL 'calls' the function specified in the
+			application. It does this by pushing a new frame onto the stack
+			(See <a href="http://www.haskell.org/hawiki/Yhc_2fRTS_2fMachine">Yhc/RTS/Machine</a>). 
+		</description>
+	</bytecode>
+	
+	<bytecode name="RETURN_EVAL" value="91">
+		<description>
+			RETURN_EVAL is equivilent to 
+			<code>EVAL ; RETURN</code>
+			except that it doesn't use any stack space.
+			RETURN_EVAL is thus used to implement tail call optimisation. 
+		</description>
+	</bytecode>
+	
+	<bytecode name="TABLE_SWITCH" value="92">
+		<arg type="u16">Number of alternatives</arg>
+		<arg repeat="1">
+			<arg type="u16" mode="label">Jump to</arg>
+		</arg>
+		<description>
+			TABLE_SWITCH examines the tag of the item on the top of the stack and
+			then jumps forward by the number of bytes specified by jump-table[tag].
+		</description>
+	</bytecode>
+	
+	<bytecode name="LOOKUP_SWITCH" value="93">
+		<arg type="u16">Number of alternatives</arg>
+		<arg type="u16" mode="label">Default label</arg>
+		<arg repeat="1">
+			<arg type="s16">Tag</arg>
+			<arg type="u16" mode="label">Jump to</arg>
+		</arg>
+		<description>
+			LOOKUP_SWITCH is similar to TABLE_SWITCH but here lookup-table is an
+			array of tag-offset pairs. When a matching tag is found the program
+			jumps forward by 'offset' number of bytes. If no match is found the
+			program just forward by 'def' number of bytes. 
+		</description>
+	</bytecode>
+	
+	<bytecode name="INT_SWITCH" value="94">
+		<arg type="u16">Number of alternatives</arg>
+		<arg type="u16" mode="label">Default label</arg>
+		<arg repeat="1">
+			<arg type="s16">Value</arg>
+			<arg type="u16" mode="label">Jump to</arg>
+		</arg>
+		<description>
+			INT_SWITCH is similar to LOOKUP_SWITCH but selects on the integer value
+			of an int node rather than on the constructor tag number.
+		</description>
+	</bytecode>
+
+	<bytecode name="JUMP_FALSE" value="95">
+		<arg type="u16" mode="label">Label</arg>
+		<description>
+			JUMP_FALSE j removes the value from the top of the stack and if it is
+			the node Prelude.False then the program jumps forward by j bytes. If it
+			is not Prelude.False then JUMP_FALSE is a no-op.
+		</description>
+	</bytecode>
+	
+	<bytecode name="JUMP" value="96">
+		<arg type="u16" mode="label">Label</arg>
+		<description>
+			JUMP j unconditionally jumps forward by j bytes.
+		</description>
+	</bytecode>
+		
+	<bytecode name="ADD_W" value="97" primitive="1" />
+	<bytecode name="ADD_F" value="98" primitive="1" />
+	<bytecode name="ADD_D" value="99" primitive="1" />
+	<bytecode name="SUB_W" value="100" primitive="1" />
+	<bytecode name="SUB_F" value="101" primitive="1" />
+	<bytecode name="SUB_D" value="102" primitive="1" />
+	<bytecode name="MUL_W" value="103" primitive="1" />
+	<bytecode name="MUL_F" value="104" primitive="1" />
+	<bytecode name="MUL_D" value="105" primitive="1" />
+	<bytecode name="DIV_W" value="106" primitive="1" />
+	<bytecode name="DIV_F" value="107" primitive="1" />
+	<bytecode name="DIV_D" value="108" primitive="1" />
+	<bytecode name="MOD_W" value="109" primitive="1" />
+	<bytecode name="MOD_F" value="110" primitive="1" />
+	<bytecode name="MOD_D" value="111" primitive="1" />
+	<bytecode name="EQ_W" value="112" primitive="1" />
+	<bytecode name="EQ_F" value="113" primitive="1" />
+	<bytecode name="EQ_D" value="114" primitive="1" />
+	<bytecode name="NE_W" value="115" primitive="1" />
+	<bytecode name="NE_F" value="116" primitive="1" />
+	<bytecode name="NE_D" value="117" primitive="1" />
+	<bytecode name="LE_W" value="118" primitive="1" />
+	<bytecode name="LE_F" value="119" primitive="1" />
+	<bytecode name="LE_D" value="120" primitive="1" />
+	<bytecode name="LT_W" value="121" primitive="1" />
+	<bytecode name="LT_F" value="122" primitive="1" />
+	<bytecode name="LT_D" value="123" primitive="1" />
+	<bytecode name="GE_W" value="124" primitive="1" />
+	<bytecode name="GE_F" value="125" primitive="1" />
+	<bytecode name="GE_D" value="126" primitive="1" />
+	<bytecode name="GT_W" value="127" primitive="1" />
+	<bytecode name="GT_F" value="128" primitive="1" />
+	<bytecode name="GT_D" value="129" primitive="1" />
+	<bytecode name="NEG_W" value="130" primitive="1" />
+	<bytecode name="NEG_F" value="131" primitive="1" />
+	<bytecode name="NEG_D" value="132" primitive="1" />
+	
+	<bytecode name="STRING" value="133">
+		<description>
+			STRING removes from the top of the stack a pointer to an
+			application to a StringNode. It then 'unpacks' the string
+			into the equivilent list of characters. 
+<code>
+STRING                    s : ss ==&gt;
+        (c:_primCString s') : ss
+
+  where
+  c is the first character of s
+  s' is the StringNode of the rest of the characters in s
+</code>
+			_primCString is a function to unpack more or the string
+			and is defined in src/runtime/BCKernel/primitive.c as 
+<code>
+_primCString(s):
+     NEED_HEAP_32
+     PUSH_ZAP_ARG s
+     STRING
+     RETURN
+</code>
+		</description>
+	</bytecode>
+	
+	<bytecode name="FROM_ENUM" value="134">
+		<description>
+			FROM_ENUM takes a pointer to an application to a constructor from the
+			top of the stack and pushes onto the top of the stack a pointer to an
+			heap allocated Int containing the tag number of the constructor.
+			<br/>
+			FROM_ENUM is used (perhaps rather unsurprisingly) to implement fromEnum 
+		</description>
+	</bytecode>
+	
+	<bytecode name="PRIMITIVE" value="135">
+		<description>
+			PRIMITIVE takes the first constant table item, which must be an XInfo
+			and calls the external function using the current application node. It
+			pushes on the top of the stack the value returned by the external
+			function.
+			<br/>
+			PRIMITIVE is used to implement primitive functions and the FFI. 
+		</description>
+	</bytecode>
+	
+	<bytecode name="SELECTOR_EVAL" value="136">
+		<description>
+			SELECTOR_EVAL is an abbreviation for  
+			<code>PUSH_ARG_0 ; EVAL</code>
+		</description>
+	</bytecode>
+	
+	<bytecode name="EXTERNAL" value="137" depreciated="1"></bytecode>
+
+
+	<bytecode name="CATCH_BEGIN" value="162">
+		<arg type="u8" mode="label">Label</arg>
+		<description>
+
+			CATCH_BEGIN j pushes a new exception handler on the exception handler stack. Such that if an 
+			exception is thrown then execution will jump back into this function j instructions from the 
+			current instruction.
+			<br/>
+			In practice CATCH_BEGIN is only used in the hand-coded builtin function 'primCatch' in primitive.c
+
+		</description>
+	</bytecode>
+
+	<bytecode name="CATCH_END" value="163">
+		<description>
+			CATCH_END pops an exception handler from the top of the exception handler stack. 
+		</description>
+	</bytecode>
+
+	<bytecode name="THROW" value="164">
+		<description>
+			THROW throws an exception to be caught by an exception handler.
+<code>
+THROW a:ss ==&gt; a:ss'
+    where
+    ss' = ss stripped back so that the stack as it was when the last CATCH_BEGIN instruction was executed.
+</code>
+			The program driver code is engineered so that THROW always throws to some exception handler (i.e. there is no possibility of the exception 'escaping')
+		</description>            
+	</bytecode>
+</bytecodes>

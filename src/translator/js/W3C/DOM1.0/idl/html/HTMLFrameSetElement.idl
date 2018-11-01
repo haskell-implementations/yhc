@@ -1,0 +1,5 @@
+interface HTMLFrameSetElement : HTMLElement {
+           attribute  DOMString            cols;
+           attribute  DOMString            rows;
+};
+

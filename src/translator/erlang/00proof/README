@@ -1,0 +1,44 @@
+Yhc Erlang Backend: proof of concept experiments
+
+This directory contains a demonstration program which was translated from Yhc Core
+to Erlang Core, and further to BEAM loadable format. To run the demonstrations, start
+an Erlang shell (erl) in this directory.
+
+The program (Test1.hs) features the following demonstrations:
+
+1. Simple factorial calculation. To run, type in shell:
+
+1> hserl:force(hs_test1:fac(5)).
+120
+
+2. Two (finite) lists merged together:
+
+2> hserl:hslist(hs_test1:fuse({'@lst', "ABCDE"}, {'@lst', "123"})).
+"A1B2C3DE"
+
+3. Ping-Pong program: starts 2 processes which send each other messages:
+
+3> hserl:force(hs_test1:main(5)).                                  
+Main: Starting ping-pong 5 times
+Main: Finishing
+Pong started
+Ping started
+PONG: Ping!!!
+ok
+PING: Pong!!!
+PING: 4 to go
+PONG: Ping!!!
+PING: Pong!!!
+PING: 3 to go
+PONG: Ping!!!
+PING: Pong!!!
+PING: 2 to go
+PONG: Ping!!!
+PING: Pong!!!
+PING: 1 to go
+PONG: Ping!!!
+PING: Pong!!!
+PING: Finished
+PONG: Finished
+
+

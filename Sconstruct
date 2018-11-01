@@ -1,0 +1,266 @@
+import os
+import sys
+from stat import *
+
+from build import *
+
+env = Environment(ENV=os.environ, CPPPATH=["#."])
+hsenv = Environment(ENV=os.environ, tools = ["default", "haskell"], toolpath=["./build/tools/"])
+
+if "help" not in COMMAND_LINE_TARGETS:
+    env.Append(ENV = {"YHC_BASE_PATH": os.getcwd() + "/inst/"})
+    if sys.platform != "win32":
+        env.Append(CPPPATH=["/usr/local/include", "/opt/local/include", "/Library/Frameworks/GMP.Framework/Headers"])
+        env.Append(LIBPATH=["/usr/local/lib", "/opt/local/lib", "/Library/Frameworks/GMP.Framework"])
+
+    hsenv.Append(LIBPATH=["./src/compiler", "./src/libraries/general", "./src/libraries/core", "depends/cpphs", "depends/filepath", "depends/uniplate", "./src/interactive"])
+
+    oldARGUMENTS = ARGUMENTS
+    ARGUMENTS = fileOptions()
+    ARGUMENTS.update(oldARGUMENTS)
+
+    setup_version(env, Configure, ARGUMENTS)
+    if os.environ.has_key("CCFLAGS"):
+        print "Adding '%s' to CCFLAGS." % (os.environ["CCFLAGS"], )
+        env.Append(CCFLAGS=[os.environ["CCFLAGS"]])
+        env.Append(LINKFLAGS=[os.environ["CCFLAGS"]])
+        env.Append(ASFLAGS=[os.environ["CCFLAGS"]])
+    if os.environ.has_key("GHCFLAGS"):
+        print "Adding '%s' to GHCFLAGS." % (os.environ["GHCFLAGS"], )
+        hsenv.Append(HSFLAGS=[os.environ["GHCFLAGS"]])
+    if os.environ.has_key("LIBPATH"):
+        print "Adding '%s' to LIBPATH." % (os.environ["LIBPATH"], )
+        env.Append(LIBPATH=[os.environ["LIBPATH"]])
+    ppc64 = int(ARGUMENTS.get('ppc64', "0"))
+    if ppc64:
+        env.Append(CCFLAGS=["-DPOWERPC64", "-m64"])
+        env.Append(LINKFLAGS=["-DPOWERPC64", "-m64"])
+        env.Append(ASFLAGS=["-DPOWERPC64", "-m64"])
+
+    always_configure(env, hsenv, Configure, ARGUMENTS)
+
+    Export("env")
+    Export("hsenv")
+
+    # Special option for Neil
+    if int(ARGUMENTS.get("core", "1")):
+        env["ENV"]["YHC_CORE"] = "--core "
+    else:
+        env["ENV"]["YHC_CORE"] = ""
+
+if COMMAND_LINE_TARGETS == []:
+    COMMAND_LINE_TARGETS = ["build"]
+
+if "update" in COMMAND_LINE_TARGETS:
+    update(env) # Check dependencies
+    env.Alias('update', [])
+elif "depends" in COMMAND_LINE_TARGETS:
+    depends(env, ARGUMENTS, False) # Check dependencies
+    env.Alias('depends', [])
+elif "configure" in COMMAND_LINE_TARGETS:
+    if os.path.exists("config.h"):
+        os.unlink("config.h")
+
+    configure(env, Configure, ARGUMENTS) # Configure
+    env.Alias('configure', [])
+elif "build" in COMMAND_LINE_TARGETS:
+    build = []
+    if 'yhc' in COMMAND_LINE_TARGETS:
+        build.append('yhc')
+    if 'yhi' in COMMAND_LINE_TARGETS:
+        build.append('yhi')
+    if 'yhe' in COMMAND_LINE_TARGETS:
+        build.append('yhe')
+    if 'library' in COMMAND_LINE_TARGETS or 'libraries' in COMMAND_LINE_TARGETS:
+        build.append('library')
+    wrong_build_options = [x for x in COMMAND_LINE_TARGETS if x not in ["build", "yhc", "yhi", "yhe", "library", "libraries"]]
+    if  len(wrong_build_options) > 0:
+        print "Unrecognised build option(s) %s." % (", ".join(wrong_build_options))
+        sys.exit(0)
+    if len(build) == 0:
+        build = ['yhc', 'yhi', 'library']
+
+    if 'yhi' in build:
+        gmp_configure(env, Configure, ARGUMENTS)
+        if not os.path.exists("config.h"):
+            configure(env, Configure, ARGUMENTS) # Configure
+    TargetSignatures('content')
+
+    depends(env, ARGUMENTS, True)
+
+    yhilibs = platform(env, hsenv, ARGUMENTS) # Do platform specific set up
+
+    bootstrap(env)
+
+    Export("build")
+    yhi_objs, yhcfiles, library, yhefiles, testerfiles = SConscript("src/SConscript")
+
+    if 'yhc' in build or 'yhi' in build:
+        cpphsfiles, libffifiles, filepathfiles, uniplatefiles = SConscript("depends/SConscript")
+    if 'yhc' in build:
+        yhc = hsenv.HaskellProgram("inst/bin/yhc", yhcfiles + cpphsfiles + filepathfiles + uniplatefiles, LIB=["m"])
+        env.Alias('yhc', yhc)
+        env.Alias('build', yhc)
+    if 'yhi' in build:
+        env.Append(LINKFLAGS=env["libgmp"])
+        build_stack = int(ARGUMENTS.get('yhistack', "0"))
+        if build_stack:
+            yhi = env.Program("inst/bin/yhi-stack", yhi_objs + libffifiles, LIBS=yhilibs)
+        else:
+            yhi = env.Program("inst/bin/yhi", yhi_objs + libffifiles, LIBS=yhilibs)
+        env.Alias('yhi', yhi)
+        env.Alias('build', yhi)
+    if 'library' in build:
+        env.Alias('library', library)
+        env.Alias('libraries', library)
+        env.Alias('build', library)
+    if 'yhe' in build:
+        yhe = hsenv.HaskellProgram("inst/bin/yhe", yhefiles, LIB=["m"])
+        env.Alias('yhe', yhe)
+        env.Alias('build', yhe)
+elif "clean" in COMMAND_LINE_TARGETS:
+    [clean(d, [".o", ".obj", ".hbc", ".hi", ".ycr"]) for d in ["src/", "depends/"]]
+    for filepath in ["config.h", "src/tester/tester", "ReportB.hbc", "ReportB.hi", "ReportC.hbc", "ReportC.hi", "ReportD.hbc", "ReportD.hi", "yhc_temp_test_file", "Renamebug.hbc", "Renamebug.hi", "Main.hbc", "Main.hi"]:
+        if os.path.exists(filepath):
+            os.unlink(filepath)
+    if os.path.exists("config.h"):
+        os.unlink("config.h")
+    env.Alias('clean', [])
+elif "fullclean" in COMMAND_LINE_TARGETS:
+    [clean(d, [".o", ".obj", ".hbc", ".hi", ".ycr"]) for d in ["src/"]]
+    [clean(d, [".pyc"]) for d in ["build/"]]
+    [empty(d) for d in ["inst/bin/", "inst/lib/yhc/", ".sconf_temp/", "depends/", "docs/"]]
+    if os.path.exists(".sconf_temp"):
+        os.rmdir(".sconf_temp")
+    if os.path.exists("depends"):
+        os.rmdir("depends")
+    if os.path.exists("docs"):
+        os.rmdir("docs")
+    for filepath in ["config.h", "src/tester/report.html", "src/tester/tester", "ReportB.hbc", "ReportB.hi", "ReportC.hbc", "ReportC.hi", "ReportD.hbc", "ReportD.hi", "yhc_temp_test_file", "Renamebug.hbc", "Renamebug.hi", "Main.hbc", "Main.hi"]:
+        if os.path.exists(filepath):
+            os.unlink(filepath)
+    env.Alias('fullclean', [])
+elif "test" in COMMAND_LINE_TARGETS:
+    build = ["tester"]
+    Export("build")
+    yhi_objs, yhcfiles, library, yhefiles, testerfiles = SConscript("src/SConscript")
+    tester = hsenv.HaskellProgram("src/tester/tester", testerfiles, LIB=["m"], LIBPATH=["./src/tester"])
+
+    testenv = Environment(ENV = os.environ)
+    testenv["ENV"]["YHC_BASE_PATH"] = os.getcwd() + '/inst/'
+
+    if "quick" in COMMAND_LINE_TARGETS:
+        testdirs = "tests/conformance98"
+    else:
+        testdirs = "tests/conformance98 tests/nofib/imaginary tests/nofib/real"
+
+    if sys.platform == "win32":
+        testenv["ENV"]["PATH"] = "inst/bin/;" + testenv["ENV"]["PATH"]
+        test = testenv.Command("report.html", "", ["src\\tester\\tester -report -log "+testdirs])
+        Depends(test, "inst\\bin\\yhc.exe")
+        Depends(test, "inst\\bin\\yhi.exe")
+    else:
+        testenv["ENV"]["PATH"] = "inst/bin/:" + testenv["ENV"]["PATH"]
+        test = testenv.Command("report.html", "", ["./src/tester/tester -report -log "+testdirs])
+        Depends(test, "inst/bin/yhc")
+        Depends(test, "inst/bin/yhi")
+    Depends(test, tester)
+    env.Alias("test", test)
+    env.Alias("quick", test)
+    AlwaysBuild(test)
+elif "doc" in COMMAND_LINE_TARGETS:
+    build = ["yhc", "library"]
+    Export("build")
+    yhi_objs, yhcfiles, library, yhefiles, testerfiles = SConscript("src/SConscript")
+    mkdir("docs")
+    # figure out how to unlit the .lhs files... (see Makefile.bat)
+    doc = env.Command("#docs/index.html", [[str(x.sources[0]) for x in f if str(x.sources[0]).endswith(".hs")] for f in yhcfiles],
+                      "haddock --html --odir=docs --title=Yhc --prologue=misc/haddock_prefix.txt --source=http://www.cs.york.ac.uk/fp/darcs/yhc-devel/src/compiler98/ $SOURCES")
+    env.Alias("doc", doc)
+elif "install" in COMMAND_LINE_TARGETS:
+    if sys.platform in ["linux2", "darwin"]:
+        prefix = ARGUMENTS.get("prefix", "/usr/local")
+        if prefix[-1] == os.sep:
+            prefix = prefix[:-1]
+        umask = S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH
+        if not os.path.exists(prefix + "/bin"):
+            mkdir(prefix + "/bin")
+        if os.path.exists ("inst/bin/yhc"):
+            copy(env, prefix + "/bin/yhc", "inst/bin/yhc", umask)
+        if os.path.exists ("inst/bin/yhi"):
+            copy(env, prefix + "/bin/yhi", "inst/bin/yhi", umask)
+        if not os.path.exists(prefix + "/lib"):
+            mkdir(prefix + "/lib")
+        copydir(env, prefix + "/lib", "inst/lib", umask)
+    else:
+        print "Sorry, don't know how to install on your platform."
+    env.Alias("install", [])
+elif "push" in COMMAND_LINE_TARGETS:
+    fw = ARGUMENTS.get("fw", "")
+    if fw == "":
+        os.system("darcs push --no-set-default neil@darcs.haskell.org:/home/darcs/yhc")
+        os.system("darcs push --no-set-default neil@darcs.haskell.org:/home/darcs/york-compiler98 --repodir=src/compiler")
+    else:
+        print "Pushing via firewall - you may be asked for passwords multiple times"
+        os.system("export SSH_PORT=2222;" + \
+                  "ssh -L $SSH_PORT:darcs.haskell.org:22 -f " + fw + " sleep 1000;" + \
+                  "darcs push --no-set-default neil@localhost:/home/darcs/yhc;" + \
+                  "darcs push --no-set-default neil@localhost:/home/darcs/york-compiler98 --repodir=src/compiler")
+    env.Alias("push", [])
+elif "help" in COMMAND_LINE_TARGETS:
+    print """
+Building YHC.
+
+To build YHC type 'scons'. To do something more specific type 'scons' followed
+by one of the commands given below.
+
+scons update
+    Update the YHC source and that of the dependencies.
+scons depends
+    Check the dependencies that are retrieved by the build process are in place
+    and up to date.
+scons build
+    Build the compiler, runtime and library.
+scons build yhc
+    Just build the YHC compiler.
+scons build yhi
+    Just build the YHC runtime.
+scons build yhe
+    Just build the interactive Yhc interpreter, yhe.
+scons build library
+    Just build the YHC libraries.
+scons doc
+    Run haddock over all the *.hs files in src/compiler
+    (but not the *.lhs files yet!)
+scons test
+    Build and run Neil Mitchell's tester.
+scons test quick
+    Build and run the first portion of Neil Mitchell's tester.
+scons install
+    Install Yhc. Currently only Linux and MacOS X are supported.
+scons clean
+    Remove intermediate build files.
+scons fullclean
+    Completely remove all files generated as part of the build process,
+    including the dependencies.
+scons push
+    Push a change using scp to the darcs repository.
+
+In addition to the above commands Yhc can also be built with the follow options.
+    type=release/normal/debug (default=normal) Enables debug information, or
+                                               compiles with optimizations.
+    threads=0 (default=1, except on ppc where the default is 0)
+              Disables threading.
+    yhistack=1 (default=0) Build yhi-stack rather than yhi.
+    ctypes=svn|snapshot (default=svn) Use this method to obtain ctypes.
+    ghc=<path to ghc> Force Yhc to build using this copy of GHC.
+    prefix=<install path> (default=/usr/local) Install Yhc into this path.
+
+The Yhc build system recognises the following environment variables for
+controlling it's build.
+    CCFLAGS  - These parameters are passed to the C compiler when building Yhi.
+    GHCFLAGS - These parameters are passed to GHC when building Yhc.
+    LIBPATH  - These parameters are passed to the linker to help it find the
+               needed libraries.
+"""
+    env.Alias("help", [])

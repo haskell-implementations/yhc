@@ -1,0 +1,45 @@
+module org_w3c_dom {
+
+   interface DOMImplementation;
+   interface DocumentFragment;
+   interface Document;
+   interface Node;
+   interface NodeList;
+   interface NamedNodeMap;
+   interface CharacterData;
+   interface Attr;
+   interface Element;
+   interface Text;
+   interface Comment;
+   interface CDATASection;
+   interface DocumentType;
+   interface Notation;
+   interface Entity;
+   interface EntityReference;
+   interface ProcessingInstruction;
+
+
+
+
+#include "DOMString.idl"
+#include "DOMException.idl"
+#include "Node.idl"
+#include "NodeList.idl"
+#include "NamedNodeMap.idl"
+#include "CharacterData.idl"
+#include "DOMImplementation.idl"
+#include "DocumentFragment.idl"
+#include "Document.idl"
+#include "Attr.idl"
+#include "Element.idl"
+#include "Text.idl"
+#include "Comment.idl"
+#include "CDATASection.idl"
+#include "DocumentType.idl"
+#include "Notation.idl"
+#include "Entity.idl"
+#include "EntityReference.idl"
+#include "ProcessingInstruction.idl"
+};
+
+

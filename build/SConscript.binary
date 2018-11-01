@@ -1,0 +1,11 @@
+import os
+
+Import("hsenv")
+
+binaryfiles = [hsenv.HaskellObject("src" + os.sep + "Data" + os.sep + "Binary.hs")
+			  ,hsenv.HaskellObject("src" + os.sep + "Data" + os.sep + "Binary" + os.sep + "Put.hs")
+			  ,hsenv.HaskellObject("src" + os.sep + "Data" + os.sep + "Binary" + os.sep + "Get.hs")
+			  ,hsenv.HaskellObject("src" + os.sep + "Data" + os.sep + "Binary" + os.sep + "Builder.hs")
+			  ]
+
+Return("binaryfiles")

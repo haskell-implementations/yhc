@@ -1,0 +1,11 @@
+interface HTMLAreaElement : HTMLElement {
+           attribute  DOMString            accessKey;
+           attribute  DOMString            alt;
+           attribute  DOMString            coords;
+           attribute  DOMString            href;
+           attribute  boolean              noHref;
+           attribute  DOMString            shape;
+           attribute  long                 tabIndex;
+           attribute  DOMString            target;
+};
+

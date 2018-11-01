@@ -1,0 +1,5 @@
+Import("env")
+
+objs = SConscript("BCKernel/SConscript")
+
+Return("objs")

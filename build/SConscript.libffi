@@ -1,0 +1,34 @@
+import os
+import sys
+
+Import("env")
+
+ffienv = env.Copy()
+
+platform = env["ENV"]["ARCH"]
+
+if sys.platform == "win32":
+    ffienv.Prepend(CCFLAGS="-DX86_WIN32")
+    ffienv.Prepend(CPPPATH=["#depends/ctypes/libffi_msvc"])
+    libffifiles = ["src/cfield.c", "../libffi_msvc/prep_cif.c", "../libffi_msvc/win32.c", "../libffi_msvc/ffi.c"]
+elif platform == "x86" and sys.platform == "darwin":
+    ffienv.Prepend(CPPPATH=["#depends/ctypes/libffi/include", "#depends/ctypes/libffi/src/x86", "#depends/ctypes/libffi"])
+    libffifiles = ["src/prep_cif.c", "src/cfield.c", "src/x86/ffi_darwin.c", "src/x86/darwin.S"]
+elif platform == "x86":
+    ffienv.Prepend(CPPPATH=["#depends/ctypes/libffi/include", "#depends/ctypes/libffi/src/x86", "#depends/ctypes/libffi"])
+    libffifiles = ["src/prep_cif.c", "src/cfield.c", "src/x86/ffi.c", "src/x86/sysv.S"]
+elif platform == "x86_64":
+    ffienv.Prepend(CPPPATH=["#depends/ctypes/libffi/include", "#depends/ctypes/libffi/src/x86", "#depends/ctypes/libffi"])
+    libffifiles = ["src/prep_cif.c", "src/cfield.c", "src/x86/ffi64.c", "src/x86/unix64.S", "src/x86/sysv.S"]
+elif platform == "ppc" and sys.platform == "darwin":
+    ffienv.Prepend(CPPPATH=["#depends/ctypes/libffi/include", "#depends/ctypes/libffi/src", "#depends/ctypes/libffi/src/powerpc", "#depends/ctypes/libffi"])
+    libffifiles = ["src/prep_cif.c", "src/cfield.c", "src/powerpc/ffi_darwin.c", "src/powerpc/darwin.S", "src/powerpc/darwin_closure.S"]
+elif platform == "ppc" and sys.platform == "linux2":
+    ffienv.Prepend(CPPPATH=["#depends/ctypes/libffi/include", "#depends/ctypes/libffi/src", "#depends/ctypes/libffi/src/powerpc", "#depends/ctypes/libffi"])
+    libffifiles = ["src/prep_cif.c", "src/cfield.c", "src/powerpc/ffi.c", "src/powerpc/ppc_closure.S", "src/powerpc/sysv.S"]
+else:
+    sys.stderr.write("Sorry, YHC is not configured correctly to build on your platform.\n")
+
+libffifiles = [ffienv.Object(f) for f in libffifiles]
+
+Return("libffifiles")

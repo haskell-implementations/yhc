@@ -1,0 +1,10 @@
+def main():
+    build("Header.hs")
+    build("Local.hs")
+    build("Unify.hs")
+    build("Create.hs")
+    build("Eval.hs")
+    build("Evolve.hs")
+    build("Auxil.hs")
+    build("Main.hs")
+    run("Main")

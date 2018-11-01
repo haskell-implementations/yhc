@@ -1,0 +1,6 @@
+interface HTMLLegendElement : HTMLElement {
+  readonly attribute  HTMLFormElement      form;
+           attribute  DOMString            accessKey;
+           attribute  DOMString            align;
+};
+

@@ -1,0 +1,4 @@
+interface HTMLFieldSetElement : HTMLElement {
+  readonly attribute  HTMLFormElement      form;
+};
+

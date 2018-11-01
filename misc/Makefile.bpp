@@ -1,0 +1,382 @@
+-- (C) Yhc Team 2005
+-- Windows version of the Unix Makefile
+-- Doesn't do any dependancy analysis
+-- Compile to a batch file using misc/batch++
+
+
+-- Global variables
+--   HC = Haskell Compiler (usually ghc)
+--   VC = Visual C++ Compiler (must be MS version)
+--   DARCS = where darcs is located
+
+
+-- Command line
+--   Each entry on the command line is either an option
+--   Or a command
+
+
+PROCEDURE Main
+	-- load external options, if they exist
+	IF exist Options.bat
+		call Options.bat
+	END_IF
+	
+	set actions=yhc,yhi,lib,pull,yht,test,doc,pyhi,all,dist
+	set options=release
+	
+	set acts=
+	
+	set Option_release=0
+	set Option_98=0
+	
+	WHILE not "%1" == ""
+		EVAL opt IsElem %1 %options%
+		EVAL act IsElem %1 %actions%
+		
+		IF %opt% == 1
+			set Option_%1=1
+		ELIF %act% == 1
+			IF "%acts%" == ""
+				set acts=%1
+			ELSE
+				set acts=%acts%,%1
+			END_IF
+		ELSE
+			echo Error, unrecognised option (%1)
+			KILL
+		END_IF
+		
+		shift
+	END_WHILE
+		
+	
+	IF "%acts%" == ""
+		echo No actions specified, available actions are
+		CALL ShowHelp
+		KILL
+	END_IF
+	
+	for %%i in (%acts%) do %INTERNAL_CALL%%%i
+END_PROCEDURE
+
+
+PROCEDURE ShowHelp
+	echo Yhc Makefile for Windows
+	echo    all   - the standard stuff (yhc,yhi,lib)
+	echo    yhc   - compile the compiler (requires GHC) [flags: release]
+	echo    yhi   - compile the interpretter (requires Visual Studio) [flags: release]
+	echo    lib   - compile the libaries (requires yhc)
+	echo    pull  - update the source tree (requires darcs)
+	echo    yht   - compile the test program
+	echo    test  - run the tester (requires yhc,yhi,yht) [flags: 98]
+	echo    doc   - create documentation (requires haddock)
+	echo    pyhi  - compile pyhi (requires python,py2exe)
+	echo    dist  - make a windows distribution
+END_PROCEDURE
+
+
+
+PROCEDURE IsElem x
+	WHILE not "%2" == ""
+		IF %2 == %x%
+			RETURN 1
+		END_IF
+		shift
+	END_WHILE
+	RETURN 0
+END_PROCEDURE
+
+
+PROCEDURE DemandExe name guess flags
+	EVAL res IsElem name %DemandFound%
+	IF %res% == 1
+		RETURN
+	END_IF
+	
+	IF "%flags%" == ""
+		set flags=--version
+	END_IF
+	
+	IF "%guess%" == ""
+		set guess=%name%
+	END_IF
+	
+	%guess% %flags% > nul 2> nul
+	IF errorlevel 1
+		echo ERROR: Dependancy not found (%name%)
+		KILL
+	END_IF
+	
+	set DemandFound=%DemandFound%,%name%
+	set Found_%name%=%guess%
+	echo Dependancy found (%name%)
+END_PROCEDURE
+
+
+-- Ensure that there is a Haskell compiler available, and
+-- that its an appropriate version
+
+PROCEDURE DemandHC
+	CALL DemandExe ghc %HC%
+END_PROCEDURE
+
+PROCEDURE DemandHaddock
+	CALL DemandExe haddock %HADDOCK%
+END_PROCEDURE
+
+PROCEDURE DemandDarcs
+	CALL DemandExe darcs %DARCS%
+END_PROCEDURE
+
+PROCEDURE DemandPython
+	CALL DemandExe python %PYTHON% -h
+END_PROCEDURE
+
+
+PROCEDURE CompileHC
+	pushd %pwd%
+	%Found_ghc% %cmd%
+	
+	IF errorlevel 1
+		echo.
+		echo Failed to build :-(
+		popd
+		KILL
+	END_IF
+	
+	popd
+	echo.
+	echo Successful build :-)
+END_PROCEDURE
+
+
+PROCEDURE ExecuteDarcs dir
+	pushd %dir%
+	%Found_darcs% pull
+	IF errorlevel 1
+		echo Failed to darcs pull
+		popd
+		KILL
+	END_IF
+	popd
+END_PROCEDURE
+
+PROCEDURE DemandCpphs
+	IF exist depends\cpphs
+		RETURN
+	END_IF
+	
+	CALL DemandDarcs
+	mkdir depends > nul
+	pushd depends
+	%Found_darcs% get --partial http://www.cs.york.ac.uk/fp/darcs/cpphs
+	IF errorlevel 1
+		echo Failed to darcs get cpphs
+		popd
+		KILL
+	END_IF
+	popd
+	IF not exist depends\cpphs
+		echo Darcs succeeded, but can't find depends\cpphs
+		KILL
+	END_IF
+	
+END_PROCEDURE
+
+
+PROCEDURE DemandVC
+	IF not "%VC%" == ""
+		set MyVC=%VC%
+		IF "%MyVCVER%" == ""
+			set MyVCVER=2005
+		END_IF
+	ELIF not "%VS71COMNTOOLS%" == ""
+		set MyVC=%VS71COMNTOOLS%..\IDE\devenv.com
+		set MyVCVER=2003
+	ELIF not "%VS80COMNTOOLS%" == ""
+		set MyVC=%VS80COMNTOOLS%..\IDE\devenv.com
+		set MyVCVER=2005
+	ELSE
+		echo You don't appear to have a Visual Studio installed
+	END_IF
+	
+	IF not exist "%MyVC%"
+		echo Visual Studio not found
+		KILL
+	END_IF
+	echo Visual Studio found
+END_PROCEDURE
+
+
+PROCEDURE CompileVC
+	pushd %pwd%
+	"%MyVC%" %cmd%
+	
+	IF errorlevel 1
+		echo.
+		echo Failed to build :-(
+		popd
+		KILL
+	END_IF
+	
+	popd
+	echo Successful build :-)
+END_PROCEDURE
+
+
+PROCEDURE yhc
+	CALL DemandHC
+	CALL DemandCpphs
+	
+	set flags=
+	if "%Option_release%" == "1" set flags=-O
+	set cmd=--make Main -o "..\..\inst\bin\yhc.exe" -i.:..\..\depends\cpphs %flags%
+	set pwd=src\compiler98
+	CALL CompileHC
+END_PROCEDURE
+
+
+PROCEDURE pull
+	CALL DemandDarcs
+	CALL DemandCpphs
+	CALL ExecuteDarcs depends\cpphs
+	
+	-- special code, never execute after doing a pull
+	-- since the batch file may have changed, which screws things up
+	-- particularly the Program Counter may have moved
+	echo %Found_darcs% pull > temp.bat
+	echo if errorlevel 1 echo Failed to darcs pull >> temp.bat
+	temp.bat
+	echo THIS LINE IS NEVER REACHED!
+END_PROCEDURE
+
+
+PROCEDURE yhi
+	CALL DemandVC
+	
+	set flags=debug
+	if "%Option_release%" == "1" set flags=release
+	set cmd=yhi.%MyVCVER%.sln /build %flags%
+	set pwd=src\runtime\BCKernel\msvc
+	CALL CompileVC
+
+	copy src\runtime\BCKernel\msvc\%flags%\yhi.exe inst\bin\yhi.exe > nul
+END_PROCEDURE
+
+
+PROCEDURE lib
+	md inst\lib\yhc\packages 2> nul
+	md inst\lib\yhc\packages\yhc-base 2> nul
+	md inst\lib\yhc\packages\yhc-base\1.0 2> nul
+	md inst\lib\yhc\packages\haskell98 2> nul
+	md inst\lib\yhc\packages\haskell98\1.0 2> nul
+	
+	xcopy /s /y bootstrap\packages\yhc-base\1.0 inst\lib\yhc\packages\yhc-base\1.0 > nul
+	xcopy /s /y src\packages\haskell98-1.0 inst\lib\yhc\packages\haskell98\1.0 > nul
+	echo Libraries copied
+END_PROCEDURE
+
+
+PROCEDURE yht
+	CALL DemandHC
+
+	set cmd=--make Main -o "..\..\inst\bin\yht.exe"
+	set pwd=src\tester
+	CALL CompileHC
+END_PROCEDURE
+
+
+PROCEDURE test
+	IF not exist "inst\bin\yhc.exe"
+		echo Cannot perform test until you have built yhc
+		KILL
+	ELIF not exist "inst\bin\yhi.exe"
+		echo Cannot perform test until you have built yhi
+		KILL
+	ELIF not exist "inst\bin\yht.exe"
+		echo Cannot perform test until you have built yht
+		KILL
+	END_IF
+	
+	echo Starting test
+	pushd "inst\bin"
+	yht.exe -log -report "..\..\tests\conformance98"
+	popd
+END_PROCEDURE
+
+
+PROCEDURE doc_accum dir
+	IF exist %dir%\*.lhs
+		for %%i in (%dir%\*.lhs) do ghc %%i -cpp -E -optP-P -o %%i_unlit
+		copy %dir%\*.lhs_unlit %dir%\*.hs > nul
+	END_IF
+	IF exist %dir%\*.hs
+		echo set files=%%files%% %dir%\*.hs >> temp.bat
+	END_IF
+END_PROCEDURE
+
+PROCEDURE doc
+	CALL DemandHC
+	CALL DemandHaddock
+	
+	echo Copying files for documentation
+	xcopy /i /s /y src\compiler98\*.hs docs > nul
+	xcopy /i /s /y src\compiler98\*.lhs docs > nul
+	
+	echo Preprocessing files
+	echo. > temp.bat
+	CALL doc_accum docs
+	for /r docs /d %%i in (*) do %INTERNAL_CALL%doc_accum %%i
+	
+	call temp.bat
+	del temp.bat
+
+	echo Invoking Haddock	
+	%Found_haddock% %files% --html --odir=docs --title=Yhc --prologue=misc\haddock_prefix.txt --source=http://www.cs.york.ac.uk/fp/darcs/yhc-devel/src/compiler98/
+	
+END_PROCEDURE
+
+PROCEDURE pyhi
+	CALL DemandPython
+	
+	set gen=src\runtime\python\dist\pyhi.exe
+	IF exist %gen%
+		del %gen%
+	END_IF
+	
+	pushd src\runtime\python
+	%Found_python% setup.py py2exe
+	popd
+	
+	IF not exist %gen%
+		echo Failed :-(
+		KILL
+	ELSE
+		copy %gen% inst\bin\pyhi.exe
+		echo Success :-)
+	END_IF
+END_PROCEDURE
+
+PROCEDURE all
+	CALL yhc
+	CALL yhi
+	CALL lib
+	IF exist inst\bin\pyhi.exe
+		CALL pyhi
+	END_IF
+END_PROCEDURE
+
+PROCEDURE dist
+	CALL all
+	
+	mkdir dist
+	mkdir dist\windows
+	
+	copy inst\bin\yhc.exe dist\windows
+	copy inst\bin\yhi.exe dist\windows
+	IF exist inst\bin\pyhi.exe
+		copy inst\bin\pyhi.exe dist\windows
+	END_IF
+	
+	xcopy /i /s /y inst\lib dist\windows\lib
+END_PROCEDURE

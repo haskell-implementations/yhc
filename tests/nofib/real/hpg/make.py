@@ -1,0 +1,10 @@
+def main():
+    build("Config.lhs", "-unlit")
+    build("Types.lhs", "-unlit")
+    build("Env.lhs", "-unlit")
+    build("Utils.lhs", "-unlit")
+    build("GenType.lhs", "-unlit")
+    build("GenVal.lhs", "-unlit")
+    build("GenExp.lhs", "-unlit")
+    build("Main.lhs", "-unlit")
+    run("Main")

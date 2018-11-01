@@ -1,0 +1,5 @@
+interface HTMLMapElement : HTMLElement {
+  readonly attribute  HTMLCollection       areas;
+           attribute  DOMString            name;
+};
+

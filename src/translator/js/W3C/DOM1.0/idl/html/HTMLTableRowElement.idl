@@ -1,0 +1,13 @@
+interface HTMLTableRowElement : HTMLElement {
+           attribute  long                 rowIndex;
+           attribute  long                 sectionRowIndex;
+           attribute  HTMLCollection       cells;
+           attribute  DOMString            align;
+           attribute  DOMString            bgColor;
+           attribute  DOMString            ch;
+           attribute  DOMString            chOff;
+           attribute  DOMString            vAlign;
+  HTMLElement               insertCell(in long index);
+  void                      deleteCell(in long index);
+};
+

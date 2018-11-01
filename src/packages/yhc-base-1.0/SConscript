@@ -1,0 +1,102 @@
+import os
+import glob
+import sys
+
+if sys.platform=="win32":
+    yhcbin = "inst\\bin\\yhc.exe"
+else:
+    yhcbin = "inst/bin/yhc"
+
+Import("env")
+
+
+def dep(lst,opts=[]):
+    return (lst,opts)
+
+root = "src/packages/yhc-base-1.0/"
+special = {
+    "Prelude": dep(["System/Exit.hi", "PreludeAux.hi", "Foreign/C.hi", "System/IO.hi", "Debug/Trace.hi", "Data/Maybe.hi",
+                "YHC/Exception.hi", "#bootstrap/packages/yhc-base/1.0/Prelude.hi"]),
+    "PreludeAux": dep(["YHC/ErrNo.hi"]),
+    "Numeric": dep(["Data/_CharNumeric.hi", "Data/Char.hi", "Data/Array.hi", "Data/Ratio.hi"]),
+    "Control/Applicative" : dep(["Control/Monad/Instances.hi","Control/Arrow.hi","Data/Monoid.hi"]),
+    "Control/Arrow" : dep(["Control/Monad/Fix.hi"]),
+    "Control/Monad/Fix" : dep(["Data/Function.hi"]),
+    "Control/Concurrent/MVar": dep(["YHC/Primitive.hi"]),
+    "Control/Concurrent/QSem": dep(["Control/Concurrent/MVar.hi"]),
+    "Control/Exception": dep(["YHC/Exception.hi", "System/IO/Error.hi", "System/IO/Unsafe.hi", "Foreign/C/String.hi", "Data/IORef.hi", "#bootstrap/packages/yhc-base/1.0/Prelude.hi"]),
+    "Control/Concurrent": dep(["Control/Exception.hi"]),
+    "Data/Array": dep(["Data/Ix.hi", "YHC/Primitive.hi", "YHC/Internal.hi", "YHC/Exception.hi"]),
+    "Data/Char": dep(["Data/_CharNumeric.hi"]),
+    "Data/IORef": dep(["YHC/IORef.hi"]),
+    "Data/List": dep(["Data/Maybe.hi"]),
+    "Data/Set": dep(["Data/List.hi","Data/Monoid.hi","Data/Foldable.hi"]),
+    "Data/Map": dep(["Data/Monoid.hi","Data/Traversable.hi","Data/Set.hi"]),
+    "Data/Monoid" : dep(["Prelude.hi"]),
+    "Data/Traversable": dep(["Data/Foldable.hi"]),
+    "Data/Foldable": dep(["Control/Applicative.hi"]),
+    "Data/PackedString": dep(["Foreign/Ptr.hi", "Foreign/Util.hi"]),
+    "Debug/Trace": dep(["System/IO.hi"]),
+    "Foreign": dep(["Foreign/ForeignPtr.hi", "Foreign/Marshal.hi", "Foreign/StablePtr.hi"]),
+    "Foreign/C": dep(["Foreign/C/String.hi", "Foreign/C/Error.hi", "Foreign/C/Types.hi"]),
+    "Foreign/C/Types": dep(["Foreign/Word.hi", "Foreign/Int.hi", "Foreign/Storable.hi", "Foreign/Ptr.hi", "Control/Monad.hi", "YHC/Primitive.hi"]),
+    "Foreign/C/Error": dep(["YHC/ErrNo.hi"]),
+    "Foreign/Word": dep(["Numeric.hi"]),
+    "Foreign/Ptr": dep(["Numeric.hi"]),
+    "Foreign/Int": dep(["Numeric.hi"]),
+    "Foreign/Storable": dep(["Foreign/Int.hi", "Foreign/Ptr.hi", "Foreign/Word.hi"]),
+    "Foreign/C/String": dep(["Foreign/Util.hi", "Foreign/Storable.hi"]),
+    "Foreign/ForeignPtr": dep(["Foreign/Ptr.hi"]),
+    "Foreign/Marshal": dep(["Foreign/Marshal/Alloc.hi", "Foreign/Marshal/Utils.hi", "Foreign/Word.hi"]),
+    "Foreign/Marshal/Alloc": dep(["Foreign/Storable.hi"]),
+    "System/Directory": dep(["Foreign/C.hi"]),
+    "System/Exit": dep(["#bootstrap/packages/yhc-base/1.0/Prelude.hi", "YHC/Primitive.hi", "YHC/Exception.hi"]),
+    "System/IO": dep(["Foreign/C.hi", "Foreign.hi", "Data/IORef.hi", "Data/Ix.hi", "System/IO/Unsafe.hi", "YHC/ErrNo.hi", "YHC/Internal.hi", "YHC/Primitive.hi"]),
+    "System/IO/Error": dep(["System/IO.hi", "Data/Maybe.hi", "Data/Either.hi"]),
+    "YHC/_Driver": dep(["YHC/Primitive.hi", "YHC/Internal.hi", "#bootstrap/packages/yhc-base/1.0/Prelude.hi", "System/Exit.hi", "System/IO/Unsafe.hi", "System/IO.hi", "Control/Exception.hi", "Control/Concurrent.hi"]),
+    "YHC/Internal": dep(["YHC/Primitive.hi"]),
+    "YHC/Exception": dep(["YHC/Primitive.hi", "YHC/Internal.hi"]),
+    "YHC/Primitive": dep([],["-W"])
+}
+
+def YHC_build(target, source, env):
+    opts = [env["ENV"]["YHC_CORE"], "--cpp"]
+    v = env.Execute(env.Action("%s %s -c %s" % (yhcbin, " ".join(opts), str(source[0]))))
+    for s in source:
+        if str(s).endswith("Prelude.hs"):
+            env.Execute(Copy("src/packages/yhc-base-1.0", "bootstrap/packages/yhc-base/1.0/Prelude.hi"))
+    return v
+
+YHC = Builder(name='YHC', action=YHC_build, src_suffix='.hs', suffix=".hbc", single_source=True)
+env.Append(BUILDERS = {"YHC":YHC})
+
+files = glob.glob("*.hs")
+
+objs  = [env.YHC(f) for f in files]
+objs += SConscript("YHC/SConscript")
+objs += SConscript("System/SConscript")
+objs += SConscript("Foreign/SConscript")
+objs += SConscript("Debug/SConscript")
+objs += SConscript("Data/SConscript")
+objs += SConscript("Control/SConscript")
+
+r = []
+for o in objs:
+    o = o[0]
+    env.Depends(o, "#"+yhcbin)
+    source = os.path.splitext(str(o))[0]
+    xopts = []
+    if special.has_key(source.replace(os.sep, "/")):
+        (deps,xopts) = special[source.replace(os.sep, "/")]
+        [env.Depends(o, f) for f in deps]
+
+    r.append(env.Command("#inst/lib/yhc/packages/yhc-base/1.0/"+source+".hbc", o, Copy("$TARGET", "$SOURCE")))
+    r.append(env.Command("#inst/lib/yhc/packages/yhc-base/1.0/"+source+".hi", source+".hi", Copy("$TARGET", "$SOURCE")))
+    env.SideEffect(env.File(source + ".hi"), env.File(source + ".hbc"))
+    if env["ENV"]["YHC_CORE"]:
+        if not os.path.exists(source + ".ycr") and os.path.exists(source + ".hbc"): # Force a rebuild of the hbc file if ycr doesn't exist.
+            os.unlink(source + ".hbc")
+        env.SideEffect(env.File(source + ".ycr"), env.File(source + ".hbc"))
+        r.append(env.Command("#inst/lib/yhc/packages/yhc-base/1.0/"+source+".ycr", source+".ycr", Copy("$TARGET", "$SOURCE")))
+
+Return("r")

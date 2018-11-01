@@ -1,0 +1,221 @@
+interface YHC.Internal where {
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.Fractional (Data.Ratio.Ratio a);
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.Num (Data.Ratio.Ratio a);
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.RealFrac (Data.Ratio.Ratio a);
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.Real (Data.Ratio.Ratio a);
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Read a,Prelude.Integral a) => Prelude.Read (Data.Ratio.Ratio a);
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.Enum (Data.Ratio.Ratio a);
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.Ord (Data.Ratio.Ratio a);
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.Eq (Data.Ratio.Ratio a);
+
+{-# NEED #-}
+instance Ix @ Ix.Ix Prelude.Char;
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b) => Ix.Ix (a,b);
+
+{-# NEED #-}
+instance Prelude @ Ix.Ix Prelude.Ordering;
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c) => Ix.Ix (a,b,c);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h,Ix.Ix i,Ix.Ix j,Ix.Ix k,Ix.Ix l,Ix.Ix m,Ix.Ix n,Ix.Ix o) => Ix.Ix (a,b,c,d,e,f,g,h,i,j,k,l,m,n,o);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h,Ix.Ix i,Ix.Ix j,Ix.Ix k,Ix.Ix l,Ix.Ix m,Ix.Ix n) => Ix.Ix (a,b,c,d,e,f,g,h,i,j,k,l,m,n);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h,Ix.Ix i,Ix.Ix j,Ix.Ix k,Ix.Ix l,Ix.Ix m) => Ix.Ix (a,b,c,d,e,f,g,h,i,j,k,l,m);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h,Ix.Ix i,Ix.Ix j,Ix.Ix k,Ix.Ix l) => Ix.Ix (a,b,c,d,e,f,g,h,i,j,k,l);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h,Ix.Ix i,Ix.Ix j,Ix.Ix k) => Ix.Ix (a,b,c,d,e,f,g,h,i,j,k);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h,Ix.Ix i,Ix.Ix j) => Ix.Ix (a,b,c,d,e,f,g,h,i,j);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h,Ix.Ix i) => Ix.Ix (a,b,c,d,e,f,g,h,i);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g,Ix.Ix h) => Ix.Ix (a,b,c,d,e,f,g,h);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f,Ix.Ix g) => Ix.Ix (a,b,c,d,e,f,g);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e,Ix.Ix f) => Ix.Ix (a,b,c,d,e,f);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d,Ix.Ix e) => Ix.Ix (a,b,c,d,e);
+
+{-# NEED #-}
+instance Ix @ (Ix.Ix a,Ix.Ix b,Ix.Ix c,Ix.Ix d) => Ix.Ix (a,b,c,d);
+
+{-# NEED #-}
+instance Ix @ Ix.Ix Prelude.Int;
+
+{-# NEED #-}
+instance Prelude @ Ix.Ix ();
+
+{-# NEED #-}
+instance Ix @ Ix.Ix Prelude.Integer;
+
+{-# NEED #-}
+instance Ix @ Ix.Ix Prelude.Bool;
+
+{-# NEED #-}
+instance Prelude @ Prelude.Functor IO;
+
+{-# NEED #-}
+instance Prelude @ Prelude.Monad IO;
+
+{-# NEED #-}
+instance Data.Ratio @ (Prelude.Integral a) => Prelude.Show (Data.Ratio.Ratio a);
+
+{-# NEED #-}
+instance Prelude @ (Prelude.Show a) => Prelude.Show (IO a);
+interface Ix
+{-# NEED Ix #-}
+class Ix a;
+interface Data.Ratio
+{-# NEED Ratio #-}
+data (Prelude.Integral a) => Ratio a;
+interface ! YHC.Internal
+{-# NEED typeRep #-}
+typeRep{-# 0 #-}::(PolyTypeRep a);
+
+{-# NEED toTypeRep #-}
+toTypeRep{-# 1 #-}::((PolyTypeRep a) -> TypeRep);
+
+{-# NEED {PolyTypeRep} #-}
+newtype {-#  #-} PolyTypeRep a
+  = PolyTypeRep TypeRep;
+
+{-# NEED unsafePerformIO #-}
+unsafePerformIO{-# 1 #-}::((IO a) -> a);
+
+{-# NEED _mkIOok15 #-}
+_mkIOok15{-# 1 #-}::((a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (i -> (j -> (k -> (l -> (m -> (n -> (o -> p))))))))))))))) -> (a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (i -> (j -> (k -> (l -> (m -> (n -> (o -> (IO p)))))))))))))))));
+
+{-# NEED _mkIOok14 #-}
+_mkIOok14{-# 1 #-}::((a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (i -> (j -> (k -> (l -> (m -> (n -> o)))))))))))))) -> (a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (i -> (j -> (k -> (l -> (m -> (n -> (IO o))))))))))))))));
+
+{-# NEED _mkIOok13 #-}
+_mkIOok13{-# 1 #-}::((a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (i -> (j -> (k -> (l -> (m -> n))))))))))))) -> (a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (i -> (j -> (k -> (l -> (m -> (IO n)))))))))))))));
+
+{-# NEED _mkIOok12 #-}
+_mkIOok12{-# 1 #-}::((a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (i -> (j -> (k -> (l -> m)))))))))))) -> (a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (i -> (j -> (k -> (l -> (IO m))))))))))))));
+
+{-# NEED _mkIOok11 #-}
+_mkIOok11{-# 1 #-}::((a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (i -> (j -> (k -> l))))))))))) -> (a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (i -> (j -> (k -> (IO l)))))))))))));
+
+{-# NEED _mkIOok10 #-}
+_mkIOok10{-# 1 #-}::((a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (i -> (j -> k)))))))))) -> (a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (i -> (j -> (IO k))))))))))));
+
+{-# NEED _mkIOok9 #-}
+_mkIOok9{-# 1 #-}::((a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (i -> j))))))))) -> (a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (i -> (IO j)))))))))));
+
+{-# NEED _mkIOok8 #-}
+_mkIOok8{-# 1 #-}::((a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> i)))))))) -> (a -> (b -> (c -> (d -> (e -> (f -> (g -> (h -> (IO i))))))))));
+
+{-# NEED _mkIOok7 #-}
+_mkIOok7{-# 1 #-}::((a -> (b -> (c -> (d -> (e -> (f -> (g -> h))))))) -> (a -> (b -> (c -> (d -> (e -> (f -> (g -> (IO h)))))))));
+
+{-# NEED _mkIOok6 #-}
+_mkIOok6{-# 1 #-}::((a -> (b -> (c -> (d -> (e -> (f -> g)))))) -> (a -> (b -> (c -> (d -> (e -> (f -> (IO g))))))));
+
+{-# NEED _mkIOok5 #-}
+_mkIOok5{-# 1 #-}::((a -> (b -> (c -> (d -> (e -> f))))) -> (a -> (b -> (c -> (d -> (e -> (IO f)))))));
+
+{-# NEED _mkIOok4 #-}
+_mkIOok4{-# 1 #-}::((a -> (b -> (c -> (d -> e)))) -> (a -> (b -> (c -> (d -> (IO e))))));
+
+{-# NEED _mkIOok3 #-}
+_mkIOok3{-# 1 #-}::((a -> (b -> (c -> d))) -> (a -> (b -> (c -> (IO d)))));
+
+{-# NEED _mkIOok2 #-}
+_mkIOok2{-# 1 #-}::((a -> (b -> c)) -> (a -> (b -> (IO c))));
+
+{-# NEED _mkIOok1 #-}
+_mkIOok1{-# 1 #-}::((a -> b) -> (a -> (IO b)));
+
+{-# NEED _mkIOok0 #-}
+_mkIOok0{-# 1 #-}::((() -> a) -> (IO a));
+
+{-# NEED _tyGen #-}
+_tyGen{-# 1 #-}::(Prelude.String -> TypeRep);
+
+{-# NEED _tyCon #-}
+_tyCon{-# 2 #-}::(Prelude.String -> ([TypeRep] -> TypeRep));
+
+{-# NEED {TypeRep TyCon TyGen} #-}
+data TypeRep
+  = TyCon Prelude.String [TypeRep]
+  | TyGen Prelude.String;
+
+{-# NEED TypeRep #-}
+type {-# 1 #-} TypeRep = (TypeType ());
+interface YHC.Internal
+{-# NEED TypeType #-}
+data TypeType a;
+interface ! YHC.Internal
+{-# NEED _apply1 #-}
+_apply1{-# 2 #-}::((a -> b) -> (a -> b));
+
+{-# NEED _apply2 #-}
+_apply2{-# 3 #-}::((a -> (b -> c)) -> (a -> (b -> c)));
+
+{-# NEED _apply3 #-}
+_apply3{-# 4 #-}::((a -> (b -> (c -> d))) -> (a -> (b -> (c -> d))));
+
+{-# NEED _apply4 #-}
+_apply4{-# 5 #-}::((a -> (b -> (c -> (d -> e)))) -> (a -> (b -> (c -> (d -> e)))));
+
+{-# NEED _id #-}
+_id{-# 1 #-}::(a -> a);
+
+{-# NEED _eqInteger #-}
+_eqInteger{-# 0 #-}::(Prelude.Integer -> (Prelude.Integer -> Prelude.Bool));
+
+{-# NEED _eqFloat #-}
+_eqFloat{-# 2 #-}::(Prelude.Float -> (Prelude.Float -> Prelude.Bool));
+
+{-# NEED _eqDouble #-}
+_eqDouble{-# 2 #-}::(Prelude.Double -> (Prelude.Double -> Prelude.Bool));
+
+{-# NEED {World World} #-}
+data World
+  = World ;
+
+{-# NEED {IO IO} #-}
+newtype {-#  #-} IO a
+  = IO (World -> (Prelude.Either Prelude.IOError a));
+interface ! Prelude
+{-# NEED IOError #-}
+data IOError;
+interface ! YHC.Internal
+{-# NEED {World World} #-}
+data World
+  = World ;
+}

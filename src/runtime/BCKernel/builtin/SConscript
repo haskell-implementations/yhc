@@ -1,0 +1,10 @@
+import os
+import glob
+
+Import("env")
+
+files = glob.glob("*.c")
+
+objs = [env.Object(f) for f in files]
+
+Return("objs")

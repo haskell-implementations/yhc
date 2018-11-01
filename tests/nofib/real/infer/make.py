@@ -1,0 +1,16 @@
+def main():
+    build("Parse.hs", "-cpp")
+    build("Shows.hs")
+    build("Term.hs")
+    build("MyList.hs")
+    build("Type.hs")
+    build("FiniteMap.hs")
+    build("Environment.hs")
+    build("StateX.hs")
+    build("Maybe.hs")
+    build("Substitution.hs")   
+    build("InferMonad.hs")
+    build("Infer.hs")
+    build("Main.hs")
+    run("Main")
+

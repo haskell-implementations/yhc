@@ -1,0 +1,25 @@
+interface HTMLInputElement : HTMLElement {
+           attribute  DOMString            defaultValue;
+           attribute  boolean              defaultChecked;
+  readonly attribute  HTMLFormElement      form;
+           attribute  DOMString            accept;
+           attribute  DOMString            accessKey;
+           attribute  DOMString            align;
+           attribute  DOMString            alt;
+           attribute  boolean              checked;
+           attribute  boolean              disabled;
+           attribute  long                 maxLength;
+           attribute  DOMString            name;
+           attribute  boolean              readOnly;
+           attribute  DOMString            size;
+           attribute  DOMString            src;
+           attribute  long                 tabIndex;
+  readonly attribute  DOMString            type;
+           attribute  DOMString            useMap;
+           attribute  DOMString            value;
+  void                      blur();
+  void                      focus();
+  void                      select();
+  void                      click();
+};
+

@@ -1,0 +1,4 @@
+interface HTMLHeadElement : HTMLElement {
+           attribute  DOMString            profile;
+};
+

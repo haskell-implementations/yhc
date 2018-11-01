@@ -1,0 +1,4 @@
+interface HTMLTableCaptionElement : HTMLElement {
+           attribute  DOMString            align;
+};
+

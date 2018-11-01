@@ -1,0 +1,11 @@
+def main():
+    build("PicType.hs")
+    build("Utils.hs")
+    build("Consts.hs")
+    build("ChargeDensity.hs")
+    build("Potential.hs")
+    build("ElecField.hs")
+    build("PushParticle.hs")
+    build("Pic.hs")
+    build("Main.hs")
+    run("Main")

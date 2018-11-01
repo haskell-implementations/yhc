@@ -1,0 +1,5 @@
+yhcobjs = SConscript("Yhc/SConscript")
+
+objs = yhcobjs
+
+Return("objs")
